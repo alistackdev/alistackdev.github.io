@@ -605,7 +605,7 @@ body.cursor-input .custom-cursor-dot   { opacity:0; }
 }
 .about-photo-wrapper { display: flex; justify-content: center; }
 .photo-frame {
-    position: relative; width: 400px; height: 500px;
+    position: relative; width: 280px; height: 360px;
     border-radius: 12px; border: 1px solid var(--border-color);
     background: rgba(255,255,255,0.02);
     overflow: hidden; transition: var(--transition-smooth);
