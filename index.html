@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ali Hassan - Digital Marketer, AI Content Creator, and E-commerce Specialist. Explore a highly immersive, futuristic portfolio featuring interactive 3D WebGL experiences.">
+    <title>HASSAN RESUME</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Core Stylesheet -->
+    <link rel="stylesheet" href="index.css">
+    
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+</head>
+<body>
+
+    <!-- Custom Glowing Cursor -->
+    <div class="custom-cursor-dot" id="cursor-dot"></div>
+    <div class="custom-cursor-circle" id="cursor-circle"></div>
+
+    <!-- WebGL Canvas for 3D Background -->
+    <canvas id="webgl-canvas"></canvas>
+
+    <!-- Scanline Hologram Overlay -->
+    <div class="scanlines"></div>
+    <div class="hologram-flicker"></div>
+
+    <!-- Application Wrapper -->
+    <div id="app">
+        
+        <!-- Header & Glassmorphic Navigation -->
+        <header class="main-header">
+            <div class="header-container">
+                <a href="#" class="logo" data-sound="hover">
+                    <span class="logo-accent">HASSAN</span><span class="logo-main">RESUME</span>
+                </a>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Toggle light/dark mode">🌙</button>
+                
+                <nav class="nav-menu">
+                    <a href="#hero" class="nav-link active" data-sound="hover">SYS.INIT</a>
+                    <a href="#about" class="nav-link" data-sound="hover">PROFILE</a>
+                    <a href="#skills" class="nav-link" data-sound="hover">SKILLS</a>
+                    <a href="#experience" class="nav-link" data-sound="hover">TIMELINE</a>
+                    <a href="#projects" class="nav-link" data-sound="hover">PROJECTS</a>
+                    <a href="#contact" class="nav-link" data-sound="hover">TERMINAL</a>
+                </nav>
+
+                <div class="header-controls">
+                    <div class="system-status">
+                        <span class="pulse-dot"></span>
+                        <span class="status-text">SYS_ON</span>
+                    </div>
+                    <button class="audio-toggle" id="audio-toggle" aria-label="Toggle interface audio" data-sound="click">
+                        <i class="fas fa-volume-mute" id="audio-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Progress Indicator -->
+        <div class="scroll-progress-container">
+            <div class="scroll-progress-bar" id="progress-bar"></div>
+        </div>
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="hero-section section-padding">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="cyber-badge" data-sound="hover">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">SYSTEM STANDBY // READY TO BOOT</span>
+                    </div>
+                    
+                    <h1 class="glitch-title" data-text="ALI HASSAN">ALI HASSAN</h1>
+                    
+                    <div class="role-selector">
+                        <span class="role-prefix">ROLE_TYPE //</span>
+                        <span class="role-text" id="role-text">DIGITAL MARKETER</span>
+                        <span class="role-cursor">_</span>
+                    </div>
+
+                    <p class="hero-desc">
+                        Engineering digital growth through high-converting ad campaigns, automated AI content funnels, and optimized e-commerce operations.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#about" class="btn btn-primary btn-glow" data-sound="click">
+                            <span class="btn-text">INITIALIZE SYSTEM</span>
+                            <span class="btn-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary" data-sound="click">
+                            <span class="btn-text">ESTABLISH LINK</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-graphics">
+                    <!-- This container coordinates with the WebGL overlay. It provides bounds/interactive cues -->
+                    <div class="webgl-interaction-hint">
+                        <span class="hint-line top-left"></span>
+                        <span class="hint-line top-right"></span>
+                        <span class="hint-line bottom-left"></span>
+                        <span class="hint-line bottom-right"></span>
+                        
+      <div class="globe-wrapper">
+    <div class="matrix-rain-grid">
+        <div class="matrix-column">01010001<br>10101100<br>00010101<br>11001010</div>
+        <div class="matrix-column" style="animation-delay: 0.5s;">11001010<br>00010101<br>10101100<br>01010001</div>
+        <div class="matrix-column" style="animation-delay: 1.2s;">00011100<br>10100101<br>01011100<br>11000001</div>
+        <div class="matrix-column" style="animation-delay: 0.2s;">10100101<br>01011100<br>11000001<br>00011100</div>
+        <div class="matrix-column" style="animation-delay: 0.8s;">01010001<br>11001010<br>00010101<br>10101100</div>
+    </div>
+    <div class="globe-text">INTERACT_3D_CORE</div>
+</div>
+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="#about" class="scroll-indicator" data-sound="click">
+                <span class="indicator-text">SCROLL TO ANALYZE</span>
+                <i class="fas fa-chevron-down indicator-arrow"></i>
+            </a>
+        </section>
+
+        <!-- ABOUT & PROFILE SECTION -->
+        <section id="about" class="about-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">CORE_DATA // 01</span>
+                    <h2 class="section-title">BIOMETRIC PROFILE</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="about-grid">
+                    <div class="about-photo-wrapper">
+                        <div class="photo-frame">
+                            <div class="photo-scanner"></div>
+                            <img src="my photo.jpeg" alt="Ali Hassan Profile Photo" class="profile-photo">
+                            <div class="photo-overlay">
+                                <span class="photo-stat top-left-stat">ID_0324408</span>
+                                <span class="photo-stat bottom-right-stat">SEC_VERIFIED</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-info">
+                        <div class="glass-card info-card">
+                            <h3 class="card-headline"><i class="fas fa-user-shield card-icon"></i> EXECUTIVE SUMMARY</h3>
+                            <p class="info-text">
+                                Strategic and performance-focused Digital Marketer with hands-on experience in AI-powered content creation, lead generation, and e-commerce growth. Skilled in running targeted ad campaigns, producing high-quality video/audio content, and managing online sales operations.
+                            </p>
+                            <p class="info-text">
+                                Proficient in deploying state-of-the-art AI tools like ChatGPT, DeepSeek, InVideo AI, and ElevenLabs alongside Meta Ads Manager to scale brand presence, optimize customer acquisition, and drive high-converting traffic.
+                            </p>
+                        </div>
+
+                        <div class="glass-card sys-specs-card">
+                            <h3 class="card-headline"><i class="fas fa-cogs card-icon"></i> SYSTEM_SPECIFICATIONS</h3>
+                            <ul class="specs-list">
+                                <li>
+                                    <span class="spec-label">OPERATOR:</span>
+                                    <span class="spec-val">Ali Hassan</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label">CURRENT_FOCUS:</span>
+                                    <span class="spec-val">E-commerce Scalability & Meta Ads</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label">EDUCATION:</span>
+                                    <span class="spec-val">Nusrat Jahan College - FSc (ICS - Computer Science) [Grade: 70%]</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label">CHANNELS:</span>
+                                    <span class="spec-val">Facebook, Instagram, YouTube, FB Marketplace</span>
+                                </li>
+                                <li>
+                                    <span class="spec-label">COMM_COMMS:</span>
+                                    <span class="spec-val">hassanguaraya@gmail.com</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SKILLS SECTION -->
+        <section id="skills" class="skills-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">CORE_ABILITIES // 02</span>
+                    <h2 class="section-title">FUNCTIONAL ABILITIES</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="skills-intro">
+                    <p class="intro-paragraph">
+                        Harnessing advanced digital systems and content engines to generate visibility, automate assets, and maximize commercial returns. Hover over each core sector for tool breakdowns.
+                    </p>
+                </div>
+
+                <div class="skills-grid">
+                    
+                    <!-- Skill 1 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-blue"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-funnel-dollar skill-icon color-blue"></i>
+                            <h3 class="skill-title">Google & Meta Ads</h3>
+                        </div>
+                        <p class="skill-desc">Managing hyper-targeted campaigns using Meta Ads Manager to capture local markets and drive online conversions.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Meta Ads Manager</span>
+                            <span class="tech-tag">Retargeting</span>
+                            <span class="tech-tag">Custom Audiences</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 2 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-cyan"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-search-dollar skill-icon color-cyan"></i>
+                            <h3 class="skill-title">SEO & Google Trends</h3>
+                        </div>
+                        <p class="skill-desc">Analyzing real-time search trends and optimizing keywords to rank content and products high on search engine result pages.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Google Trends</span>
+                            <span class="tech-tag">Keyword Research</span>
+                            <span class="tech-tag">Search Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 3 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-green"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-robot skill-icon color-green"></i>
+                            <h3 class="skill-title">Social Content & AI</h3>
+                        </div>
+                        <p class="skill-desc">Deploying AI prompt engineering with ChatGPT and DeepSeek for rapid, creative content generation and viral scripts.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">ChatGPT</span>
+                            <span class="tech-tag">DeepSeek</span>
+                            <span class="tech-tag">Prompt Engineering</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 4 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-purple"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-video skill-icon color-purple"></i>
+                            <h3 class="skill-title">Video & Audio Editing</h3>
+                        </div>
+                        <p class="skill-desc">Crafting premium audiovisual narratives using Adobe Premiere Pro, InVideo AI automations, and ElevenLabs voiceovers.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Premiere Pro</span>
+                            <span class="tech-tag">InVideo AI</span>
+                            <span class="tech-tag">ElevenLabs</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 5 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-pink"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-store skill-icon color-pink"></i>
+                            <h3 class="skill-title">E-commerce Operations</h3>
+                        </div>
+                        <p class="skill-desc">Overseeing end-to-end e-commerce store listings, order processing, shipping coordination, and customer support channels.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Listing Optimization</span>
+                            <span class="tech-tag">Inventory Mgmt</span>
+                            <span class="tech-tag">Operations</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 6 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-yellow"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-bullhorn skill-icon color-yellow"></i>
+                            <h3 class="skill-title">Social Account Mgmt</h3>
+                        </div>
+                        <p class="skill-desc">Managing structured scheduling, audience engagement, and community building across Facebook, Instagram, and YouTube.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Content Calendars</span>
+                            <span class="tech-tag">Audience Growth</span>
+                            <span class="tech-tag">Analytics</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 7 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-red"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-envelope-open-text skill-icon color-red"></i>
+                            <h3 class="skill-title">Lead Gen & Email</h3>
+                        </div>
+                        <p class="skill-desc">Building marketing funnels that capture prospective buyer details and running high-conversion email nurturing sequences.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">Lead Forms</span>
+                            <span class="tech-tag">Funnels</span>
+                            <span class="tech-tag">Nurture Flows</span>
+                        </div>
+                    </div>
+
+                    <!-- Skill 8 -->
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-orange"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-paint-brush skill-icon color-orange"></i>
+                            <h3 class="skill-title">Branding & Thumbnail Design</h3>
+                        </div>
+                        <p class="skill-desc">Creating eye-catching thumbnails and banner assets that maximize CTR (Click-Through Rate) and maintain visual consistency.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">CTR Optimization</span>
+                            <span class="tech-tag">Graphic Design</span>
+                            <span class="tech-tag">Brand Identity</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE / TIMELINE SECTION -->
+        <section id="experience" class="experience-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">LOG_HISTORY // 03</span>
+                    <h2 class="section-title">CHRONOLOGICAL HISTORY</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line">
+                        <div class="timeline-line-progress" id="timeline-progress"></div>
+                    </div>
+
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">ONGOING</div>
+                        <div class="glass-card timeline-card" data-sound="hover">
+                            <div class="timeline-glow glow-pink"></div>
+                            <h3 class="job-title">E-commerce Store Owner</h3>
+                            <span class="company-name">Independent Store Operator // Owner</span>
+                            <ul class="job-duties">
+                                <li>Launched and scaled a self-managed online store, generating over <strong>PKR 200,000+</strong> in sales.</li>
+                                <li>Created optimized product listings to increase visual appeal, SEO visibility, and buy-intent conversions.</li>
+                                <li>Configured and optimized targeted Facebook & Instagram ads via Meta Ads Manager to scale traffic.</li>
+                                <li>Handled order fulfillment, supplier relations, customer service, and day-to-day business finances.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item left">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">JAN 2024 - MAR 2024</div>
+                        <div class="glass-card timeline-card" data-sound="hover">
+                            <div class="timeline-glow glow-blue"></div>
+                            <h3 class="job-title">Marketplace Ads Specialist</h3>
+                            <span class="company-name">Evergreen Furniture Canada // Remote</span>
+                            <ul class="job-duties">
+                                <li>Engineered social ad campaigns targeted to drive furniture sales in the Montreal area.</li>
+                                <li>Designed and optimized high-intent listings on Facebook Marketplace to draw local leads.</li>
+                                <li>Authored compelling ad copies structured to resolve buyer pain-points and generate inquiries.</li>
+                                <li>Directly engaged with incoming leads, handling pre-sales queries to successfully convert them.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item right">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">AUG 2023 - DEC 2023</div>
+                        <div class="glass-card timeline-card" data-sound="hover">
+                            <div class="timeline-glow glow-green"></div>
+                            <h3 class="job-title">Digital Marketer & Content Creator</h3>
+                            <span class="company-name">Global Homeo Hub // On-Site</span>
+                            <ul class="job-duties">
+                                <li>Programmed and animated high-retention short and long form video clips for product channels.</li>
+                                <li>Utilized ChatGPT and DeepSeek for scripting, InVideo AI for editing, and ElevenLabs for realistic voiceovers.</li>
+                                <li>Edited premium social videos using Adobe Premiere Pro (color correction, noise filtering, SFX).</li>
+                                <li>Designed viral YouTube thumbnail layouts to optimize video Click-Through Rates.</li>
+                                <li>Maintained daily publishing calendars and active audience interaction across social channels.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">CASE_STUDIES // 04</span>
+                    <h2 class="section-title">ACTIVE INITIATIVES</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="projects-desc">
+                    <p class="intro-paragraph">
+                        Explore core project blocks. Hover to pivot or click to flip the 3D block modules and read execution data.
+                    </p>
+                </div>
+
+                <div class="projects-container">
+                    
+                    <!-- Project Box 1 -->
+                    <div class="project-3d-wrapper" data-sound="click">
+                        <div class="project-3d-card">
+                            <!-- Front Face -->
+                            <div class="project-face project-front glass-card glow-green-border">
+                                <div class="project-badge">MARKETING ENG.</div>
+                                <div class="project-logo-area">
+                                    <i class="fas fa-video-slash logo-icon color-green"></i>
+                                </div>
+                                <h3 class="project-name">AI Video Content Pipeline</h3>
+                                <p class="project-pitch">Automated high-output video scripting and synthesis engine using AI generation models.</p>
+                                <span class="flip-hint">CLICK TO FLIP // STATS <i class="fas fa-rotate"></i></span>
+                            </div>
+                            <!-- Back Face -->
+                            <div class="project-face project-back glass-card">
+                                <h3 class="project-name">ENGINE DETAILS</h3>
+                                <div class="project-metrics">
+                                    <div class="metric-box">
+                                        <span class="metric-num">30+</span>
+                                        <span class="metric-lbl">Videos/Mo</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="metric-num">ElevenLabs</span>
+                                        <span class="metric-lbl">Voice Over</span>
+                                    </div>
+                                </div>
+                                <p class="project-details-text">
+                                    Designed a workflow that maps marketing objectives to ChatGPT/DeepSeek scripts, auto-assembles drafts in InVideo AI, applies voiceovers via ElevenLabs, and finishes in Premiere Pro.
+                                </p>
+                                <span class="flip-hint">CLICK TO FLIP // RETURN <i class="fas fa-rotate"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Box 2 -->
+                    <div class="project-3d-wrapper" data-sound="click">
+                        <div class="project-3d-card">
+                            <!-- Front Face -->
+                            <div class="project-face project-front glass-card glow-blue-border">
+                                <div class="project-badge">E-COMMERCE</div>
+                                <div class="project-logo-area">
+                                    <i class="fas fa-shipping-fast logo-icon color-blue"></i>
+                                </div>
+                                <h3 class="project-name">Self-Managed Sales Portal</h3>
+                                <p class="project-pitch">Full-cycle product sourcing, listing copywriting, and direct Meta Ad scaling.</p>
+                                <span class="flip-hint">CLICK TO FLIP // STATS <i class="fas fa-rotate"></i></span>
+                            </div>
+                            <!-- Back Face -->
+                            <div class="project-face project-back glass-card">
+                                <h3 class="project-name">REVENUE & OPS</h3>
+                                <div class="project-metrics">
+                                    <div class="metric-box">
+                                        <span class="metric-num">200K+ PKR</span>
+                                        <span class="metric-lbl">Sales Revenue</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="metric-num">Meta Ads</span>
+                                        <span class="metric-lbl">Traffic Engine</span>
+                                    </div>
+                                </div>
+                                <p class="project-details-text">
+                                    Engineered store campaigns from scratch. Managed product testing, customer onboarding, inventory logistics, and ad optimization, driving over 200,000 PKR in sales.
+                                </p>
+                                <span class="flip-hint">CLICK TO FLIP // RETURN <i class="fas fa-rotate"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Box 3 -->
+                    <div class="project-3d-wrapper" data-sound="click">
+                        <div class="project-3d-card">
+                            <!-- Front Face -->
+                            <div class="project-face project-front glass-card glow-cyan-border">
+                                <div class="project-badge">AD CAMPAIGNS</div>
+                                <div class="project-logo-area">
+                                    <i class="fas fa-map-marked-alt logo-icon color-cyan"></i>
+                                </div>
+                                <h3 class="project-name">Furniture Marketplace Ads</h3>
+                                <p class="project-pitch">Remote lead generation and local ad campaigns in Montreal, Canada.</p>
+                                <span class="flip-hint">CLICK TO FLIP // STATS <i class="fas fa-rotate"></i></span>
+                            </div>
+                            <!-- Back Face -->
+                            <div class="project-face project-back glass-card">
+                                <h3 class="project-name">CAMPAIGN METRICS</h3>
+                                <div class="project-metrics">
+                                    <div class="metric-box">
+                                        <span class="metric-num">Montreal</span>
+                                        <span class="metric-lbl">Target Region</span>
+                                    </div>
+                                    <div class="metric-box">
+                                        <span class="metric-num">FB Market</span>
+                                        <span class="metric-lbl">Channel</span>
+                                    </div>
+                                </div>
+                                <p class="project-details-text">
+                                    Formulated geo-targeted ad sets for Evergreen Furniture. Tailored local listings to search queries, generated direct leads, and handled conversational sales to close deals remotely.
+                                </p>
+                                <span class="flip-hint">CLICK TO FLIP // RETURN <i class="fas fa-rotate"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FUTURISTIC CONTACT TERMINAL -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">SECURE_LINK // 05</span>
+                    <h2 class="section-title">COMMAND PORT</h2>
+                    <div class="section-line"></div>
+                </div>
+
+                <div class="terminal-grid">
+                    <div class="terminal-card glass-card">
+                        
+                        <!-- Terminal Title Bar -->
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="t-dot red"></span>
+                                <span class="t-dot yellow"></span>
+                                <span class="t-dot green"></span>
+                            </div>
+                            <div class="terminal-title">guest@hassan-resume:~</div>
+                            <div class="terminal-icon"><i class="fas fa-terminal"></i></div>
+                        </div>
+
+                        <!-- Terminal Screen -->
+                        <div class="terminal-body" id="terminal-screen">
+                            <div class="terminal-line"><span class="t-output">Initializing secure transmission link...</span></div>
+                            <div class="terminal-line"><span class="t-output">Local Time: <span id="terminal-time">2026-05-23 14:17:35</span></span></div>
+                            <div class="terminal-line"><span class="t-output">Status: ACCESS_GRANTED. Ready for parameters.</span></div>
+                            <div class="terminal-line"><span class="t-output">Type "help" or click input nodes below to establish contact.</span></div>
+                            
+                            <div class="terminal-interactive-area" id="terminal-logs">
+                                <!-- Command outputs will insert here -->
+                            </div>
+
+                            <!-- Terminal Prompt Fields -->
+                            <form id="terminal-form" class="terminal-form" onsubmit="return false;">
+                                <div class="terminal-prompt">
+                                    <span class="t-prompt-prefix">guest@hassan-resume:~$</span>
+                                    <span class="t-command">input_name ></span>
+                                    <input type="text" id="form-name" name="name" class="t-input" placeholder="Operator Name" required data-sound="key">
+                                </div>
+                                <div class="terminal-prompt">
+                                    <span class="t-prompt-prefix">guest@hassan-resume:~$</span>
+                                    <span class="t-command">input_email ></span>
+                                    <input type="email" id="form-email" name="email" class="t-input" placeholder="comm_link_address" required data-sound="key">
+                                </div>
+                                <div class="terminal-prompt">
+                                    <span class="t-prompt-prefix">guest@hassan-resume:~$</span>
+                                    <span class="t-command">input_message ></span>
+                                    <input type="text" id="form-message" name="message" class="t-input" placeholder="payload_details..." required data-sound="key">
+                                </div>
+                                
+                                <div class="terminal-buttons">
+                                    <button type="submit" class="terminal-btn btn-send" id="terminal-submit" data-sound="click">
+                                        <i class="fas fa-paper-plane"></i> RUN send_payload.sh
+                                    </button>
+                                    <button type="button" class="terminal-btn btn-clear" id="terminal-clear" data-sound="click">
+                                        <i class="fas fa-trash-alt"></i> clear
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Direct contact channels glass card -->
+                    <div class="terminal-specs glass-card">
+                        <h3 class="specs-header"><i class="fas fa-network-wired"></i> CONNECTIVITY_PORT_MAPPING</h3>
+                        <div class="comms-map">
+                            
+                            <div class="comms-channel" data-sound="hover">
+                                <div class="comms-icon-box bg-blue">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="comms-details">
+                                    <span class="comms-label">AUDIO_COMM_PORT (PHONE)</span>
+                                    <a href="tel:+923244086454" class="comms-val">+92-324-4086454</a>
+                                </div>
+                            </div>
+
+                            <div class="comms-channel" data-sound="hover">
+                                <div class="comms-icon-box bg-cyan">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="comms-details">
+                                    <span class="comms-label">SECURE_MAIL_RELAY (EMAIL)</span>
+                                    <a href="mailto:hassanguaraya@gmail.com" class="comms-val">hassanguaraya@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <div class="comms-channel" data-sound="hover">
+                                <div class="comms-icon-box bg-pink">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="comms-details">
+                                    <span class="comms-label">SOCIAL_NODE (INSTAGRAM)</span>
+                                    <a href="https://instagram.com/zhe_official" target="_blank" rel="noopener noreferrer" class="comms-val">@zhe_official</a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="system-footer-notes">
+                            <p class="crypto-note">
+                                <i class="fas fa-lock"></i> SSL_SECURE_CHANNEL_ESTABLISHED // TARGET: ALI_HASSAN // V_2.0
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="main-footer">
+            <div class="container footer-container">
+                <div class="footer-left">
+                    <p>&copy; 2026 HASSAN RESUME. All privileges verified.</p>
+                </div>
+                <div class="footer-right">
+                    <p>Designed for visual excellence // Powered by WebGL & Vanilla JS</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Core Javascript -->
+    <script src="main.js"></script>
+</body>
+</html>
