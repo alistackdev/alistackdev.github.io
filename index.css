@@ -906,7 +906,8 @@ body.cursor-input .custom-cursor-dot   { opacity:0; }
     .nav-menu          { gap: 1rem; }
 }
 
-/* ==========================================================================
+/* ==========================================================================*/
+  /* ==========================================================================
    RESPONSIVE — MOBILE (≤768px)
    ========================================================================== */
 @media (max-width: 768px) {
@@ -927,7 +928,14 @@ body.cursor-input .custom-cursor-dot   { opacity:0; }
     .hero-graphics    { display: none; } /* Hide matrix on mobile */
 
     .about-grid       { grid-template-columns: 1fr; gap: 2rem; }
-    .photo-frame      { width: 220px; height: 280px; display: block; margin: 0 auto; }
+    
+    /* Photo Frame Settings */
+    .photo-frame {
+        width: 220px; 
+        height: 280px; 
+        display: block;
+        margin: 0 auto; /* Photo ko mobile view par center karne ke liye */
+    }
 
     .skills-grid      { grid-template-columns: 1fr; }
 
@@ -958,5 +966,12 @@ body.cursor-input .custom-cursor-dot   { opacity:0; }
     .section-title { font-size: 1.5rem; }
     .logo { font-size: 0.85rem; }
     .projects-container { gap: 1.5rem; }
-    .about-photo-wrapper { display: none; } /* Optional: hide on very small */
+    
+    /* 🔴 PEHLE YAHAN display: none; THA, ISAY HUM NE SHOW KAR DIYA HAI */
+    .about-photo-wrapper { 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        width: 100%;
+    } 
 }
