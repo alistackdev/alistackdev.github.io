@@ -1,351 +1,370 @@
-// main.js - Core interactivity for HASSAN RESUME portfolio
+// main.js — HASSAN RESUME — Cleaned & Enhanced
 
 /* ---------------------------------------------------------------
-   Utility: Audio cue system (optional, can be muted)
+   AUDIO SYSTEM
    --------------------------------------------------------------- */
-const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-let audioEnabled = true;
+let audioCtx = null;
+let audioEnabled = false; // off by default — user opt-in
+
+function getAudioCtx() {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    return audioCtx;
+}
+
 function playTone(frequency, duration = 0.04) {
     if (!audioEnabled) return;
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.type = 'sine';
-    osc.frequency.value = frequency;
-    gain.gain.setValueAtTime(0.0001, audioCtx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.2, audioCtx.currentTime + 0.005);
-    gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
-    osc.connect(gain).connect(audioCtx.destination);
-    osc.start();
-    osc.stop(audioCtx.currentTime + duration);
+    try {
+        const ctx  = getAudioCtx();
+        const osc  = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = frequency;
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.15, ctx.currentTime + 0.005);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+    } catch (e) { /* silently fail */ }
 }
 
-function handleSound(event) {
-    const target = event.currentTarget;
-    const type = target.dataset.sound;
+function handleSound(e) {
+    const type = e.currentTarget.dataset.sound;
     if (!type) return;
-    switch (type) {
-        case 'hover': playTone(800); break;
-        case 'click': playTone(1200); break;
-        case 'key':   playTone(600); break;
-        default: break;
-    }
+    if (type === 'hover')  playTone(800);
+    if (type === 'click')  playTone(1200);
+    if (type === 'key')    playTone(600);
 }
 
-// Attach sound listeners to data-sound elements
 document.querySelectorAll('[data-sound]').forEach(el => {
     el.addEventListener('mouseenter', handleSound);
     el.addEventListener('click', handleSound);
-    if (el.tagName === 'INPUT') {
-        el.addEventListener('keydown', handleSound);
-    }
+    if (el.tagName === 'INPUT') el.addEventListener('keydown', handleSound);
 });
 
 /* ---------------------------------------------------------------
-   Custom Cursor Implementation
-   --------------------------------------------------------------- */
-const cursorDot = document.getElementById('cursor-dot');
-const cursorCircle = document.getElementById('cursor-circle');
-let mouseX = 0, mouseY = 0;
-let circleX = 0, circleY = 0;
-
-function updateCursor() {
-    // Direct dot follows mouse instantly
-    cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
-    // Circle lags behind for a smooth effect
-    circleX += (mouseX - circleX) * 0.12;
-    circleY += (mouseY - circleY) * 0.12;
-    cursorCircle.style.transform = `translate(${circleX}px, ${circleY}px)`;
-    requestAnimationFrame(updateCursor);
-}
-
-window.addEventListener('mousemove', e => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-// Toggle hover state for interactive elements
-function setHoverState(isHover) {
-    document.body.classList.toggle('cursor-hover', isHover);
-}
-
-document.querySelectorAll('a, button, .skill-card, .project-3d-wrapper, .nav-link, .btn, .terminal-btn, .comms-channel')
-    .forEach(el => {
-        el.addEventListener('mouseenter', () => setHoverState(true));
-        el.addEventListener('mouseleave', () => setHoverState(false));
-    });
-
-// Input focus changes cursor to input state
-const inputs = document.querySelectorAll('input');
-inputs.forEach(inp => {
-    inp.addEventListener('focus', () => document.body.classList.add('cursor-input'));
-    inp.addEventListener('blur', () => document.body.classList.remove('cursor-input'));
-});
-
-updateCursor();
-
-/* ---------------------------------------------------------------
-   Audio Toggle Button
+   AUDIO TOGGLE BUTTON
    --------------------------------------------------------------- */
 const audioToggle = document.getElementById('audio-toggle');
-const audioIcon = document.getElementById('audio-icon');
+const audioIcon   = document.getElementById('audio-icon');
 if (audioToggle) {
     audioToggle.addEventListener('click', () => {
+        // Resume AudioContext on first click (browser policy)
+        if (!audioCtx) getAudioCtx();
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+
         audioEnabled = !audioEnabled;
-        audioIcon.className = audioEnabled ? 'fas fa-volume-mute' : 'fas fa-volume-up';
+        audioIcon.className = audioEnabled ? 'fas fa-volume-up' : 'fas fa-volume-mute';
+        audioToggle.title   = audioEnabled ? 'Mute audio' : 'Enable audio';
     });
 }
 
-// Theme toggle button
+/* ---------------------------------------------------------------
+   LIGHT / DARK THEME TOGGLE
+   --------------------------------------------------------------- */
 const themeToggle = document.getElementById('theme-toggle');
+const themeIcon   = document.getElementById('theme-icon');
+const htmlEl      = document.documentElement;
+
+// Load saved preference
+const savedTheme = localStorage.getItem('theme') || 'dark';
+htmlEl.setAttribute('data-theme', savedTheme);
+updateThemeIcon(savedTheme);
+
 if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('light-mode');
-        const isLight = document.body.classList.contains('light-mode');
-        themeToggle.textContent = isLight ? '☀️' : '🌙';
+        const current = htmlEl.getAttribute('data-theme');
+        const next    = current === 'dark' ? 'light' : 'dark';
+        htmlEl.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        updateThemeIcon(next);
+        playTone(1000);
+    });
+}
+
+function updateThemeIcon(theme) {
+    if (!themeIcon) return;
+    themeIcon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    if (themeToggle) themeToggle.title = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+}
+
+/* ---------------------------------------------------------------
+   HAMBURGER MENU (MOBILE)
+   --------------------------------------------------------------- */
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobile-nav');
+
+if (hamburger && mobileNav) {
+    hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open', isOpen);
+        hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close on nav link click
+    mobileNav.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        });
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+            hamburger.classList.remove('open');
+            mobileNav.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+        }
     });
 }
 
 /* ---------------------------------------------------------------
-   Scroll Progress Bar
+   CUSTOM CURSOR (desktop only)
    --------------------------------------------------------------- */
-const progressBar = document.getElementById('progress-bar');
-window.addEventListener('scroll', () => {
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const scrolled = (scrollTop / docHeight) * 100;
-    progressBar.style.width = `${scrolled}%`;
-    // Update timeline progress line
-    const timelineProgress = document.getElementById('timeline-progress');
-    if (timelineProgress) {
-        timelineProgress.style.height = `${scrolled}%`;
+const cursorDot    = document.getElementById('cursor-dot');
+const cursorCircle = document.getElementById('cursor-circle');
+
+if (cursorDot && cursorCircle && window.matchMedia('(pointer: fine)').matches) {
+    let mouseX = 0, mouseY = 0, circleX = 0, circleY = 0;
+
+    function updateCursor() {
+        cursorDot.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+        circleX += (mouseX - circleX) * 0.12;
+        circleY += (mouseY - circleY) * 0.12;
+        cursorCircle.style.transform = `translate(${circleX}px, ${circleY}px)`;
+        requestAnimationFrame(updateCursor);
     }
-});
+
+    window.addEventListener('mousemove', e => { mouseX = e.clientX; mouseY = e.clientY; });
+    updateCursor();
+
+    document.querySelectorAll('a, button, .skill-card, .project-3d-wrapper, .btn, .terminal-btn, .comms-channel').forEach(el => {
+        el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+        el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+    });
+
+    document.querySelectorAll('input').forEach(inp => {
+        inp.addEventListener('focus', () => document.body.classList.add('cursor-input'));
+        inp.addEventListener('blur',  () => document.body.classList.remove('cursor-input'));
+    });
+}
 
 /* ---------------------------------------------------------------
-   Role Text Typewriter & Cycling
+   SCROLL PROGRESS BAR
    --------------------------------------------------------------- */
-const roles = ['DIGITAL MARKETER', 'AI CONTENT CREATOR', 'E-COMMERCE SPECIALIST'];
-let roleIdx = 0;
-let charIdx = 0;
+const progressBar = document.getElementById('progress-bar');
+
+window.addEventListener('scroll', onScroll, { passive: true });
+
+function onScroll() {
+    const docHeight  = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollTop  = window.scrollY || document.documentElement.scrollTop;
+    const pct        = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+    if (progressBar) progressBar.style.width = `${pct}%`;
+
+    updateTimelineProgress(pct);
+    activateTimelineItems();
+    updateActiveNav();
+    toggleBackToTop(scrollTop);
+}
+
+/* ---------------------------------------------------------------
+   BACK TO TOP BUTTON
+   --------------------------------------------------------------- */
+const backToTopBtn = document.getElementById('back-to-top');
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        playTone(1100);
+    });
+}
+
+function toggleBackToTop(scrollY) {
+    if (!backToTopBtn) return;
+    backToTopBtn.classList.toggle('visible', scrollY > 400);
+}
+
+/* ---------------------------------------------------------------
+   ACTIVE NAV ON SCROLL
+   --------------------------------------------------------------- */
+const sections  = document.querySelectorAll('section[id]');
+const navLinks  = document.querySelectorAll('.nav-link[data-section]');
+const mobileLinks = document.querySelectorAll('.mobile-nav-link[data-section]');
+
+function updateActiveNav() {
+    const scrollY = window.scrollY + 120;
+    sections.forEach(section => {
+        const top    = section.offsetTop;
+        const height = section.offsetHeight;
+        const id     = section.getAttribute('id');
+        if (scrollY >= top && scrollY < top + height) {
+            navLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+            mobileLinks.forEach(l => l.classList.toggle('active', l.dataset.section === id));
+        }
+    });
+}
+
+/* ---------------------------------------------------------------
+   TIMELINE PROGRESS & ACTIVATION
+   --------------------------------------------------------------- */
+function updateTimelineProgress(pct) {
+    const el = document.getElementById('timeline-progress');
+    if (el) el.style.height = `${pct}%`;
+}
+
+const timelineItems = document.querySelectorAll('.timeline-item');
+function activateTimelineItems() {
+    const vh = window.innerHeight;
+    timelineItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        item.classList.toggle('active', rect.top < vh * 0.78 && rect.bottom > 0);
+    });
+}
+
+// Run once on load
+onScroll();
+
+/* ---------------------------------------------------------------
+   ROLE TEXT TYPEWRITER
+   --------------------------------------------------------------- */
+const roles  = ['WEBSITE DEVELPOR', 'DIGITAL MARKETER', 'E-COMMERCE SPECIALIST'];
+let roleIdx  = 0, charIdx = 0, isDeleting = false;
 const roleEl = document.getElementById('role-text');
+
 function typeRole() {
     if (!roleEl) return;
     const current = roles[roleIdx];
-    roleEl.textContent = current.slice(0, charIdx);
-    charIdx++;
-    if (charIdx > current.length) {
-        setTimeout(() => {
-            charIdx = 0;
-            roleIdx = (roleIdx + 1) % roles.length;
-            setTimeout(typeRole, 800);
-        }, 1200);
+
+    if (!isDeleting) {
+        roleEl.textContent = current.slice(0, ++charIdx);
+        if (charIdx === current.length) {
+            isDeleting = true;
+            setTimeout(typeRole, 1400);
+            return;
+        }
     } else {
-        setTimeout(typeRole, 120);
+        roleEl.textContent = current.slice(0, --charIdx);
+        if (charIdx === 0) {
+            isDeleting = false;
+            roleIdx = (roleIdx + 1) % roles.length;
+        }
     }
+    setTimeout(typeRole, isDeleting ? 60 : 110);
 }
 setTimeout(typeRole, 800);
 
 /* ---------------------------------------------------------------
-   Three.js Interactive 3D Shape (Polyhedron)
+   THREE.JS BACKGROUND SHAPE
    --------------------------------------------------------------- */
-let scene, camera, renderer, shape, mouse = { x: 0, y: 0 };
-function initThree() {
+(function initThree() {
     const canvas = document.getElementById('webgl-canvas');
-    renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    if (!canvas || typeof THREE === 'undefined') return;
 
-    scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 0, 6);
 
-    // Light setup (soft ambient + point for glow)
-    const ambient = new THREE.AmbientLight(0x404040, 1.5);
-    scene.add(ambient);
+    scene.add(new THREE.AmbientLight(0x404040, 1.5));
     const point = new THREE.PointLight(0x00f2fe, 1.5, 150);
     scene.add(point);
 
-    // Geometry: TorusKnot with custom ShaderMaterial for neon glow
     const geometry = new THREE.TorusKnotGeometry(1, 0.35, 128, 32);
     const material = new THREE.MeshStandardMaterial({
-        color: 0x00f2fe,
-        metalness: 0.6,
-        roughness: 0.2,
-        emissive: 0x00f2fe,
-        emissiveIntensity: 0.6,
+        color: 0x00f2fe, metalness: 0.6, roughness: 0.2,
+        emissive: 0x00f2fe, emissiveIntensity: 0.6,
     });
-    shape = new THREE.Mesh(geometry, material);
+    const shape = new THREE.Mesh(geometry, material);
     scene.add(shape);
 
-    // Resize handling
-    window.addEventListener('resize', onWindowResize);
-    // Mouse move tracking for subtle rotation
+    let mx = 0, my = 0;
     window.addEventListener('mousemove', e => {
-        mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+        mx = (e.clientX / window.innerWidth)  * 2 - 1;
+        my = -(e.clientY / window.innerHeight) * 2 + 1;
+    }, { passive: true });
+
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
     });
+
+    function animate() {
+        requestAnimationFrame(animate);
+        shape.rotation.x += 0.002 + my * 0.01;
+        shape.rotation.y += 0.003 + mx * 0.01;
+        renderer.render(scene, camera);
+    }
     animate();
-}
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-}
-function animate() {
-    requestAnimationFrame(animate);
-    // Rotate shape slowly and add mouse influence
-    shape.rotation.x += 0.002;
-    shape.rotation.y += 0.003;
-    shape.rotation.y += mouse.x * 0.02;
-    shape.rotation.x += mouse.y * 0.02;
-    renderer.render(scene, camera);
-}
-initThree();
-initSkillsThree();
+})();
 
 /* ---------------------------------------------------------------
-   Project Card Flip Interaction
+   PROJECT CARD FLIP
    --------------------------------------------------------------- */
-const projectWrappers = document.querySelectorAll('.project-3d-wrapper');
-projectWrappers.forEach(wrapper => {
+document.querySelectorAll('.project-3d-wrapper').forEach(wrapper => {
     wrapper.addEventListener('click', () => {
         wrapper.classList.toggle('is-flipped');
-        // Optional sound cue
         playTone(900);
     });
 });
 
 /* ---------------------------------------------------------------
-   Timeline Items Activation on Scroll (SCROLLYTELLING)
+   TERMINAL FORM
    --------------------------------------------------------------- */
-const timelineItems = document.querySelectorAll('.timeline-item');
-function activateTimeline() {
-    const viewportHeight = window.innerHeight;
-    timelineItems.forEach(item => {
-        const rect = item.getBoundingClientRect();
-        if (rect.top < viewportHeight * 0.75 && rect.bottom > 0) {
-            item.classList.add('active');
-        } else {
-            item.classList.remove('active');
-        }
-    });
-}
-window.addEventListener('scroll', activateTimeline);
-activateTimeline(); // Run on load
-
-/* ---------------------------------------------------------------
-   Terminal Form Handling (mock submission)
-   --------------------------------------------------------------- */
-const terminalForm = document.getElementById('terminal-form');
+const terminalForm  = document.getElementById('terminal-form');
 const logsContainer = document.getElementById('terminal-logs');
-function logMessage(msg, type = 'info') {
-    const line = document.createElement('div');
-    line.className = `terminal-line terminal-log-entry ${type}`;
-    line.textContent = msg;
-    logsContainer.appendChild(line);
+const successAlert  = document.getElementById('success-alert');
+
+function logMsg(msg, type = 'info') {
+    if (!logsContainer) return;
+    const div = document.createElement('div');
+    div.className = `terminal-log-entry ${type}`;
+    div.textContent = `> ${msg}`;
+    logsContainer.appendChild(div);
     logsContainer.scrollTop = logsContainer.scrollHeight;
 }
+
+// Show success if redirected back
+if (window.location.search.includes('status=success') && successAlert) {
+    successAlert.style.display = 'block';
+    // Clean URL without reloading
+    window.history.replaceState({}, document.title, window.location.pathname);
+}
+
 if (terminalForm) {
-    terminalForm.addEventListener('submit', e => {
-        e.preventDefault();
-        const name = document.getElementById('form-name').value.trim();
-        const email = document.getElementById('form-email').value.trim();
-        const message = document.getElementById('form-message').value.trim();
-        if (name && email && message) {
-            logMessage(`> SEND payload: name=${name}, email=${email}, msg=${message}`, 'info');
-            // Simulate async send
-            setTimeout(() => {
-                logMessage('✅ Payload delivered. Awaiting response...', 'success');
-            }, 800);
-        } else {
-            logMessage('⚠️ Missing fields. Please fill all inputs.', 'error');
-        }
+    terminalForm.addEventListener('submit', () => {
+        // Let Formspree handle actual submission
+        logMsg('Transmitting payload...', 'info');
     });
-    document.getElementById('terminal-clear').addEventListener('click', () => {
+}
+
+const clearBtn = document.getElementById('terminal-clear');
+if (clearBtn && logsContainer) {
+    clearBtn.addEventListener('click', () => {
         logsContainer.innerHTML = '';
-        logMessage('🔁 Log cleared.', 'info');
+        logMsg('Log cleared.', 'info');
     });
 }
 
 /* ---------------------------------------------------------------
-   Misc UI Enhancements
+   LIVE TERMINAL CLOCK
    --------------------------------------------------------------- */
-// Update terminal time every second
 function updateTerminalTime() {
-    const timeEl = document.getElementById('terminal-time');
-    if (!timeEl) return;
+    const el = document.getElementById('terminal-time');
+    if (!el) return;
     const now = new Date();
-    const formatted = now.toISOString().slice(0, 19).replace('T', ' ');
-    timeEl.textContent = formatted;
+    el.textContent = now.toISOString().slice(0, 19).replace('T', ' ');
 }
 setInterval(updateTerminalTime, 1000);
 updateTerminalTime();
 
-// Prevent default drag for images (improve UX)
+/* ---------------------------------------------------------------
+   MISC
+   --------------------------------------------------------------- */
 document.querySelectorAll('img').forEach(img => img.setAttribute('draggable', 'false'));
-
-// Simple debounced resize for performance (if needed)
-let resizeTimer;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-        // Placeholder for heavy resize actions
-    }, 250);
-});
-
-
-// --- MATRIX VERTICAL CODE RAIN ---
-const matrixCanvas = document.getElementById('matrixCanvas');
-if (matrixCanvas) {
-    const matrixCtx = matrixCanvas.getContext('2d');
-
-    // Container ki real width aur height auto-detect karna
-    matrixCanvas.width = matrixCanvas.parentElement.offsetWidth || 400;
-    matrixCanvas.height = matrixCanvas.parentElement.offsetHeight || 450;
-
-    // Hacker codes data arrays
-    const matrixChars = ["0", "1", "0001", "SYSTEM_OK", "AX73", "ADDR"];
-    const fontSize = 14;
-    const columns = matrixCanvas.width / fontSize;
-
-    // Har column ki starting Y position (Neeche girne ke liye)
-    const rainDrops = [];
-    for (let x = 0; x < columns; x++) {
-        rainDrops[x] = Math.random() * -100; // Random offset taake saari lines ek sath na giren
-    }
-
-    function drawMatrix() {
-        // Halka sa black background transparent layer taake trailing fade effect aaye
-        matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.08)';
-        matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
-
-        matrixCtx.fillStyle = '#00ffcc'; // Neon Cyan color
-        matrixCtx.font = fontSize + 'px monospace';
-
-        for (let i = 0; i < rainDrops.length; i++) {
-            // Randomly characters uthana array se
-            const text = matrixChars[Math.floor(Math.random() * matrixChars.length)];
-            const x = i * fontSize;
-            const y = rainDrops[i] * fontSize;
-
-            matrixCtx.fillText(text, x, y);
-
-            // Agar line screen se baahar chali jaye toh wapas top par reset karna
-            if (y > matrixCanvas.height && Math.random() > 0.975) {
-                rainDrops[i] = 0;
-            }
-            
-            // Speed control (Neeche ki taraf push)
-            rainDrops[i]++;
-        }
-    }
-
-    // Smooth looping interval (33ms = ~30 FPS perfect speed)
-    setInterval(drawMatrix, 33);
-
-    // Screen resize hone par handles adjustment
-    window.addEventListener('resize', () => {
-        matrixCanvas.width = matrixCanvas.parentElement.offsetWidth;
-        matrixCanvas.height = matrixCanvas.parentElement.offsetHeight;
-    });
-}
