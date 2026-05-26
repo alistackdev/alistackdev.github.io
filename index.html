@@ -9,10 +9,10 @@
     <meta property="og:image" content="my-photo.jpeg">
     <title>Ali Hassan | Digital Marketer</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts — Syne + JetBrains Mono + Space Grotesk -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -25,7 +25,7 @@
 </head>
 <body>
 
-    <!-- Custom Cursor (hidden on mobile via CSS) -->
+    <!-- Custom Cursor -->
     <div class="custom-cursor-dot" id="cursor-dot"></div>
     <div class="custom-cursor-circle" id="cursor-circle"></div>
 
@@ -53,36 +53,28 @@
 
                 <!-- Desktop Nav -->
                 <nav class="nav-menu" id="nav-menu">
-                    <a href="#hero"       class="nav-link active" data-section="hero">SYS.INIT <span class="nav-label">Home</span></a>
-                    <a href="#about"      class="nav-link"        data-section="about">PROFILE <span class="nav-label">About</span></a>
+                    <a href="#hero"       class="nav-link active" data-section="hero"> HOME </a>
+                    <a href="#about"      class="nav-link"        data-section="about">PROFILE </a>
                     <a href="#skills"     class="nav-link"        data-section="skills">SKILLS</a>
-                    <a href="#experience" class="nav-link"        data-section="experience">TIMELINE <span class="nav-label">Work</span></a>
+                    <a href="#experience" class="nav-link"        data-section="experience">TIMELINE </a>
                     <a href="#projects"   class="nav-link"        data-section="projects">PROJECTS</a>
-                    <a href="#contact"    class="nav-link"        data-section="contact">TERMINAL <span class="nav-label">Contact</span></a>
+                    <a href="#reviews"    class="nav-link"        data-section="reviews">REVIEWS</a>
+                    <a href="#contact"    class="nav-link"        data-section="contact"> CONTACT </a>
                 </nav>
 
                 <div class="header-controls">
-                    <!-- System Status -->
                     <div class="system-status">
                         <span class="pulse-dot"></span>
                         <span class="status-text">SYS_ON</span>
                     </div>
-
-                    <!-- Light/Dark Theme Toggle -->
                     <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle Theme">
                         <i class="fas fa-moon" id="theme-icon"></i>
                     </button>
-
-                    <!-- Audio Toggle -->
                     <button class="audio-toggle" id="audio-toggle" aria-label="Toggle audio">
                         <i class="fas fa-volume-mute" id="audio-icon"></i>
                     </button>
-
-                    <!-- Hamburger (mobile only) -->
                     <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
@@ -94,6 +86,7 @@
                 <a href="#skills"     class="mobile-nav-link" data-section="skills">SKILLS</a>
                 <a href="#experience" class="mobile-nav-link" data-section="experience">TIMELINE — Work</a>
                 <a href="#projects"   class="mobile-nav-link" data-section="projects">PROJECTS</a>
+                <a href="#reviews"    class="mobile-nav-link" data-section="reviews">REVIEWS</a>
                 <a href="#contact"    class="mobile-nav-link" data-section="contact">TERMINAL — Contact</a>
             </div>
         </header>
@@ -132,7 +125,6 @@
                         <a href="#contact" class="btn btn-secondary" data-sound="click">
                             <span class="btn-text">ESTABLISH LINK</span>
                         </a>
-                        <!-- CV Download Button -->
                         <a href="Ali-Hassan-CV.pdf" download class="btn btn-cv" aria-label="Download CV">
                             <i class="fas fa-download"></i>
                             <span class="btn-text">DOWNLOAD CV</span>
@@ -179,7 +171,6 @@
                     <div class="about-photo-wrapper">
                         <div class="photo-frame">
                             <div class="photo-scanner"></div>
-                            <!-- NOTE: Rename your file from "my photo.jpeg" to "my-photo.jpeg" on GitHub -->
                             <img src="my-photo.jpeg" alt="Ali Hassan - Digital Marketer" class="profile-photo"
                                  onerror="this.src='https://via.placeholder.com/320x400/0a0a0e/00f2fe?text=ALI+HASSAN'">
                             <div class="photo-overlay">
@@ -193,9 +184,7 @@
                         <div class="glass-card info-card">
                             <h3 class="card-headline"><i class="fas fa-user-shield card-icon"></i> EXECUTIVE SUMMARY</h3>
                             <p class="info-text">
-Strategic and detail-oriented Computer Science student focused on building modern digital experiences, immersive interfaces, and performance-driven web solutions. Passionate about combining creativity with technology to develop futuristic, responsive, and visually refined platforms.
-
-Experienced in creating clean user experiences,  layouts, and optimized digital systems with a strong focus on innovation, aesthetics, and functionality. Continuously exploring emerging technologies, AI-powered workflows, and next-generation design concepts to craft impactful online experiences.
+                                Strategic and detail-oriented Computer Science student focused on building modern digital experiences, immersive interfaces, and performance-driven web solutions. Passionate about combining creativity with technology to develop futuristic, responsive, and visually refined platforms.
                             </p>
                             <p class="info-text">
                                 Strategic and performance-focused Digital Marketer with hands-on experience in AI-powered content creation, lead generation, and e-commerce growth. Skilled in running targeted ad campaigns, producing high-quality video/audio content, and managing online sales operations.
@@ -206,10 +195,11 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <h3 class="card-headline"><i class="fas fa-cogs card-icon"></i> SYSTEM_SPECIFICATIONS</h3>
                             <ul class="specs-list">
                                 <li><span class="spec-label">OPERATOR:</span><span class="spec-val">Ali Hassan</span></li>
-                                <li><span class="spec-label">LOCATION:</span><span class="spec-val">Faislabad, Punjab, Pakistan</span></li>
-                                <li><span class="spec-label">CURRENT_FOCUS:</span><span class="spec-val">E-commerce Scalability &amp; web develpor</span></li>
-<li><span class="spec-label">EDUCATION:</span><span class="spec-val">Intermedate In Computer Science (2023-2025)<br> (2025-Ongoing...) Bachelors In Computer Science From Government College University Faislabad </span></li>                                <li><span class="spec-label">CHANNELS:</span><span class="spec-val">Facebook, Instagram, YouTube, FB Marketplace</span></li>
-                                <li><span class="spec-label">EMAIL:</span><span class="spec-val"><a href="mailto:alihassanguaraya.net@gmail.com" class="spec-link">alihassanguaraya.net@gmail.com</a></span></li>
+                                <li><span class="spec-label">LOCATION:</span><span class="spec-val">Faisalabad, Punjab, Pakistan</span></li>
+                                <li><span class="spec-label">CURRENT_FOCUS:</span><span class="spec-val">E-commerce Scalability &amp; Web Development</span></li>
+                                <li><span class="spec-label">EDUCATION:</span><span class="spec-val">Intermediate In Computer Science (2023-2025)<br>(2025-Ongoing) Bachelors In Computer Science — GCU Faisalabad</span></li>
+                                <li><span class="spec-label">CHANNELS:</span><span class="spec-val">Facebook, Instagram, YouTube, FB Marketplace</span></li>
+                                <li><span class="spec-label">EMAIL:</span><span class="spec-val"><a href="mailto:hassanguaraya@gmail.com" class="spec-link">hassanguaraya@gmail.com</a></span></li>
                             </ul>
                         </div>
                     </div>
@@ -225,33 +215,23 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                     <h2 class="section-title">FUNCTIONAL ABILITIES</h2>
                     <div class="section-line"></div>
                 </div>
-
                 <div class="skills-intro">
-                    <p class="intro-paragraph">
-                        Harnessing advanced digital systems and content engines to generate visibility, automate assets, and maximize commercial returns.
-                    </p>
+                    <p class="intro-paragraph">Harnessing advanced digital systems and content engines to generate visibility, automate assets, and maximize commercial returns.</p>
                 </div>
-
                 <div class="skills-grid">
-
-
-
-<div class="glass-card skill-card" data-sound="hover">
-    <div class="skill-glow-accent glow-green"></div>
-    <div class="skill-header">
-        <i class="fas fa-code skill-icon color-green"></i>
-        <h3 class="skill-title">Web Development</h3>
-    </div>
-    <p class="skill-desc">Developing modern and responsive websites with interactive layouts, smooth animations, and clean user experiences.</p>
-    <div class="skill-tech-stack">
-        <span class="tech-tag">HTML &amp; CSS</span>
-        <span class="tech-tag">JavaScript</span>
-        <span class="tech-tag">C++ &amp; Python</span>
-    </div>
-</div>
-
-
-
+                    <div class="glass-card skill-card" data-sound="hover">
+                        <div class="skill-glow-accent glow-green"></div>
+                        <div class="skill-header">
+                            <i class="fas fa-code skill-icon color-green"></i>
+                            <h3 class="skill-title">Web Development</h3>
+                        </div>
+                        <p class="skill-desc">Developing modern and responsive websites with interactive layouts, smooth animations, and clean user experiences.</p>
+                        <div class="skill-tech-stack">
+                            <span class="tech-tag">HTML &amp; CSS</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">C++ &amp; Python</span>
+                        </div>
+                    </div>
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-blue"></div>
                         <div class="skill-header">
@@ -265,7 +245,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">Custom Audiences</span>
                         </div>
                     </div>
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-cyan"></div>
                         <div class="skill-header">
@@ -279,9 +258,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">Search Analytics</span>
                         </div>
                     </div>
-                    
-
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-purple"></div>
                         <div class="skill-header">
@@ -295,7 +271,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">ElevenLabs</span>
                         </div>
                     </div>
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-pink"></div>
                         <div class="skill-header">
@@ -309,7 +284,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">Operations</span>
                         </div>
                     </div>
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-yellow"></div>
                         <div class="skill-header">
@@ -323,7 +297,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">Analytics</span>
                         </div>
                     </div>
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-red"></div>
                         <div class="skill-header">
@@ -337,7 +310,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             <span class="tech-tag">Nurture Flows</span>
                         </div>
                     </div>
-
                     <div class="glass-card skill-card" data-sound="hover">
                         <div class="skill-glow-accent glow-orange"></div>
                         <div class="skill-header">
@@ -363,12 +335,10 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                     <h2 class="section-title">CHRONOLOGICAL HISTORY</h2>
                     <div class="section-line"></div>
                 </div>
-
                 <div class="timeline-container">
                     <div class="timeline-line">
                         <div class="timeline-line-progress" id="timeline-progress"></div>
                     </div>
-
                     <div class="timeline-item right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">ONGOING</div>
@@ -384,7 +354,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             </ul>
                         </div>
                     </div>
-
                     <div class="timeline-item left">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">JAN 2024 – MAR 2024</div>
@@ -400,7 +369,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             </ul>
                         </div>
                     </div>
-
                     <div class="timeline-item right">
                         <div class="timeline-dot"></div>
                         <div class="timeline-date">AUG 2023 – DEC 2023</div>
@@ -421,8 +389,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
             </div>
         </section>
 
-        
-
         <!-- ===================== PROJECTS ===================== -->
         <section id="projects" class="projects-section section-padding">
             <div class="container">
@@ -431,50 +397,35 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                     <h2 class="section-title">ACTIVE INITIATIVES</h2>
                     <div class="section-line"></div>
                 </div>
-
                 <div class="projects-desc">
                     <p class="intro-paragraph">Explore core project blocks. Click to flip each card and read execution data.</p>
                 </div>
-
                 <div class="projects-container">
-
-<!-- Project 1: Web Development Flip Card -->
-<div class="project-3d-wrapper" data-sound="click">
-    <div class="project-3d-card">
-        <div class="project-face project-front glass-card glow-green-border">
-            <div class="project-badge">WEB DEVELOPMENT</div>
-            <div class="project-logo-area">
-                <i class="fas fa-code logo-icon color-green"></i>
-            </div>
-            <h3 class="project-name">Modern Web Interfaces</h3>
-            <p class="project-pitch">Building responsive, interactive websites with smooth animations and optimized performance using modern technologies.</p>
-            <span class="flip-hint">TAP TO FLIP — STATS <i class="fas fa-rotate"></i></span>
-        </div>
-        <div class="project-face project-back glass-card">
-            <h3 class="project-name">TECH STACK</h3>
-            <div class="project-metrics">
-                <div class="metric-box"><span class="metric-num">HTML5</span><span class="metric-lbl">Frontend</span></div>
-                <div class="metric-box"><span class="metric-num">CSS3</span><span class="metric-lbl">Styling</span></div>
-            </div>
-            <p class="project-details-text">Crafting clean, maintainable code with responsive designs. Creating interactive components, smooth transitions, and pixel-perfect layouts across all devices.</p>
-            <span class="flip-hint">TAP TO FLIP — RETURN <i class="fas fa-rotate"></i></span>
-        </div>
-    </div>
-</div>
-
-                    <!-- Projects -->
-                   
-
-
-
-                    <!-- Project 2 -->
+                    <div class="project-3d-wrapper" data-sound="click">
+                        <div class="project-3d-card">
+                            <div class="project-face project-front glass-card glow-green-border">
+                                <div class="project-badge">WEB DEVELOPMENT</div>
+                                <div class="project-logo-area"><i class="fas fa-code logo-icon color-green"></i></div>
+                                <h3 class="project-name">Modern Web Interfaces</h3>
+                                <p class="project-pitch">Building responsive, interactive websites with smooth animations and optimized performance using modern technologies.</p>
+                                <span class="flip-hint">TAP TO FLIP — STATS <i class="fas fa-rotate"></i></span>
+                            </div>
+                            <div class="project-face project-back glass-card">
+                                <h3 class="project-name">TECH STACK</h3>
+                                <div class="project-metrics">
+                                    <div class="metric-box"><span class="metric-num">HTML5</span><span class="metric-lbl">Frontend</span></div>
+                                    <div class="metric-box"><span class="metric-num">CSS3</span><span class="metric-lbl">Styling</span></div>
+                                </div>
+                                <p class="project-details-text">Crafting clean, maintainable code with responsive designs. Creating interactive components, smooth transitions, and pixel-perfect layouts across all devices.</p>
+                                <span class="flip-hint">TAP TO FLIP — RETURN <i class="fas fa-rotate"></i></span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="project-3d-wrapper" data-sound="click">
                         <div class="project-3d-card">
                             <div class="project-face project-front glass-card glow-blue-border">
                                 <div class="project-badge">E-COMMERCE</div>
-                                <div class="project-logo-area">
-                                    <i class="fas fa-shopping-cart logo-icon color-blue"></i>
-                                </div>
+                                <div class="project-logo-area"><i class="fas fa-shopping-cart logo-icon color-blue"></i></div>
                                 <h3 class="project-name">Self-Managed Sales Portal</h3>
                                 <p class="project-pitch">Full-cycle product sourcing, listing copywriting, and direct Meta Ad scaling.</p>
                                 <span class="flip-hint">TAP TO FLIP — STATS <i class="fas fa-rotate"></i></span>
@@ -490,15 +441,11 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                             </div>
                         </div>
                     </div>
-
-                    <!-- Project 4 -->
                     <div class="project-3d-wrapper" data-sound="click">
                         <div class="project-3d-card">
                             <div class="project-face project-front glass-card glow-cyan-border">
                                 <div class="project-badge">AD CAMPAIGNS</div>
-                                <div class="project-logo-area">
-                                    <i class="fas fa-map-marked-alt logo-icon color-cyan"></i>
-                                </div>
+                                <div class="project-logo-area"><i class="fas fa-map-marked-alt logo-icon color-cyan"></i></div>
                                 <h3 class="project-name">Furniture Marketplace Ads</h3>
                                 <p class="project-pitch">Remote lead generation and local ad campaigns in Montreal, Canada.</p>
                                 <span class="flip-hint">TAP TO FLIP — STATS <i class="fas fa-rotate"></i></span>
@@ -518,11 +465,101 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
             </div>
         </section>
 
+        <!-- ===================== REVIEWS ===================== -->
+        <section id="reviews" class="reviews-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">CLIENT_FEEDBACK // 05</span>
+                    <h2 class="section-title">VERIFIED REVIEWS</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="reviews-grid">
+
+                    <div class="glass-card review-card" data-sound="hover">
+                        <div class="review-glow-accent glow-cyan"></div>
+                        <div class="rev-top">
+                            <span class="rev-id">REV_001</span>
+                            <div class="rev-stars">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="rev-text">"Ali delivered a website that actually converts. Clean design, fast load time, and the Meta Ads campaign he set up brought real leads within the first week."</p>
+                        <div class="rev-divider"></div>
+                        <div class="rev-meta">
+                            <div class="rev-avatar rev-avatar-cyan">ZK</div>
+                            <div>
+                                <div class="rev-name">Zain Khalid</div>
+                                <div class="rev-role rev-role-cyan">// E-commerce Store Owner</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card review-card" data-sound="hover">
+                        <div class="review-glow-accent glow-purple"></div>
+                        <div class="rev-top">
+                            <span class="rev-id rev-id-purple">REV_002</span>
+                            <div class="rev-stars rev-stars-purple">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="rev-text">"Hired Ali for social media management and AI content. Within a month our engagement doubled. He knows exactly what works on Instagram and Facebook."</p>
+                        <div class="rev-divider"></div>
+                        <div class="rev-meta">
+                            <div class="rev-avatar rev-avatar-purple">SA</div>
+                            <div>
+                                <div class="rev-name">Sara Aslam</div>
+                                <div class="rev-role rev-role-purple">// Brand Manager, Lahore</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card review-card" data-sound="hover">
+                        <div class="review-glow-accent glow-blue"></div>
+                        <div class="rev-top">
+                            <span class="rev-id rev-id-blue">REV_003</span>
+                            <div class="rev-stars rev-stars-blue">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="rev-text">"Ran a Marketplace campaign with Ali for our furniture business. He wrote the copy, set the targeting, and handled leads. Solid results, very professional."</p>
+                        <div class="rev-divider"></div>
+                        <div class="rev-meta">
+                            <div class="rev-avatar rev-avatar-blue">MR</div>
+                            <div>
+                                <div class="rev-name">Michael R.</div>
+                                <div class="rev-role rev-role-blue">// Evergreen Furniture, Canada</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="glass-card review-card" data-sound="hover">
+                        <div class="review-glow-accent glow-pink"></div>
+                        <div class="rev-top">
+                            <span class="rev-id rev-id-pink">REV_004</span>
+                            <div class="rev-stars rev-stars-pink">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="rev-text">"Great communicator, delivers on time. He revamped our product listings and our click-through rate jumped significantly. Would work with him again."</p>
+                        <div class="rev-divider"></div>
+                        <div class="rev-meta">
+                            <div class="rev-avatar rev-avatar-pink">UB</div>
+                            <div>
+                                <div class="rev-name">Usman Baig</div>
+                                <div class="rev-role rev-role-pink">// Online Retailer, Faisalabad</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <!-- ===================== CONTACT ===================== -->
         <section id="contact" class="contact-section section-padding">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">SECURE_LINK // 05</span>
+                    <span class="section-tag">SECURE_LINK // 06</span>
                     <h2 class="section-title">COMMAND PORT</h2>
                     <div class="section-line"></div>
                 </div>
@@ -542,31 +579,36 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                         <div class="terminal-body" id="terminal-screen">
                             <div class="terminal-line"><span class="t-output">Initializing secure transmission link...</span></div>
                             <div class="terminal-line"><span class="t-output">Local Time: <span id="terminal-time"></span></span></div>
-                            <div class="terminal-line"><span class="t-output">Status: ACCESS_GRANTED. Ready for parameters.</span></div>
-                            <div class="terminal-line"><span class="t-output">Type your details below to establish contact.</span></div>
+                            <div class="terminal-line"><span class="t-output">Status: <span class="t-success">ACCESS_GRANTED</span>. Ready for parameters.</span></div>
+                            <div class="terminal-line"><span class="t-output tf-hint">Type your details below to establish contact.</span></div>
 
                             <div class="terminal-interactive-area" id="terminal-logs"></div>
 
-                            <!-- Single clean form (duplicate removed) -->
                             <form id="terminal-form" class="terminal-form" action="https://formspree.io/f/xaqkbekv" method="POST">
                                 <input type="hidden" name="_next" value="https://alihassan-253876.github.io/ALI-RESUME/?status=success">
 
-                                <div class="terminal-prompt">
-                                    <span class="t-prompt-prefix">guest</span>
-                                    <span class="t-command">input_name &gt;</span>
-                                    <input type="text" name="name" id="form-name" class="t-input" placeholder="your name..." required autocomplete="name">
+                                <div class="tf-field-group">
+                                    <div class="tf-label-row">
+                                        <span class="tf-prompt-prefix">guest</span>
+                                        <span class="tf-command">input_name &gt;</span>
+                                    </div>
+                                    <input type="text" name="name" id="form-name" class="tf-input" placeholder="Enter your full name..." required autocomplete="name">
                                 </div>
 
-                                <div class="terminal-prompt">
-                                    <span class="t-prompt-prefix">guest</span>
-                                    <span class="t-command">input_email &gt;</span>
-                                    <input type="email" name="email" id="form-email" class="t-input" placeholder="your email..." required autocomplete="email">
+                                <div class="tf-field-group">
+                                    <div class="tf-label-row">
+                                        <span class="tf-prompt-prefix">guest</span>
+                                        <span class="tf-command">input_email &gt;</span>
+                                    </div>
+                                    <input type="email" name="email" id="form-email" class="tf-input" placeholder="Enter your email address..." required autocomplete="email">
                                 </div>
 
-                                <div class="terminal-prompt">
-                                    <span class="t-prompt-prefix">guest</span>
-                                    <span class="t-command">input_message &gt;</span>
-                                    <input type="text" name="message" id="form-message" class="t-input" placeholder="your message..." required>
+                                <div class="tf-field-group">
+                                    <div class="tf-label-row">
+                                        <span class="tf-prompt-prefix">guest</span>
+                                        <span class="tf-command">input_message &gt;</span>
+                                    </div>
+                                    <textarea name="message" id="form-message" class="tf-input tf-textarea" placeholder="Type your message here..." required rows="4"></textarea>
                                 </div>
 
                                 <div class="terminal-buttons">
@@ -585,7 +627,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                         </div>
                     </div>
 
-                    <!-- Contact Channels -->
                     <div class="terminal-specs glass-card">
                         <h3 class="specs-header"><i class="fas fa-network-wired"></i> CONNECTIVITY_PORT_MAPPING</h3>
                         <div class="comms-map">
@@ -593,10 +634,9 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                                 <div class="comms-icon-box bg-blue"><i class="fas fa-phone-alt"></i></div>
                                 <div class="comms-details">
                                     <span class="comms-label">AUDIO_COMM_PORT (PHONE)</span>
-                                    <a href="tel:+923244086454" class="comms-val">+92-326-6093358</a>
+                                    <a href="tel:+923266093358" class="comms-val">+92-326-6093358</a>
                                 </div>
                             </div>
-
                             <div class="comms-channel" data-sound="hover">
                                 <div class="comms-icon-box bg-cyan"><i class="fas fa-envelope"></i></div>
                                 <div class="comms-details">
@@ -604,7 +644,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                                     <a href="mailto:hassanguaraya@gmail.com" class="comms-val">hassanguaraya@gmail.com</a>
                                 </div>
                             </div>
-
                             <div class="comms-channel" data-sound="hover">
                                 <div class="comms-icon-box bg-pink"><i class="fab fa-instagram"></i></div>
                                 <div class="comms-details">
@@ -612,8 +651,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                                     <a href="https://www.instagram.com/the_romeo_city?igsh=ejRrN3g4em50c3Vr" target="_blank" rel="noopener noreferrer" class="comms-val">@hassan_ali</a>
                                 </div>
                             </div>
-
-                            <!-- LinkedIn (add your URL) -->
                             <div class="comms-channel" data-sound="hover">
                                 <div class="comms-icon-box bg-blue"><i class="fab fa-linkedin"></i></div>
                                 <div class="comms-details">
@@ -622,7 +659,6 @@ Experienced in creating clean user experiences,  layouts, and optimized digital 
                                 </div>
                             </div>
                         </div>
-
                         <div class="system-footer-notes">
                             <p class="crypto-note">
                                 <i class="fas fa-lock"></i> SSL_SECURE_CHANNEL_ESTABLISHED // TARGET: ALI_HASSAN // V_2.0
