@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Menu, X, Terminal, Cpu } from 'lucide-react';
+import { Volume2, VolumeX, Menu, X, Terminal, Cpu, Github, Linkedin, Instagram } from 'lucide-react';
 import { playClickSound, playHoverSound, isAudioMuted, toggleAudioMute } from '../utils/sound';
 
 export default function Navbar() {
@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'reviews', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'experience', 'reviews', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -42,7 +42,7 @@ export default function Navbar() {
     { name: 'PROFILE', href: '#about', id: 'about' },
     { name: 'CAPABILITIES', href: '#skills', id: 'skills' },
     { name: 'TIMELINE', href: '#experience', id: 'experience' },
-    { name: 'PROJECTS', href: '#projects', id: 'projects' },
+    // { name: 'PROJECTS', href: '#projects', id: 'projects' }, // Commented out temporarily
     { name: 'REVIEWS', href: '#reviews', id: 'reviews' },
     { name: 'COMMAND', href: '#contact', id: 'contact' },
   ];
@@ -103,8 +103,45 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Action Controls */}
-        <div className="flex items-center gap-3">
+        {/* Action Controls & Social Nodes */}
+        <div className="flex items-center gap-2.5">
+          {/* Social Quick Links in Navbar space */}
+          <div className="hidden lg:flex items-center gap-1.5 border-r border-slate-800 pr-2.5 mr-1">
+            <a
+              href="https://github.com/alistackdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playClickSound()}
+              onMouseEnter={() => playHoverSound()}
+              title="GitHub: alistackdev"
+              className="w-8 h-8 rounded-lg bg-[#0d1020] border border-slate-800 hover:border-cyan-400 text-slate-400 hover:text-cyan-400 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+            >
+              <Github className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alistackdev1"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playClickSound()}
+              onMouseEnter={() => playHoverSound()}
+              title="LinkedIn: alistackdev1"
+              className="w-8 h-8 rounded-lg bg-[#0d1020] border border-slate-800 hover:border-blue-400 text-slate-400 hover:text-blue-400 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.instagram.com/the_romeo_city?igsh=ejRrN3g4em50c3Vr"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playClickSound()}
+              onMouseEnter={() => playHoverSound()}
+              title="Instagram: @the_romeo_city"
+              className="w-8 h-8 rounded-lg bg-[#0d1020] border border-slate-800 hover:border-pink-400 text-slate-400 hover:text-pink-400 flex items-center justify-center transition-all cursor-pointer shadow-sm"
+            >
+              <Instagram className="w-3.5 h-3.5" />
+            </a>
+          </div>
+
           {/* Status badge */}
           <div className="hidden sm:flex items-center gap-2 bg-[#0d1020]/60 border border-emerald-500/30 px-2.5 py-1 rounded-full text-[11px] font-mono text-emerald-400">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_8px_#00ff88]" />
@@ -127,7 +164,7 @@ export default function Navbar() {
             href="#contact"
             onClick={() => playClickSound()}
             onMouseEnter={() => playHoverSound()}
-            className="hidden lg:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-semibold text-xs tracking-wider hover:brightness-110 shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all cursor-pointer"
+            className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-semibold text-xs tracking-wider hover:brightness-110 shadow-[0_0_15px_rgba(0,242,254,0.4)] transition-all cursor-pointer"
           >
             <Terminal className="w-3.5 h-3.5" />
             <span>CONNECT</span>
@@ -167,6 +204,33 @@ export default function Navbar() {
               // {link.name}
             </a>
           ))}
+          {/* Mobile Socials */}
+          <div className="flex items-center gap-3 pt-2 px-2">
+            <a
+              href="https://github.com/alistackdev"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-cyan-400"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/alistackdev1"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-blue-400"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+            <a
+              href="https://www.instagram.com/the_romeo_city?igsh=ejRrN3g4em50c3Vr"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-400 hover:text-pink-400"
+            >
+              <Instagram className="w-4 h-4" />
+            </a>
+          </div>
           <div className="pt-2">
             <a
               href="#contact"

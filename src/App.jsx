@@ -32,7 +32,7 @@ export default function App() {
         <About />
         <Skills />
         <Experience />
-        <Projects />
+        {/* <Projects /> -- Temporarily commented out as requested */}
         <Reviews />
         <TerminalContact />
       </main>

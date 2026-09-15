@@ -44,15 +44,17 @@ export default function About() {
                 {/* Animated HUD Scanner Line */}
                 <div className="absolute left-0 right-0 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent shadow-[0_0_15px_#00f2fe] animate-scanner z-20 pointer-events-none" />
 
-                {/* Profile Image */}
+                {/* Profile Image - Vibrant natural color with smooth zoom & cyan aura on hover */}
                 <img
                   src="my-photo.jpeg"
                   alt="Ali Hassan - Web & Backend Developer"
-                  className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
+                  className="w-full h-full object-cover brightness-100 contrast-105 group-hover:scale-105 group-hover:contrast-110 transition-all duration-500 ease-out"
                   onError={(e) => {
                     e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80';
                   }}
                 />
+                {/* Subtle cyber holographic glow on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
                 {/* Overlay Tags */}
                 <div className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-cyan-400/40 text-[10px] font-mono text-cyan-300">
