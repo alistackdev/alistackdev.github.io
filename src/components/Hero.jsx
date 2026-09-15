@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronRight, Download, Terminal, Sparkles, Activity, ShieldCheck, Code2 } from 'lucide-react';
+import { ChevronRight, Download, Terminal, Sparkles, Activity, ShieldCheck, Server, Cpu, Database } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/sound';
 
 export default function Hero() {
   const roles = [
-    'FULL-STACK DEVELOPER',
-    'DIGITAL STRATEGIST',
-    'E-COMMERCE SPECIALIST',
-    'AI WORKFLOW AUTOMATOR'
+    'BACKEND & AUTOMATION DEV',
+    'AI RAG PIPELINE ENGINEER',
+    'NODE.JS ARCHITECT',
+    'FULL-STACK REACT DEVELOPER',
+    'E-COMMERCE OPERATOR (10L+/MO)'
   ];
 
   const [roleIndex, setRoleIndex] = useState(0);
@@ -22,15 +23,15 @@ export default function Hero() {
       if (displayText.length < currentRole.length) {
         timer = setTimeout(() => {
           setDisplayText(currentRole.slice(0, displayText.length + 1));
-        }, 80);
+        }, 75);
       } else {
-        timer = setTimeout(() => setIsDeleting(true), 2000);
+        timer = setTimeout(() => setIsDeleting(true), 2200);
       }
     } else {
       if (displayText.length > 0) {
         timer = setTimeout(() => {
           setDisplayText(currentRole.slice(0, displayText.length - 1));
-        }, 40);
+        }, 35);
       } else {
         setIsDeleting(false);
         setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -54,7 +55,7 @@ export default function Hero() {
           {/* Cyber Status Badge */}
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#0d1020]/90 border border-cyan-500/30 text-cyan-300 font-mono text-xs tracking-wider shadow-[0_0_15px_rgba(0,242,254,0.15)]">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
-            <span>CORE NODE // READY TO EXECUTE</span>
+            <span>INTERN @ SLASHCLOUD.IO // BSCS GCUF</span>
           </div>
 
           {/* Name Header */}
@@ -75,8 +76,9 @@ export default function Hero() {
 
           {/* Bio Description */}
           <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-            Computer Science student at <strong className="text-white font-medium">Government College University, Faisalabad (GCUF)</strong>. 
-            Merging modern full-stack development with data-driven e-commerce growth, hyper-targeted ad campaigns, and AI-accelerated digital solutions.
+            Backend-focused Computer Science undergraduate at <strong className="text-white font-medium">Government College University, Faisalabad (GCUF)</strong> &amp; 
+            Backend &amp; Automation Engineer Intern at <strong className="text-cyan-400 font-medium">Slashcloud.io</strong>. 
+            Engineering custom Node.js architectures, Retrieval-Augmented Generation (RAG) AI pipelines, and full-stack solutions backed by practical e-commerce scaling of over <strong className="text-emerald-400 font-medium">PKR 10 Lakh+ monthly</strong>.
           </p>
 
           {/* Action Buttons */}
@@ -87,7 +89,7 @@ export default function Hero() {
               onMouseEnter={() => playHoverSound()}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 text-black font-mono font-bold text-sm tracking-wider hover:shadow-[0_0_25px_rgba(0,242,254,0.6)] hover:scale-[1.02] transition-all cursor-pointer"
             >
-              <span>INITIALIZE SYSTEM</span>
+              <span>INSPECT ARCHITECTURE</span>
               <ChevronRight className="w-4 h-4" />
             </a>
 
@@ -109,23 +111,23 @@ export default function Hero() {
               className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#120d20]/80 hover:bg-[#1c1433] border border-purple-500/30 hover:border-purple-400 text-purple-300 font-mono text-sm tracking-wider hover:shadow-[0_0_20px_rgba(185,92,230,0.3)] transition-all cursor-pointer"
             >
               <Download className="w-4 h-4" />
-              <span>CV.PDF</span>
+              <span>UPDATED CV</span>
             </a>
           </div>
 
           {/* Micro Stats Bar */}
           <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 max-w-lg">
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-cyan-400 text-lg sm:text-xl">PKR 200K+</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Revenue Scaled</div>
+              <div className="font-mono font-bold text-emerald-400 text-lg sm:text-xl">PKR 10L+</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Monthly E-Comm</div>
             </div>
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-emerald-400 text-lg sm:text-xl">100%</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Client Reviews</div>
+              <div className="font-mono font-bold text-cyan-400 text-lg sm:text-xl">Slashcloud</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Automation Intern</div>
             </div>
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-purple-400 text-lg sm:text-xl">GCUF CS</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Bachelors Degree</div>
+              <div className="font-mono font-bold text-purple-400 text-lg sm:text-xl">Node.js + RAG</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Production AI Stack</div>
             </div>
           </div>
 
@@ -150,7 +152,7 @@ export default function Hero() {
               <div className="flex items-center justify-between border-b border-cyan-500/20 pb-4 mb-4">
                 <div className="flex items-center gap-2">
                   <Activity className="w-4 h-4 text-cyan-400 animate-pulse" />
-                  <span className="font-mono text-xs text-cyan-300 tracking-wider">SYS.METRICS_v2</span>
+                  <span className="font-mono text-xs text-cyan-300 tracking-wider">ENGINEERING_METRICS_v2</span>
                 </div>
                 <span className="font-mono text-[10px] text-slate-500">ID_0324408</span>
               </div>
@@ -158,14 +160,15 @@ export default function Hero() {
               {/* Matrix Code Stream Visual */}
               <div className="bg-[#050711]/90 rounded-xl p-4 border border-cyan-500/10 font-mono text-xs space-y-2 mb-4">
                 <div className="flex justify-between text-slate-400 text-[11px]">
-                  <span>// ACTIVE PROCESSES</span>
-                  <span className="text-emerald-400">STATUS: OPTIMAL</span>
+                  <span>// ACTIVE PRODUCTION SERVICES</span>
+                  <span className="text-emerald-400">ONLINE</span>
                 </div>
                 <div className="space-y-1 text-slate-300 font-mono text-xs">
-                  <p><span className="text-cyan-400">&gt;</span> React.js &amp; Modern UI Frameworks</p>
-                  <p><span className="text-cyan-400">&gt;</span> Meta Ads Manager &amp; Conversion APIs</p>
-                  <p><span className="text-cyan-400">&gt;</span> E-Commerce Supply Chain &amp; Scalability</p>
-                  <p><span className="text-cyan-400">&gt;</span> AI Content Production &amp; Video SFX</p>
+                  <p><span className="text-cyan-400">&gt;</span> Node.js Backend &amp; Webhook Pipelines</p>
+                  <p><span className="text-cyan-400">&gt;</span> RAG Engine (260 Chunks / 33K+ Words)</p>
+                  <p><span className="text-cyan-400">&gt;</span> Zoho SalesIQ &amp; Google Workspace APIs</p>
+                  <p><span className="text-cyan-400">&gt;</span> React.js, Tailwind CSS &amp; Modern UI</p>
+                  <p><span className="text-cyan-400">&gt;</span> C++ OOP (Cinema &amp; Parking Systems)</p>
                 </div>
               </div>
 
@@ -173,31 +176,31 @@ export default function Hero() {
               <div className="space-y-3 font-mono text-xs">
                 <div>
                   <div className="flex justify-between text-slate-300 mb-1">
-                    <span>WEB ARCHITECTURE</span>
-                    <span className="text-cyan-400">92%</span>
+                    <span>BACKEND &amp; RAG AUTOMATION</span>
+                    <span className="text-cyan-400">96%</span>
                   </div>
                   <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full w-[92%]" />
+                    <div className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full w-[96%]" />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-slate-300 mb-1">
-                    <span>DIGITAL MARKETING FUNNELS</span>
-                    <span className="text-purple-400">95%</span>
+                    <span>FULL-STACK &amp; REACT ECOSYSTEM</span>
+                    <span className="text-purple-400">92%</span>
                   </div>
                   <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-[95%]" />
+                    <div className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-[92%]" />
                   </div>
                 </div>
 
                 <div>
                   <div className="flex justify-between text-slate-300 mb-1">
-                    <span>E-COMMERCE OPERATIONS</span>
-                    <span className="text-emerald-400">89%</span>
+                    <span>E-COMMERCE SCALE (PKR 10L+/MO)</span>
+                    <span className="text-emerald-400">94%</span>
                   </div>
                   <div className="w-full h-1.5 bg-slate-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full w-[89%]" />
+                    <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full w-[94%]" />
                   </div>
                 </div>
               </div>
@@ -206,9 +209,9 @@ export default function Hero() {
               <div className="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span className="flex items-center gap-1.5 text-emerald-400">
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  VERIFIED SPECIALIST
+                  SLASHCLOUD INTERN // ACTIVE
                 </span>
-                <span>PAKISTAN // REMOTE</span>
+                <span>FAISALABAD // REMOTE</span>
               </div>
 
             </div>

@@ -1,59 +1,88 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Award } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Award, Server, Cpu, ShoppingCart } from 'lucide-react';
 import { playHoverSound } from '../utils/sound';
 
 export default function Experience() {
   const experiences = [
     {
-      period: 'ONGOING // CURRENT',
-      role: 'E-Commerce Store Owner & Growth Lead',
-      company: 'Independent Commercial Store',
-      location: 'Pakistan // Remote',
-      glow: 'border-pink-500/30 hover:border-pink-500/60',
-      badgeColor: 'text-pink-400 bg-pink-500/10 border-pink-500/30',
-      dotColor: 'bg-pink-500 shadow-[0_0_12px_#ff007f]',
-      metrics: 'PKR 200,000+ Revenue',
+      period: '2025 – PRESENT // CURRENT',
+      role: 'Backend & Automation Engineer Intern',
+      company: 'Slashcloud.io',
+      location: 'Hybrid / Remote (Past 3 Months)',
+      glow: 'border-cyan-500/40 hover:border-cyan-400',
+      badgeColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30',
+      dotColor: 'bg-cyan-400 shadow-[0_0_14px_#00f2fe]',
+      metrics: 'Active Engineering Internship',
       duties: [
-        'Bootstrapped and scaled an independent e-commerce brand, generating over PKR 200,000+ in online gross sales.',
-        'Created high-conversion product listings optimized for organic search intent and customer acquisition.',
-        'Designed, monitored, and scaled targeted Meta Ad campaigns (Facebook & Instagram) with precision retargeting.',
-        'Managed supply chain logistics, supplier relations, inventory tracking, and post-purchase customer success.',
+        'Developing cloud-integrated backend automation, webhook receivers, and API integration services.',
+        'Engineering data pipelines that connect distributed services and eliminate manual operational bottlenecks.',
+        'Implementing clean asynchronous architecture, logging, and error handling for production cloud workflows.',
       ],
-      tags: ['Meta Ads', 'Store Operations', 'Funnels', 'Customer Fulfillment', 'Logistics']
+      tags: ['Slashcloud.io', 'Node.js', 'Cloud Automation', 'REST APIs', 'Webhooks']
+    },
+    {
+      period: '2025 – PRESENT',
+      role: 'Backend & AI Automation Developer',
+      company: "Canada's Log & Wood Home Store (loghomestore.ca)",
+      location: 'Remote // Canadian Client',
+      glow: 'border-purple-500/40 hover:border-purple-400',
+      badgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
+      dotColor: 'bg-purple-500 shadow-[0_0_14px_#b95ce6]',
+      metrics: 'Production RAG AI Pipeline',
+      duties: [
+        'Built a custom Node.js backend unifying three inbound lead channels — live website chat (Zoho SalesIQ), contact forms, and direct business emails — into a single automated capture-and-follow-up pipeline (replacing Zapier/n8n for sub-second response).',
+        'Engineered a Retrieval-Augmented Generation (RAG) layer over a 260-chunk, 33,500+ word knowledge base so Grok AI-drafted follow-ups stay strictly grounded in verified pricing, specs, and policies without hallucinations.',
+        'Built a Human-in-the-Loop admin dashboard with smart lead segmentation, rich-text draft editor, real-time email alerts, and a Google Sheets feedback loop that continuously optimizes AI accuracy.',
+      ],
+      tags: ['Node.js', 'RAG Pipeline', 'Grok AI', 'Zoho SalesIQ', 'Google Sheets API', 'Nodemailer']
+    },
+    {
+      period: 'ONGOING',
+      role: 'E-Commerce Entrepreneur & Store Operator',
+      company: 'Self-Managed Online Commercial Store',
+      location: 'Remote',
+      glow: 'border-emerald-500/40 hover:border-emerald-400',
+      badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
+      dotColor: 'bg-emerald-500 shadow-[0_0_14px_#00ff88]',
+      metrics: 'PKR 10 Lakh+ / Month Sales',
+      duties: [
+        'Built and manage an independent online store, currently generating over PKR 10 Lakh+ in monthly gross sales through data-driven product sourcing and funnel scaling.',
+        'Architected high-ROI advertising campaigns via Meta Ads Manager with continuous creative A/B testing and custom retargeting.',
+        'Managed full operational lifecycle: inventory replenishment, supplier relations, customer support, and seamless order fulfillment.',
+      ],
+      tags: ['PKR 10L+/Mo Revenue', 'Meta Ads Manager', 'Store Scaling', 'Supply Chain', 'Logistics']
     },
     {
       period: 'JAN 2024 – MAR 2024',
       role: 'Marketplace Ads Specialist',
       company: 'Evergreen Furniture Canada',
-      location: 'Montreal, Canada // Remote',
+      location: 'Montreal, QC // Remote',
       glow: 'border-blue-500/30 hover:border-blue-500/60',
       badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
       dotColor: 'bg-blue-500 shadow-[0_0_12px_#4facfe]',
       metrics: 'Geo-Targeted ROI',
       duties: [
-        'Engineered geo-targeted social advertising campaigns focused specifically on driving qualified furniture buyers in Montreal.',
-        'Crafted persuasive, benefit-oriented ad copywriting and high-intent listings on Facebook Marketplace.',
-        'Directly managed inbound inquiries and resolved buyer concerns to successfully convert leads into paying customers.',
-        'Monitored ad performance metrics and optimized creative variations to reduce acquisition costs.',
+        'Planned and executed geo-targeted ad sets in the Montreal region, optimizing for qualified lead acquisition and low CPL.',
+        'Authored high-intent ad copy and managed conversational sales on Facebook Marketplace, successfully closing direct buyers.',
+        'Monitored campaign KPIs and iterated on ad angles to maximize return on ad spend.',
       ],
-      tags: ['Facebook Marketplace', 'Geo-Targeting', 'Montreal Region', 'Sales Closing', 'Copywriting']
+      tags: ['FB Marketplace', 'Geo-Targeting', 'Montreal Market', 'Conversational Sales']
     },
     {
       period: 'AUG 2023 – DEC 2023',
       role: 'Digital Marketer & Content Creator',
       company: 'Global Homeo Hub',
-      location: 'On-Site',
-      glow: 'border-emerald-500/30 hover:border-emerald-500/60',
-      badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      dotColor: 'bg-emerald-500 shadow-[0_0_12px_#00ff88]',
-      metrics: 'Multi-Channel Scale',
+      location: 'Remote',
+      glow: 'border-pink-500/30 hover:border-pink-500/60',
+      badgeColor: 'text-pink-400 bg-pink-500/10 border-pink-500/30',
+      dotColor: 'bg-pink-500 shadow-[0_0_12px_#ff007f]',
+      metrics: 'AI Video Scalability',
       duties: [
-        'Produced and scheduled high-retention video content across YouTube, Facebook, and Instagram.',
-        'Integrated AI workflows (ChatGPT, InVideo AI, ElevenLabs) with Adobe Premiere Pro to rapidly produce polished video assets.',
-        'Engineered viral-oriented YouTube thumbnails resulting in substantial CTR (Click-Through Rate) uplifts.',
-        'Maintained structured editorial calendars, customer messaging, and community audience engagement.',
+        'Engineered AI-powered video production workflows (InVideo AI + ElevenLabs voiceovers), cutting asset creation turnaround by 60%.',
+        'Edited commercial video content in Adobe Premiere Pro with custom audio noise filtering, pacing, and color grading.',
+        'Designed high-CTR YouTube thumbnails, improving organic impression conversions across channels.',
       ],
-      tags: ['Adobe Premiere Pro', 'ElevenLabs', 'AI Workflows', 'YouTube CTR', 'Community Ops']
+      tags: ['Premiere Pro', 'ElevenLabs', 'InVideo AI', 'Content Calendars']
     }
   ];
 
@@ -68,7 +97,7 @@ export default function Experience() {
             <span>LOG_HISTORY // 03</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-            CHRONOLOGICAL TIMELINE
+            CHRONOLOGICAL WORK TIMELINE
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
         </div>

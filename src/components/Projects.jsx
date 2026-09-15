@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { 
+  Server, 
+  Globe, 
   Code2, 
-  ShoppingCart, 
-  MapPin, 
-  Sparkles, 
+  Database, 
   RotateCw, 
-  ExternalLink, 
-  Layers, 
-  Activity,
-  ArrowRight
+  ArrowRight,
+  ExternalLink,
+  Cpu
 } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/sound';
 
@@ -25,52 +24,68 @@ export default function Projects() {
 
   const projects = [
     {
-      title: 'Modern Web Interfaces & Portfolios',
-      tag: 'WEB ARCHITECTURE',
-      icon: Code2,
+      title: "Canada's Log Home Store RAG Pipeline",
+      tag: 'BACKEND & AI AUTOMATION',
+      icon: Cpu,
+      color: 'purple',
+      badgeClass: 'text-purple-300 bg-purple-500/10 border-purple-500/30',
+      glowBorder: 'hover:border-purple-400/50',
+      pitch: 'Engineered a custom Node.js backend unifying Zoho SalesIQ live chat, web forms, and direct email with a 260-chunk RAG pipeline powered by Grok AI for loghomestore.ca.',
+      frontMetrics: [
+        { label: 'KNOWLEDGE BASE', val: '260 Chunks (33.5K Words)' },
+        { label: 'AI ENGINE', val: 'Grok AI Grounded RAG' }
+      ],
+      backTitle: 'RAG ARCHITECTURE & BACKEND',
+      backDetails: 'Replaced Zapier/n8n after webhook latency proved insufficient. Built a Human-in-the-Loop admin dashboard with smart lead segmentation, rich-text draft editor, and Google Sheets feedback loop eliminating AI hallucinations.',
+      techStack: ['Node.js', 'Grok AI', 'RAG Pipeline', 'Zoho SalesIQ API', 'Google Sheets API', 'Nodemailer']
+    },
+    {
+      title: 'Romic Media Agency Platform',
+      tag: 'PRODUCTION WEB APPLICATION',
+      icon: Globe,
       color: 'cyan',
       badgeClass: 'text-cyan-300 bg-cyan-500/10 border-cyan-500/30',
       glowBorder: 'hover:border-cyan-400/50',
-      pitch: 'Designing and building high-performance, responsive React web platforms with real-time 3D WebGL scenes, smooth audio feedback, and clean architecture.',
+      pitch: 'Designed and deployed romicmedia.com, a full-service digital agency website with dynamic service listings, blog architecture, and an EmailJS automated contact relay.',
       frontMetrics: [
-        { label: 'FRAMEWORK', val: 'React 18 + Vite' },
-        { label: 'PERFORMANCE', val: '100% Responsive' }
+        { label: 'LIVE DOMAIN', val: 'romicmedia.com' },
+        { label: 'SYSTEM RELAY', val: 'EmailJS + SEO Indexing' }
       ],
-      backTitle: 'TECHNICAL ARCHITECTURE',
-      backDetails: 'Built using modern React, Tailwind CSS, Lucide Icons, and Three.js. Employs component modularity, Web Audio API sound synthesizers, and automated CI/CD deployment via GitHub Actions.',
-      techStack: ['React', 'Vite', 'Tailwind CSS', 'Three.js', 'GitHub Actions']
+      backTitle: 'END-TO-END WEB DELIVERY',
+      backDetails: 'Independently architected the user interface, resolved search-engine indexing bottlenecks, configured custom domain routing, and established automated client communication channels.',
+      techStack: ['JavaScript', 'HTML5 / CSS3', 'EmailJS', 'Technical SEO', 'DNS & Deployment']
     },
     {
-      title: 'Self-Managed E-Commerce Portal',
-      tag: 'COMMERCIAL SCALE',
-      icon: ShoppingCart,
-      color: 'pink',
-      badgeClass: 'text-pink-300 bg-pink-500/10 border-pink-500/30',
-      glowBorder: 'hover:border-pink-400/50',
-      pitch: 'End-to-end commercial store launch including supplier sourcing, SEO product listing copy, and direct Meta Ad performance campaigns.',
-      frontMetrics: [
-        { label: 'GROSS REVENUE', val: 'PKR 200K+' },
-        { label: 'AD ENGINE', val: 'Meta Ads Manager' }
-      ],
-      backTitle: 'REVENUE & LOGISTICS',
-      backDetails: 'Managed product validation, customer acquisition funnels, shipping logistics, and retargeting campaigns. Optimized conversion rates through compelling product imagery and user engagement.',
-      techStack: ['Store Ops', 'Meta Ads', 'Listing SEO', 'Logistics', 'Customer CRM']
-    },
-    {
-      title: 'Furniture Marketplace Ad Engine',
-      tag: 'GEO-TARGETED ADS',
-      icon: MapPin,
+      title: 'Interactive Cyber Portfolio & Engine',
+      tag: 'REACT & 3D WEBGL',
+      icon: Code2,
       color: 'blue',
       badgeClass: 'text-blue-300 bg-blue-500/10 border-blue-500/30',
       glowBorder: 'hover:border-blue-400/50',
-      pitch: 'Remote lead generation campaign executed for Evergreen Furniture Canada, driving qualified furniture inquiries across the Montreal region.',
+      pitch: 'Modern digital engineering headquarters built with React 18, Vite, Tailwind CSS, Three.js 3D WebGL background, Web Audio API synthesizer, and GitHub Actions CI/CD.',
       frontMetrics: [
-        { label: 'TARGET REGION', val: 'Montreal, QC' },
-        { label: 'PRIMARY CHANNEL', val: 'FB Marketplace' }
+        { label: 'FRAMEWORK', val: 'React 18 + Vite 6' },
+        { label: 'GRAPHICS CORE', val: 'Three.js WebGL' }
       ],
-      backTitle: 'EXECUTION & SALES',
-      backDetails: 'Configured local high-intent listings, resolved buyer inquiries in real time, and tailored ad messaging to competitive market pricing, successfully converting inbound chats into verified sales.',
-      techStack: ['FB Marketplace', 'Conversational Sales', 'Geo-Targeting', 'Montreal Market']
+      backTitle: 'MODERN COMPONENT SYSTEM',
+      backDetails: 'Features interactive CLI bash terminal, 3D flip card execution analytics, Formspree API payload transmission, and automated cloud builds upon push to main branch.',
+      techStack: ['React 18', 'Vite', 'Tailwind CSS', 'Three.js', 'Web Audio API', 'GitHub Actions']
+    },
+    {
+      title: 'Cinema & Smart Parking Systems',
+      tag: 'C++ OBJECT-ORIENTED SOFTWARE',
+      icon: Database,
+      color: 'green',
+      badgeClass: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30',
+      glowBorder: 'hover:border-emerald-400/50',
+      pitch: 'Engineered command-line management systems applying core OOP principles (classes, inheritance, encapsulation) to model real-world ticketing and slot allocation logic.',
+      frontMetrics: [
+        { label: 'PROGRAMMING', val: 'C++ OOP Core' },
+        { label: 'MODULES', val: 'Cinema & Parking' }
+      ],
+      backTitle: 'OOP SOFTWARE ARCHITECTURE',
+      backDetails: 'Implemented vehicle entry/exit tracking, seat availability matrices, automated tariff calculations, and structured data handling modeled around real-world commercial billing.',
+      techStack: ['C++', 'OOP Principles', 'Data Structures', 'Invoicing Logic', 'Terminal CLI']
     },
   ];
 
@@ -86,18 +101,18 @@ export default function Projects() {
               <span>CASE_STUDIES // 04</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-              ACTIVE INITIATIVES
+              FEATURED ENGINEERING PROJECTS
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
           </div>
 
           <p className="font-mono text-xs text-slate-400 mt-4 md:mt-0 max-w-sm">
-            // Tap or click on any initiative card below to inspect execution metrics &amp; stack details.
+            // Click on any project card below to inspect backend architecture, RAG pipelines &amp; code execution.
           </p>
         </div>
 
         {/* Project Flip Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((proj, idx) => {
             const Icon = proj.icon;
             const isFlipped = !!flippedCards[idx];
@@ -152,7 +167,7 @@ export default function Projects() {
                       <div className="flex items-center justify-between text-xs font-mono text-cyan-400/80 group-hover:text-cyan-300">
                         <span className="flex items-center gap-1.5">
                           <RotateCw className="w-3.5 h-3.5" />
-                          CLICK TO FLIP DETAILS
+                          CLICK TO FLIP TECHNICAL SPECS
                         </span>
                         <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                       </div>

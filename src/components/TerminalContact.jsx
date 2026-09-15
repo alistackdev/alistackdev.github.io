@@ -16,16 +16,16 @@ import { playClickSound, playHoverSound, playTerminalKeySound, playSuccessSound 
 
 export default function TerminalContact() {
   const [logs, setLogs] = useState([
-    { type: 'info', text: 'Initializing secure transmission port [PROTOCOL_V2]...' },
-    { type: 'success', text: 'STATUS: ACCESS_GRANTED // Terminal Ready.' },
-    { type: 'hint', text: 'Type a message below or use CLI commands: help, skills, projects, clear' }
+    { type: 'info', text: 'Initializing secure transmission port [PROTOCOL_V2.5]...' },
+    { type: 'success', text: 'STATUS: ACCESS_GRANTED // Slashcloud Node Online.' },
+    { type: 'hint', text: 'Type a message below or use CLI commands: help, skills, projects, internship, clear' }
   ]);
   
   const [commandInput, setCommandInput] = useState('');
   const [currentTime, setCurrentTime] = useState('');
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitting, setSubmitting] = useState(false);
-  const [submissionStatus, setSubmissionStatus] = useState(null); // null | 'success' | 'error'
+  const [submissionStatus, setSubmissionStatus] = useState(null);
 
   const terminalEndRef = useRef(null);
 
@@ -56,27 +56,32 @@ export default function TerminalContact() {
     if (cmd === 'help') {
       newLogs.push({
         type: 'info',
-        text: 'AVAILABLE SYSTEM COMMANDS: \n- skills : View core abilities \n- projects : View active case studies \n- contact : Jump to comms ports \n- sudo hire : Immediate developer booking \n- clear : Flush terminal screen'
+        text: 'AVAILABLE SYSTEM COMMANDS: \n- skills      : View engineering abilities \n- projects    : View active production systems \n- internship  : Inspect Slashcloud.io role \n- contact     : Dump phone & comms ports \n- sudo hire   : Immediate developer booking \n- clear       : Flush terminal screen'
       });
     } else if (cmd === 'skills') {
       newLogs.push({
         type: 'success',
-        text: 'ENG_STACK: React, Vite, Tailwind, Three.js, C++, Python, Meta Ads, Premiere Pro'
+        text: 'CORE_STACK: Node.js, Express, RAG Pipelines, Grok AI, React 18, Vite, Tailwind, C++ (OOP), Python, REST APIs, Webhooks, Meta Ads'
       });
     } else if (cmd === 'projects') {
       newLogs.push({
         type: 'info',
-        text: 'ACTIVE: 1. Modern Web Interfaces 2. E-Commerce Scalability (PKR 200K+) 3. Furniture Montreal Ads'
+        text: 'PROJECTS: \n1. Canada Log Home Store RAG Pipeline (loghomestore.ca)\n2. Romic Media Platform (romicmedia.com)\n3. Modern React Cyber Hub (alistackdev.github.io)\n4. C++ OOP Cinema & Parking Systems'
+      });
+    } else if (cmd === 'internship') {
+      newLogs.push({
+        type: 'success',
+        text: 'ROLE: Backend & Automation Engineer Intern @ Slashcloud.io (Past 3 Months). Building production backend automation, webhook infrastructure, and cloud data workflows.'
       });
     } else if (cmd === 'contact') {
       newLogs.push({
         type: 'info',
-        text: 'PHONE: +92-326-6093358 | EMAIL: hassanguaraya@gmail.com'
+        text: 'PHONE: +92-324-4086454 | EMAIL: hassanguaraya@gmail.com | LINKEDIN: https://www.linkedin.com/in/alistackdev1'
       });
     } else if (cmd === 'sudo hire') {
       newLogs.push({
         type: 'success',
-        text: 'ROOT PRIVILEGES GRANTED: Ali Hassan is ready for new web development and digital marketing engagements! Complete payload form below.'
+        text: 'ROOT PRIVILEGES GRANTED: Ali Hassan is ready for Backend, Node.js, RAG Automation, and Full-Stack roles. Dispatch payload below!'
       });
       playSuccessSound();
     } else if (cmd === 'clear') {
@@ -86,7 +91,7 @@ export default function TerminalContact() {
     } else {
       newLogs.push({
         type: 'error',
-        text: `Command not found: "${commandInput}". Type "help" for syntax.`
+        text: `Command not recognized: "${commandInput}". Type "help" for valid commands.`
       });
     }
 
@@ -112,7 +117,7 @@ export default function TerminalContact() {
         playSuccessSound();
         setLogs(prev => [
           ...prev, 
-          { type: 'success', text: `>> PAYLOAD DELIVERED SUCCESSFULLY to Ali Hassan! Awaiting confirmation.` }
+          { type: 'success', text: `>> PAYLOAD DELIVERED to Ali Hassan! Awaiting confirmation.` }
         ]);
         setFormState({ name: '', email: '', message: '' });
       } else {
@@ -122,7 +127,7 @@ export default function TerminalContact() {
       setSubmissionStatus('error');
       setLogs(prev => [
         ...prev, 
-        { type: 'error', text: `>> TRANSMISSION ERROR: Could not send payload. Please reach out directly via hassanguaraya@gmail.com.` }
+        { type: 'error', text: `>> ERROR: Transmission failed. Direct relay: hassanguaraya@gmail.com.` }
       ]);
     } finally {
       setSubmitting(false);
@@ -132,8 +137,8 @@ export default function TerminalContact() {
   const commsPorts = [
     {
       label: 'AUDIO_COMM_PORT (PHONE)',
-      val: '+92-326-6093358',
-      href: 'tel:+923266093358',
+      val: '+92-324-4086454',
+      href: 'tel:+923244086454',
       icon: Phone,
       color: 'text-blue-400 bg-blue-500/10 border-blue-500/30'
     },
@@ -145,18 +150,18 @@ export default function TerminalContact() {
       color: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30'
     },
     {
+      label: 'PROFESSIONAL_NODE (LINKEDIN)',
+      val: 'linkedin.com/in/alistackdev1',
+      href: 'https://www.linkedin.com/in/alistackdev1',
+      icon: Linkedin,
+      color: 'text-blue-400 bg-blue-500/10 border-blue-500/30'
+    },
+    {
       label: 'SOCIAL_NODE (INSTAGRAM)',
       val: '@the_romeo_city',
       href: 'https://www.instagram.com/the_romeo_city?igsh=ejRrN3g4em50c3Vr',
       icon: Instagram,
       color: 'text-pink-400 bg-pink-500/10 border-pink-500/30'
-    },
-    {
-      label: 'PROFESSIONAL_NODE (LINKEDIN)',
-      val: 'linkedin.com/in/ali-hassan',
-      href: 'https://linkedin.com/in/ali-hassan',
-      icon: Linkedin,
-      color: 'text-blue-400 bg-blue-500/10 border-blue-500/30'
     }
   ];
 
@@ -231,7 +236,7 @@ export default function TerminalContact() {
                 type="text"
                 value={commandInput}
                 onChange={(e) => setCommandInput(e.target.value)}
-                placeholder="type 'help', 'skills', or 'sudo hire'..."
+                placeholder="type 'help', 'skills', 'internship'..."
                 className="bg-transparent border-none outline-none font-mono text-xs text-white placeholder:text-slate-600 w-full"
               />
               <button 
@@ -297,7 +302,7 @@ export default function TerminalContact() {
                     playTerminalKeySound();
                     setFormState({ ...formState, message: e.target.value });
                   }}
-                  placeholder="Project specifications, inquiries, or collaboration parameters..."
+                  placeholder="Inquiries, backend specifications, or collaboration parameters..."
                   className="w-full bg-[#0a0d1d] border border-slate-700/80 focus:border-cyan-400 rounded-xl px-4 py-3 font-mono text-sm text-white placeholder:text-slate-600 outline-none transition-colors resize-none"
                 />
               </div>
@@ -306,7 +311,7 @@ export default function TerminalContact() {
               {submissionStatus === 'success' && (
                 <div className="p-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-xs flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4" />
-                  <span>TRANSMISSION SUCCESSFUL! Ali will respond shortly.</span>
+                  <span>TRANSMISSION DELIVERED! Ali will review and respond shortly.</span>
                 </div>
               )}
               {submissionStatus === 'error' && (
@@ -354,7 +359,7 @@ export default function TerminalContact() {
                   CONNECTIVITY_PORT_MAPPING
                 </h3>
                 <p className="font-mono text-xs text-slate-400 mt-1">
-                  Direct verified communication channels for immediate connectivity.
+                  Verified communication nodes for engineering &amp; collaboration.
                 </p>
               </div>
 

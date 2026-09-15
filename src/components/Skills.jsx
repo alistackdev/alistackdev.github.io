@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { 
+  Server, 
+  Cpu, 
   Code, 
-  Target, 
-  Search, 
-  Video, 
+  Database, 
+  Layers, 
   ShoppingCart, 
-  Share2, 
-  Flame, 
   Sparkles,
+  Cloud,
   CheckCircle2
 } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/sound';
@@ -15,62 +15,62 @@ import { playHoverSound, playClickSound } from '../utils/sound';
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
-  const categories = ['ALL', 'DEVELOPMENT', 'MARKETING & ADS', 'E-COMMERCE', 'MEDIA'];
+  const categories = ['ALL', 'BACKEND & AI', 'WEB & FRONTEND', 'LANGUAGES & SYSTEMS', 'E-COMMERCE & GROWTH'];
 
   const skillCards = [
     {
-      title: 'Full-Stack Web Engineering',
-      category: 'DEVELOPMENT',
-      icon: Code,
+      title: 'Node.js & Backend Architecture',
+      category: 'BACKEND & AI',
+      icon: Server,
       color: 'cyan',
-      desc: 'Developing modern, lightning-fast web applications with clean component architecture, smooth animations, and responsive layouts.',
-      tags: ['React', 'JavaScript (ES6+)', 'Tailwind CSS', 'Vite', 'HTML5 / CSS3', 'Python', 'C++'],
-      level: '95%'
+      desc: 'Developing scalable Node.js server architectures, custom REST APIs, webhook listeners, and automated lead capture-and-follow-up pipelines unifying multi-channel traffic.',
+      tags: ['Node.js', 'Express', 'REST APIs', 'Webhooks', 'Nodemailer', 'JSON Pipelines'],
+      level: '96%'
     },
     {
-      title: 'Meta & Performance Ads',
-      category: 'MARKETING & ADS',
-      icon: Target,
+      title: 'Retrieval-Augmented Generation (RAG) & AI',
+      category: 'BACKEND & AI',
+      icon: Cpu,
       color: 'purple',
-      desc: 'Architecting hyper-targeted Meta advertising campaigns with custom lookalike audiences, split testing, and conversion funnel optimization.',
-      tags: ['Meta Ads Manager', 'Custom Audiences', 'A/B Testing', 'Pixel Integration', 'Retargeting'],
-      level: '92%'
-    },
-    {
-      title: 'SEO & Search Intelligence',
-      category: 'MARKETING & ADS',
-      icon: Search,
-      color: 'blue',
-      desc: 'Leveraging search analytics and trending keyword data to rank e-commerce product listings and web applications high on SERP algorithms.',
-      tags: ['Google Trends', 'Keyword Research', 'Technical SEO', 'Search Console', 'Competitor Analysis'],
-      level: '88%'
-    },
-    {
-      title: 'Video & AI Audiovisual Production',
-      category: 'MEDIA',
-      icon: Video,
-      color: 'pink',
-      desc: 'Producing high-retention short-form reels and long-form video campaigns using Premiere Pro, AI voice generation, and cinematic audio design.',
-      tags: ['Adobe Premiere Pro', 'ElevenLabs', 'InVideo AI', 'Sound Design', 'Color Grading'],
-      level: '90%'
-    },
-    {
-      title: 'E-Commerce Operations & Scaling',
-      category: 'E-COMMERCE',
-      icon: ShoppingCart,
-      color: 'green',
-      desc: 'End-to-end management of online stores: product testing, listing copy, inventory management, logistics coordination, and customer fulfillment.',
-      tags: ['Store Operations', 'Listing Optimization', 'Supplier Relations', 'Lead Funnels', 'PKR 200K+ Sales'],
+      desc: 'Engineering RAG pipelines over a 260-chunk, 33,500+ word knowledge base so Grok AI follow-ups remain strictly grounded in verified pricing and specs without hallucinations.',
+      tags: ['RAG Pipeline', 'Grok AI', 'Knowledge Embeddings', 'Hallucination Prevention', 'Prompt Engineering'],
       level: '94%'
     },
     {
-      title: 'Branding & Social Growth Architecture',
-      category: 'MARKETING & ADS',
-      icon: Share2,
+      title: 'Modern React & Web Engineering',
+      category: 'WEB & FRONTEND',
+      icon: Code,
+      color: 'blue',
+      desc: 'Crafting ultra-fast, responsive web applications using React, Vite, Tailwind CSS, Three.js WebGL graphics, and component-driven architecture (romicmedia.com, alistackdev.github.io).',
+      tags: ['React 18', 'Vite', 'Tailwind CSS', 'JavaScript (ES6+)', 'HTML5 / CSS3', 'Responsive UI'],
+      level: '95%'
+    },
+    {
+      title: 'C++ & Object-Oriented Programming (OOP)',
+      category: 'LANGUAGES & SYSTEMS',
+      icon: Database,
+      color: 'green',
+      desc: 'Applied core OOP principles (classes, encapsulation, inheritance, polymorphism) to engineer real-world systems including Cinema Booking & Smart Parking algorithms.',
+      tags: ['C++', 'OOP Architecture', 'Data Structures', 'Algorithm Design', 'Python'],
+      level: '90%'
+    },
+    {
+      title: 'API Integrations & Cloud Automation',
+      category: 'BACKEND & AI',
+      icon: Cloud,
+      color: 'pink',
+      desc: 'Hands-on cloud automation at Slashcloud.io, custom Zoho SalesIQ chat APIs, Google Docs & Sheets bidirectional feedback loops, and human-in-the-loop dashboards.',
+      tags: ['Slashcloud.io', 'Zoho SalesIQ API', 'Google Docs/Sheets API', 'Lead Automation', 'Human-in-Loop'],
+      level: '93%'
+    },
+    {
+      title: 'E-Commerce Scaling & Meta Ad Engines',
+      category: 'E-COMMERCE & GROWTH',
+      icon: ShoppingCart,
       color: 'yellow',
-      desc: 'Designing high-CTR YouTube thumbnails, visual assets, structured publishing schedules, and organic engagement funnels across Instagram and Facebook.',
-      tags: ['CTR Optimization', 'Brand Identity', 'Graphic Assets', 'Content Calendars', 'Community Growth'],
-      level: '89%'
+      desc: 'Bootstrapped and scaled self-managed online stores generating over PKR 10 Lakh+ in monthly sales through strategic product testing, Meta Ads Manager, and fulfillment ops.',
+      tags: ['PKR 10L+/Mo Sales', 'Meta Ads Manager', 'A/B Testing', 'Conversion Funnels', 'Supply Logistics'],
+      level: '96%'
     },
   ];
 
@@ -137,7 +137,7 @@ export default function Skills() {
               <span>CORE_ABILITIES // 02</span>
             </div>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-              FUNCTIONAL CAPABILITIES
+              TECHNICAL CAPABILITIES
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
           </div>

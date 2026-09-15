@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Github, Instagram, Linkedin, Mail, Heart } from 'lucide-react';
+import { ArrowUp, Github, Instagram, Linkedin, Mail } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/sound';
 
 export default function Footer() {
@@ -15,15 +15,15 @@ export default function Footer() {
         {/* Left: Branding & Status */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
           <div className="font-heading font-extrabold text-lg text-white tracking-wider">
-            ALI HASSAN <span className="text-cyan-400">// HASSAN.DEV</span>
+            ALI HASSAN <span className="text-cyan-400">// BACKEND &amp; AUTOMATION</span>
           </div>
-          <p className="font-mono text-xs text-slate-500">
-            BS Computer Science • Government College University Faisalabad (GCUF)
+          <p className="font-mono text-xs text-slate-400">
+            Backend &amp; Automation Intern @ Slashcloud.io • BS Computer Science @ GCUF
           </p>
           <div className="flex items-center gap-2 pt-1">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
             <span className="font-mono text-[10px] text-emerald-400">
-              CORE SYSTEM ACTIVE // ALL RIGHTS VERIFIED
+              CORE SYSTEM ACTIVE // PRODUCTION VERIFIED
             </span>
           </div>
         </div>
@@ -42,7 +42,7 @@ export default function Footer() {
             <Github className="w-4 h-4" />
           </a>
           <a
-            href="https://linkedin.com/in/ali-hassan"
+            href="https://www.linkedin.com/in/alistackdev1"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => playClickSound()}
@@ -85,7 +85,7 @@ export default function Footer() {
             <ArrowUp className="w-4 h-4" />
           </button>
           <span className="font-mono text-[10px] text-slate-600 mt-2">
-            &copy; {new Date().getFullYear()} Hassan Resume
+            &copy; {new Date().getFullYear()} Ali Hassan • alistackdev
           </span>
         </div>
 

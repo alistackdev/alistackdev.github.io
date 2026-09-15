@@ -1,15 +1,17 @@
 import React from 'react';
-import { User, Shield, GraduationCap, MapPin, Mail, Sparkles, Cpu, Layers } from 'lucide-react';
+import { User, Shield, GraduationCap, MapPin, Mail, Sparkles, Cpu, Layers, Server, Phone } from 'lucide-react';
 import { playHoverSound } from '../utils/sound';
 
 export default function About() {
   const specs = [
     { label: 'OPERATOR', value: 'Ali Hassan', icon: User },
+    { label: 'ACTIVE INTERNSHIP', value: 'Backend & Automation @ Slashcloud.io', icon: Server },
+    { label: 'INSTITUTION (BSCS)', value: 'Government College University Faisalabad (2025 – Present)', icon: GraduationCap },
+    { label: 'COLLEGE (ICS)', value: 'Nusrat Jahan College, Chenab Nagar (2023 – 2025)', icon: Layers },
+    { label: 'COMMERCIAL SCALE', value: 'PKR 10 Lakh+ / Month E-Commerce Revenue', icon: Cpu },
     { label: 'LOCATION', value: 'Faisalabad, Punjab, Pakistan', icon: MapPin },
-    { label: 'INSTITUTION', value: 'Government College University Faisalabad (GCUF)', icon: GraduationCap },
-    { label: 'DEGREE PROGRAM', value: 'BS Computer Science (2025 – Present)', icon: Cpu },
-    { label: 'PREVIOUS DEGREE', value: 'ICS (Computer Science, 2023 – 2025)', icon: Layers },
-    { label: 'PRIMARY CONTACT', value: 'hassanguaraya@gmail.com', icon: Mail, isLink: true, href: 'mailto:hassanguaraya@gmail.com' },
+    { label: 'DIRECT PHONE', value: '+92-324-4086454', icon: Phone, isLink: true, href: 'tel:+923244086454' },
+    { label: 'SECURE EMAIL', value: 'hassanguaraya@gmail.com', icon: Mail, isLink: true, href: 'mailto:hassanguaraya@gmail.com' },
   ];
 
   return (
@@ -23,7 +25,7 @@ export default function About() {
             <span>CORE_DATA // 01</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-            BIOMETRIC PROFILE
+            BIOMETRIC &amp; ENGINEERING PROFILE
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
         </div>
@@ -45,7 +47,7 @@ export default function About() {
                 {/* Profile Image */}
                 <img
                   src="my-photo.jpeg"
-                  alt="Ali Hassan - Computer Science Student & Digital Developer"
+                  alt="Ali Hassan - Backend & Automation Engineer"
                   className="w-full h-full object-cover grayscale contrast-125 group-hover:grayscale-0 transition-all duration-500"
                   onError={(e) => {
                     e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80';
@@ -58,10 +60,10 @@ export default function About() {
                 </div>
                 <div className="absolute bottom-3 right-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-emerald-400/40 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
                   <Shield className="w-3 h-3" />
-                  SEC_VERIFIED
+                  SLASHCLOUD_INTERN
                 </div>
                 <div className="absolute bottom-3 left-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-purple-400/40 text-[10px] font-mono text-purple-300">
-                  GCUF // CS DEPT
+                  GCUF // BSCS
                 </div>
               </div>
 
@@ -82,14 +84,13 @@ export default function About() {
             >
               <div className="flex items-center gap-2 text-cyan-400 font-mono text-sm tracking-wider">
                 <Sparkles className="w-4 h-4" />
-                <h3 className="font-bold text-white uppercase tracking-wider">Executive Overview</h3>
+                <h3 className="font-bold text-white uppercase tracking-wider">Executive Engineering Summary</h3>
               </div>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                I am a dedicated Computer Science undergraduate at <strong className="text-white">Government College University, Faisalabad (GCUF)</strong>. 
-                My focus lies at the intersection of modern frontend engineering, scalable architecture, and commercial conversion funnels.
+                Backend-focused Computer Science undergraduate at <strong className="text-white">Government College University Faisalabad (GCUF)</strong>, currently serving as a <strong className="text-cyan-300">Backend &amp; Automation Engineer Intern at Slashcloud.io</strong> (past 3 months).
               </p>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                Beyond traditional coding, I specialize in full-cycle digital growth: from deploying responsive React interfaces and custom software to managing Meta ad budgets, driving e-commerce conversions, and engineering high-retention AI content workflows.
+                Proven production experience engineering custom <strong className="text-white">Node.js backends</strong> and <strong className="text-purple-300">Retrieval-Augmented Generation (RAG)</strong> pipelines that unify multi-channel leads (Zoho SalesIQ, web forms, direct emails) and integrate Grok AI over a 260-chunk knowledge base for Canadian clients. Complemented by self-managed e-commerce operations generating over <strong className="text-emerald-400">PKR 10 Lakh+ monthly</strong>.
               </p>
             </div>
 
@@ -103,7 +104,7 @@ export default function About() {
                 <span>SYSTEM_SPECIFICATIONS</span>
               </h3>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {specs.map((item, idx) => {
                   const Icon = item.icon;
                   return (
@@ -111,22 +112,22 @@ export default function About() {
                       key={idx}
                       className="p-3 rounded-xl bg-[#090b16]/70 border border-slate-800/80 flex items-start gap-3 hover:border-cyan-500/30 transition-colors"
                     >
-                      <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-0.5">
+                      <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 mt-0.5 shrink-0">
                         <Icon className="w-4 h-4" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <div className="font-mono text-[10px] text-slate-500 tracking-wider">
+                        <div className="font-mono text-[10px] text-slate-500 tracking-wider uppercase">
                           {item.label}
                         </div>
                         {item.isLink ? (
                           <a
                             href={item.href}
-                            className="text-xs sm:text-sm font-medium text-cyan-300 hover:text-cyan-200 truncate block transition-colors"
+                            className="text-xs sm:text-sm font-medium text-cyan-300 hover:text-cyan-200 truncate block transition-colors font-mono"
                           >
                             {item.value}
                           </a>
                         ) : (
-                          <div className="text-xs sm:text-sm font-medium text-slate-200 truncate">
+                          <div className="text-xs sm:text-sm font-medium text-slate-200 truncate font-mono">
                             {item.value}
                           </div>
                         )}
