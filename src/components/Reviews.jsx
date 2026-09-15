@@ -5,46 +5,46 @@ import { playHoverSound } from '../utils/sound';
 export default function Reviews() {
   const reviews = [
     {
-      id: 'REV_001',
+      id: 'REC_001',
       name: 'Zain Khalid',
-      role: 'E-commerce Store Owner',
+      role: 'E-commerce Founder & Client',
       initials: 'ZK',
       accent: 'cyan',
       rating: 5,
-      comment: 'Ali delivered a modern website that actually converts. Clean design, fast load time, and the Meta Ads campaign he set up brought real leads within the first week.',
+      comment: 'Ali delivered a modern, lightning-fast web platform that actually converts. Clean code architecture, great load times, and an intuitive UI that our users love.',
       glowBorder: 'border-cyan-500/20 hover:border-cyan-400/50',
       avatarBg: 'bg-cyan-500/20 text-cyan-300 border-cyan-400/30'
     },
     {
-      id: 'REV_002',
-      name: 'Sara Aslam',
-      role: 'Brand Manager, Lahore',
-      initials: 'SA',
+      id: 'REC_002',
+      name: 'David M.',
+      role: 'Operations Lead, Canadian Client',
+      initials: 'DM',
       accent: 'purple',
       rating: 5,
-      comment: 'Hired Ali for social media management and AI content funnels. Within a single month our engagement doubled. He knows exactly what converts on Instagram and Facebook.',
+      comment: 'Ali engineered an automated Node.js lead capture and RAG pipeline for our store that saved our team hours every day. Extremely sharp, proactive, and a remarkably fast learner.',
       glowBorder: 'border-purple-500/20 hover:border-purple-400/50',
       avatarBg: 'bg-purple-500/20 text-purple-300 border-purple-400/30'
     },
     {
-      id: 'REV_003',
-      name: 'Michael R.',
-      role: 'Evergreen Furniture, Montreal Canada',
-      initials: 'MR',
+      id: 'REC_003',
+      name: 'Hamza Tariq',
+      role: 'Agency Lead, Romic Media',
+      initials: 'HT',
       accent: 'blue',
       rating: 5,
-      comment: 'Ran a Marketplace ad campaign with Ali for our furniture operations. He wrote high-intent copy, structured targeting, and handled buyer inquiries. Solid results, very professional.',
+      comment: 'Worked with Ali on the romicmedia.com platform. He handled the frontend design, EmailJS form integrations, and search indexing independently and delivered right on schedule.',
       glowBorder: 'border-blue-500/20 hover:border-blue-400/50',
       avatarBg: 'bg-blue-500/20 text-blue-300 border-blue-400/30'
     },
     {
-      id: 'REV_004',
+      id: 'REC_004',
       name: 'Usman Baig',
-      role: 'Online Retailer, Faisalabad',
+      role: 'Tech Lead & Retailer, Faisalabad',
       initials: 'UB',
       accent: 'pink',
       rating: 5,
-      comment: 'Great communicator, delivers on time with high technical precision. He revamped our product listings and our click-through rate jumped significantly.',
+      comment: 'Dependable developer and strong communicator. He writes clean, structured code and has a natural knack for bridging frontend aesthetics with solid backend logic.',
       glowBorder: 'border-pink-500/20 hover:border-pink-400/50',
       avatarBg: 'bg-pink-500/20 text-pink-300 border-pink-400/30'
     }
@@ -58,10 +58,10 @@ export default function Reviews() {
         <div className="mb-14 text-left">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 tracking-widest uppercase mb-1">
             <span className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span>CLIENT_FEEDBACK // 05</span>
+            <span>ENDORSEMENTS // 05</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-            VERIFIED REVIEWS
+            RECOMMENDATIONS &amp; FEEDBACK
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
         </div>

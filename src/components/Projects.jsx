@@ -7,7 +7,8 @@ import {
   RotateCw, 
   ArrowRight,
   ExternalLink,
-  Cpu
+  Cpu,
+  Car
 } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/sound';
 
@@ -46,46 +47,46 @@ export default function Projects() {
       color: 'cyan',
       badgeClass: 'text-cyan-300 bg-cyan-500/10 border-cyan-500/30',
       glowBorder: 'hover:border-cyan-400/50',
-      pitch: 'Designed and deployed romicmedia.com, a full-service digital agency website with dynamic service listings, blog architecture, and an EmailJS automated contact relay.',
+      pitch: 'Designed and launched romicmedia.com, a full-service digital agency website featuring dynamic service listings, blog architecture, and an automated EmailJS contact relay.',
       frontMetrics: [
         { label: 'LIVE DOMAIN', val: 'romicmedia.com' },
         { label: 'SYSTEM RELAY', val: 'EmailJS + SEO Indexing' }
       ],
       backTitle: 'END-TO-END WEB DELIVERY',
-      backDetails: 'Independently architected the user interface, resolved search-engine indexing bottlenecks, configured custom domain routing, and established automated client communication channels.',
+      backDetails: 'Independently architected the responsive user interface, resolved search-engine indexing bottlenecks, configured custom domain routing, and established automated client communication channels.',
       techStack: ['JavaScript', 'HTML5 / CSS3', 'EmailJS', 'Technical SEO', 'DNS & Deployment']
     },
     {
-      title: 'Interactive Cyber Portfolio & Engine',
-      tag: 'REACT & 3D WEBGL',
-      icon: Code2,
-      color: 'blue',
-      badgeClass: 'text-blue-300 bg-blue-500/10 border-blue-500/30',
-      glowBorder: 'hover:border-blue-400/50',
-      pitch: 'Modern digital engineering headquarters built with React 18, Vite, Tailwind CSS, Three.js 3D WebGL background, Web Audio API synthesizer, and GitHub Actions CI/CD.',
-      frontMetrics: [
-        { label: 'FRAMEWORK', val: 'React 18 + Vite 6' },
-        { label: 'GRAPHICS CORE', val: 'Three.js WebGL' }
-      ],
-      backTitle: 'MODERN COMPONENT SYSTEM',
-      backDetails: 'Features interactive CLI bash terminal, 3D flip card execution analytics, Formspree API payload transmission, and automated cloud builds upon push to main branch.',
-      techStack: ['React 18', 'Vite', 'Tailwind CSS', 'Three.js', 'Web Audio API', 'GitHub Actions']
-    },
-    {
-      title: 'Cinema & Smart Parking Systems',
+      title: 'Cinema Management System',
       tag: 'C++ OBJECT-ORIENTED SOFTWARE',
       icon: Database,
       color: 'green',
       badgeClass: 'text-emerald-300 bg-emerald-500/10 border-emerald-500/30',
       glowBorder: 'hover:border-emerald-400/50',
-      pitch: 'Engineered command-line management systems applying core OOP principles (classes, inheritance, encapsulation) to model real-world ticketing and slot allocation logic.',
+      pitch: 'Command-line university software project applying core OOP principles (classes, inheritance, encapsulation) to model real-world ticket reservation and movie scheduling logic.',
       frontMetrics: [
-        { label: 'PROGRAMMING', val: 'C++ OOP Core' },
-        { label: 'MODULES', val: 'Cinema & Parking' }
+        { label: 'LANGUAGE', val: 'C++ (OOP Core)' },
+        { label: 'SYSTEM', val: 'Ticketing & Billing' }
       ],
       backTitle: 'OOP SOFTWARE ARCHITECTURE',
-      backDetails: 'Implemented vehicle entry/exit tracking, seat availability matrices, automated tariff calculations, and structured data handling modeled around real-world commercial billing.',
+      backDetails: 'Implemented seat availability matrices, automated ticketing invoices, movie showtime scheduling, and structured data handling modeled around real-world commercial cinema operations.',
       techStack: ['C++', 'OOP Principles', 'Data Structures', 'Invoicing Logic', 'Terminal CLI']
+    },
+    {
+      title: 'Smart Parking Management System',
+      tag: 'C++ REAL-TIME LOGIC',
+      icon: Car,
+      color: 'blue',
+      badgeClass: 'text-blue-300 bg-blue-500/10 border-blue-500/30',
+      glowBorder: 'hover:border-blue-400/50',
+      pitch: 'Object-oriented parking management system featuring vehicle entry/exit tracking, dynamic slot allocation checks, and automated fee calculation algorithms.',
+      frontMetrics: [
+        { label: 'LANGUAGE', val: 'C++ (OOP Core)' },
+        { label: 'FUNCTION', val: 'Vehicle & Slot Ops' }
+      ],
+      backTitle: 'ALGORITHMIC ALLOCATION',
+      backDetails: 'Applied inheritance and encapsulation to track multi-tier parking slots, vehicle timestamps, real-time vacancy checking, and ticket generation upon checkout.',
+      techStack: ['C++', 'OOP Design', 'Slot Allocation', 'Billing Algorithms', 'Terminal Logic']
     },
   ];
 
@@ -107,7 +108,7 @@ export default function Projects() {
           </div>
 
           <p className="font-mono text-xs text-slate-400 mt-4 md:mt-0 max-w-sm">
-            // Click on any project card below to inspect backend architecture, RAG pipelines &amp; code execution.
+            // Tap or click on any project card below to inspect backend architecture, RAG pipelines &amp; code logic.
           </p>
         </div>
 

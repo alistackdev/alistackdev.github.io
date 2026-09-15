@@ -15,62 +15,62 @@ import { playHoverSound, playClickSound } from '../utils/sound';
 export default function Skills() {
   const [selectedCategory, setSelectedCategory] = useState('ALL');
 
-  const categories = ['ALL', 'BACKEND & AI', 'WEB & FRONTEND', 'LANGUAGES & SYSTEMS', 'E-COMMERCE & GROWTH'];
+  const categories = ['ALL', 'WEB & FRONTEND', 'BACKEND & APIS', 'AUTOMATION & AI', 'SYSTEMS & LANGUAGES', 'PRODUCT & E-COMMERCE'];
 
   const skillCards = [
     {
-      title: 'Node.js & Backend Architecture',
-      category: 'BACKEND & AI',
-      icon: Server,
-      color: 'cyan',
-      desc: 'Developing scalable Node.js server architectures, custom REST APIs, webhook listeners, and automated lead capture-and-follow-up pipelines unifying multi-channel traffic.',
-      tags: ['Node.js', 'Express', 'REST APIs', 'Webhooks', 'Nodemailer', 'JSON Pipelines'],
-      level: '96%'
-    },
-    {
-      title: 'Retrieval-Augmented Generation (RAG) & AI',
-      category: 'BACKEND & AI',
-      icon: Cpu,
-      color: 'purple',
-      desc: 'Engineering RAG pipelines over a 260-chunk, 33,500+ word knowledge base so Grok AI follow-ups remain strictly grounded in verified pricing and specs without hallucinations.',
-      tags: ['RAG Pipeline', 'Grok AI', 'Knowledge Embeddings', 'Hallucination Prevention', 'Prompt Engineering'],
-      level: '94%'
-    },
-    {
-      title: 'Modern React & Web Engineering',
+      title: 'Modern React & Frontend Engineering',
       category: 'WEB & FRONTEND',
       icon: Code,
-      color: 'blue',
-      desc: 'Crafting ultra-fast, responsive web applications using React, Vite, Tailwind CSS, Three.js WebGL graphics, and component-driven architecture (romicmedia.com, alistackdev.github.io).',
+      color: 'cyan',
+      desc: 'Building responsive, fast, and accessible user interfaces using React, Vite, Tailwind CSS, Three.js WebGL graphics, and component-driven architecture.',
       tags: ['React 18', 'Vite', 'Tailwind CSS', 'JavaScript (ES6+)', 'HTML5 / CSS3', 'Responsive UI'],
       level: '95%'
     },
     {
+      title: 'Node.js & Backend Architecture',
+      category: 'BACKEND & APIS',
+      icon: Server,
+      color: 'purple',
+      desc: 'Developing scalable Node.js server architectures, custom REST APIs, webhook listeners, and automated lead capture-and-follow-up pipelines unifying multi-channel traffic.',
+      tags: ['Node.js', 'Express', 'REST APIs', 'Webhooks', 'Nodemailer', 'JSON Pipelines'],
+      level: '94%'
+    },
+    {
+      title: 'Retrieval-Augmented Generation (RAG) & AI',
+      category: 'AUTOMATION & AI',
+      icon: Cpu,
+      color: 'blue',
+      desc: 'Engineering RAG pipelines over a 260-chunk, 33,500+ word knowledge base so Grok AI follow-ups remain strictly grounded in verified pricing and specs without hallucinations.',
+      tags: ['RAG Pipeline', 'Grok AI', 'Knowledge Embeddings', 'Hallucination Prevention', 'Prompt Engineering'],
+      level: '93%'
+    },
+    {
       title: 'C++ & Object-Oriented Programming (OOP)',
-      category: 'LANGUAGES & SYSTEMS',
+      category: 'SYSTEMS & LANGUAGES',
       icon: Database,
       color: 'green',
-      desc: 'Applied core OOP principles (classes, encapsulation, inheritance, polymorphism) to engineer real-world systems including Cinema Booking & Smart Parking algorithms.',
+      desc: 'Applying core OOP principles (classes, encapsulation, inheritance, polymorphism) to engineer real-world systems including Cinema Booking & Smart Parking algorithms.',
       tags: ['C++', 'OOP Architecture', 'Data Structures', 'Algorithm Design', 'Python'],
       level: '90%'
     },
     {
-      title: 'API Integrations & Cloud Automation',
-      category: 'BACKEND & AI',
+      title: 'Cloud Automation & Webhook Services',
+      category: 'AUTOMATION & AI',
       icon: Cloud,
       color: 'pink',
       desc: 'Hands-on cloud automation at Slashcloud.io, custom Zoho SalesIQ chat APIs, Google Docs & Sheets bidirectional feedback loops, and human-in-the-loop dashboards.',
       tags: ['Slashcloud.io', 'Zoho SalesIQ API', 'Google Docs/Sheets API', 'Lead Automation', 'Human-in-Loop'],
-      level: '93%'
+      level: '92%'
     },
     {
-      title: 'E-Commerce Scaling & Meta Ad Engines',
-      category: 'E-COMMERCE & GROWTH',
+      title: 'Product Sense & E-Commerce Scaling',
+      category: 'PRODUCT & E-COMMERCE',
       icon: ShoppingCart,
       color: 'yellow',
-      desc: 'Bootstrapped and scaled self-managed online stores generating over PKR 10 Lakh+ in monthly sales through strategic product testing, Meta Ads Manager, and fulfillment ops.',
-      tags: ['PKR 10L+/Mo Sales', 'Meta Ads Manager', 'A/B Testing', 'Conversion Funnels', 'Supply Logistics'],
-      level: '96%'
+      desc: 'Bootstrapped and scaled self-managed online stores generating over PKR 10 Lakh+ in monthly sales through strategic product testing, conversion funnels, and logistics.',
+      tags: ['PKR 10L+/Mo Scale', 'Product Thinking', 'Conversion Funnels', 'Business-Driven Engineering'],
+      level: '95%'
     },
   ];
 
@@ -212,7 +212,7 @@ export default function Skills() {
                   {/* Proficiency Bar */}
                   <div>
                     <div className="flex justify-between text-[11px] font-mono text-slate-400 mb-1">
-                      <span>EXECUTION_METRIC</span>
+                      <span>PROFICIENCY_INDEX</span>
                       <span className="text-white font-bold">{skill.level}</span>
                     </div>
                     <div className="w-full h-1.5 bg-slate-900 rounded-full overflow-hidden">

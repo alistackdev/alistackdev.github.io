@@ -1,5 +1,5 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Award, Server, Cpu, ShoppingCart } from 'lucide-react';
+import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Server, Globe, Cpu, ShoppingBag } from 'lucide-react';
 import { playHoverSound } from '../utils/sound';
 
 export default function Experience() {
@@ -14,9 +14,9 @@ export default function Experience() {
       dotColor: 'bg-cyan-400 shadow-[0_0_14px_#00f2fe]',
       metrics: 'Active Engineering Internship',
       duties: [
-        'Developing cloud-integrated backend automation, webhook receivers, and API integration services.',
-        'Engineering data pipelines that connect distributed services and eliminate manual operational bottlenecks.',
-        'Implementing clean asynchronous architecture, logging, and error handling for production cloud workflows.',
+        'Developing cloud-integrated backend services, webhook processors, and API automation workflows.',
+        'Connecting disparate data sources and automating operational pipelines to streamline team productivity.',
+        'Implementing clean asynchronous architecture, modular services, and structured error handling.',
       ],
       tags: ['Slashcloud.io', 'Node.js', 'Cloud Automation', 'REST APIs', 'Webhooks']
     },
@@ -30,59 +30,43 @@ export default function Experience() {
       dotColor: 'bg-purple-500 shadow-[0_0_14px_#b95ce6]',
       metrics: 'Production RAG AI Pipeline',
       duties: [
-        'Built a custom Node.js backend unifying three inbound lead channels — live website chat (Zoho SalesIQ), contact forms, and direct business emails — into a single automated capture-and-follow-up pipeline (replacing Zapier/n8n for sub-second response).',
-        'Engineered a Retrieval-Augmented Generation (RAG) layer over a 260-chunk, 33,500+ word knowledge base so Grok AI-drafted follow-ups stay strictly grounded in verified pricing, specs, and policies without hallucinations.',
-        'Built a Human-in-the-Loop admin dashboard with smart lead segmentation, rich-text draft editor, real-time email alerts, and a Google Sheets feedback loop that continuously optimizes AI accuracy.',
+        'Engineered a custom Node.js backend unifying three inbound lead channels — live website chat (Zoho SalesIQ), contact forms, and direct business emails — into a single automated pipeline, replacing Zapier/n8n for sub-second execution.',
+        'Built a Retrieval-Augmented Generation (RAG) pipeline over a 260-chunk, 33,500+ word knowledge base so Grok AI responses stay grounded in verified pricing, specs, and policies without hallucinations.',
+        'Designed a Human-in-the-Loop administrative review interface with real-time lead alerts and a Google Sheets feedback loop that continuously refines output accuracy.',
       ],
-      tags: ['Node.js', 'RAG Pipeline', 'Grok AI', 'Zoho SalesIQ', 'Google Sheets API', 'Nodemailer']
+      tags: ['Node.js', 'RAG Pipeline', 'Grok AI', 'Zoho SalesIQ API', 'Google Sheets API', 'Nodemailer']
+    },
+    {
+      period: '2024 – PRESENT',
+      role: 'Web & Full-Stack Developer',
+      company: 'Client & Independent Web Solutions',
+      location: 'Remote // Faisalabad',
+      glow: 'border-blue-500/40 hover:border-blue-400',
+      badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
+      dotColor: 'bg-blue-400 shadow-[0_0_14px_#4facfe]',
+      metrics: 'Production Web Platforms',
+      duties: [
+        'Designed, developed, and deployed romicmedia.com, a full-service digital agency platform featuring dynamic service listings, blog system, and an automated EmailJS contact relay.',
+        'Crafted responsive, high-performance web applications using modern React, JavaScript (ES6+), and Tailwind CSS with smooth micro-interactions and mobile-first layouts.',
+        'Handled end-to-end technical delivery including DNS configuration, production build optimization, and search engine console indexing.',
+      ],
+      tags: ['React', 'romicmedia.com', 'JavaScript ES6+', 'Tailwind CSS', 'EmailJS', 'Deployment']
     },
     {
       period: 'ONGOING',
-      role: 'E-Commerce Entrepreneur & Store Operator',
-      company: 'Self-Managed Online Commercial Store',
+      role: 'E-Commerce Founder & Operations Lead',
+      company: 'Self-Managed Online Commercial Brand',
       location: 'Remote',
       glow: 'border-emerald-500/40 hover:border-emerald-400',
       badgeColor: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
       dotColor: 'bg-emerald-500 shadow-[0_0_14px_#00ff88]',
-      metrics: 'PKR 10 Lakh+ / Month Sales',
+      metrics: 'PKR 10 Lakh+ / Month Scale',
       duties: [
-        'Built and manage an independent online store, currently generating over PKR 10 Lakh+ in monthly gross sales through data-driven product sourcing and funnel scaling.',
-        'Architected high-ROI advertising campaigns via Meta Ads Manager with continuous creative A/B testing and custom retargeting.',
-        'Managed full operational lifecycle: inventory replenishment, supplier relations, customer support, and seamless order fulfillment.',
+        'Bootstrapped and scaled an independent online brand generating over PKR 10 Lakh+ per month in sales through data-driven product selection and customer acquisition.',
+        'Managed full operational infrastructure: supply chain logistics, inventory replenishment, and customer support.',
+        'Brings a strong product-minded intuition to software engineering, understanding how code directly impacts conversions, user retention, and business ROI.',
       ],
-      tags: ['PKR 10L+/Mo Revenue', 'Meta Ads Manager', 'Store Scaling', 'Supply Chain', 'Logistics']
-    },
-    {
-      period: 'JAN 2024 – MAR 2024',
-      role: 'Marketplace Ads Specialist',
-      company: 'Evergreen Furniture Canada',
-      location: 'Montreal, QC // Remote',
-      glow: 'border-blue-500/30 hover:border-blue-500/60',
-      badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
-      dotColor: 'bg-blue-500 shadow-[0_0_12px_#4facfe]',
-      metrics: 'Geo-Targeted ROI',
-      duties: [
-        'Planned and executed geo-targeted ad sets in the Montreal region, optimizing for qualified lead acquisition and low CPL.',
-        'Authored high-intent ad copy and managed conversational sales on Facebook Marketplace, successfully closing direct buyers.',
-        'Monitored campaign KPIs and iterated on ad angles to maximize return on ad spend.',
-      ],
-      tags: ['FB Marketplace', 'Geo-Targeting', 'Montreal Market', 'Conversational Sales']
-    },
-    {
-      period: 'AUG 2023 – DEC 2023',
-      role: 'Digital Marketer & Content Creator',
-      company: 'Global Homeo Hub',
-      location: 'Remote',
-      glow: 'border-pink-500/30 hover:border-pink-500/60',
-      badgeColor: 'text-pink-400 bg-pink-500/10 border-pink-500/30',
-      dotColor: 'bg-pink-500 shadow-[0_0_12px_#ff007f]',
-      metrics: 'AI Video Scalability',
-      duties: [
-        'Engineered AI-powered video production workflows (InVideo AI + ElevenLabs voiceovers), cutting asset creation turnaround by 60%.',
-        'Edited commercial video content in Adobe Premiere Pro with custom audio noise filtering, pacing, and color grading.',
-        'Designed high-CTR YouTube thumbnails, improving organic impression conversions across channels.',
-      ],
-      tags: ['Premiere Pro', 'ElevenLabs', 'InVideo AI', 'Content Calendars']
+      tags: ['Product Intuition', 'Business-Outcome Driven', 'Systems Ops', 'Customer Experience']
     }
   ];
 
@@ -94,10 +78,10 @@ export default function Experience() {
         <div className="mb-14 text-left">
           <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 tracking-widest uppercase mb-1">
             <span className="w-2 h-2 rounded-full bg-cyan-400" />
-            <span>LOG_HISTORY // 03</span>
+            <span>CAREER_TRACK // 03</span>
           </div>
           <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-white tracking-wide">
-            CHRONOLOGICAL WORK TIMELINE
+            WORK &amp; ENGINEERING EXPERIENCE
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-transparent mt-2" />
         </div>
