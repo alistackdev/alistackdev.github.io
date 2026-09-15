@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #050508;
+    color: #e2e8f0;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #090a12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #00f2fe;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00c4cf;
+  }
+}
+
+@layer utilities {
+  /* Subtle Hologram & Scanline effect */
+  .scanlines-overlay {
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%, 
+      rgba(0, 0, 0, 0.25) 50%
+    ), linear-gradient(
+      90deg,
+      rgba(255, 0, 0, 0.03),
+      rgba(0, 255, 0, 0.01),
+      rgba(0, 0, 255, 0.03)
+    );
+    background-size: 100% 3px, 6px 100%;
+    pointer-events: none;
+  }
+
+  .glass-panel {
+    background: rgba(13, 16, 31, 0.65);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 242, 254, 0.12);
+  }
+
+  .glass-panel:hover {
+    border-color: rgba(0, 242, 254, 0.35);
+  }
+
+  .glow-text-cyan {
+    text-shadow: 0 0 10px rgba(0, 242, 254, 0.7), 0 0 20px rgba(0, 242, 254, 0.3);
+  }
+
+  .glow-text-purple {
+    text-shadow: 0 0 10px rgba(185, 92, 230, 0.7), 0 0 20px rgba(185, 92, 230, 0.3);
+  }
+
+  .glow-text-green {
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.7), 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+
+  .cyber-gradient-text {
+    background: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #b95ce6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
