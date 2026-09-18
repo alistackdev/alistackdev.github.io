@@ -15,7 +15,7 @@ export default function Footer() {
         {/* Left: Branding & Status */}
         <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-1">
           <div className="font-heading font-extrabold text-lg text-white tracking-wider">
-            ALI HASSAN <span className="text-cyan-400">// BACKEND &amp; AUTOMATION</span>
+            ALI HASSAN <span className="text-cyan-400">// WEB &amp; BACKEND DEV</span>
           </div>
           <p className="font-mono text-xs text-slate-400">
             Backend &amp; Automation Intern @ Slashcloud.io • BS Computer Science @ GCUF

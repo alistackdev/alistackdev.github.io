@@ -66,7 +66,7 @@ export default function TerminalContact() {
     } else if (cmd === 'projects') {
       newLogs.push({
         type: 'info',
-        text: 'PROJECTS: \n1. Canada Log Home Store RAG Pipeline (loghomestore.ca)\n2. Romic Media Platform (romicmedia.com)\n3. Modern React Cyber Hub (alistackdev.github.io)\n4. C++ OOP Cinema & Parking Systems'
+        text: 'PROJECTS: \n1. Canada Log Home Store RAG Pipeline (loghomestore.ca)\n2. Romic Media Platform (romicmedia.com)\n3. Cinema Booking Management System (C++ OOP)\n4. Smart Parking Allocation System (C++ OOP)'
       });
     } else if (cmd === 'internship') {
       newLogs.push({

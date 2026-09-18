@@ -85,7 +85,7 @@ export default function Hero() {
           {/* Call to Actions */}
           <div className="flex flex-wrap items-center gap-4 pt-2">
             <a
-              href="#projects"
+              href="#experience"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 text-black font-mono font-bold text-sm tracking-wider hover:shadow-[0_0_25px_rgba(0,242,254,0.6)] hover:scale-[1.02] transition-all cursor-pointer"
