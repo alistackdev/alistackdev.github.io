@@ -61,19 +61,41 @@ export default function Navbar() {
           href="#hero"
           onClick={() => playClickSound()}
           onMouseEnter={() => playHoverSound()}
-          className="flex items-center gap-2 group cursor-pointer"
+          className="flex items-center gap-2.5 group cursor-pointer"
         >
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-tr from-cyan-500 to-purple-600 flex items-center justify-center p-[1px] shadow-[0_0_15px_rgba(0,242,254,0.4)] group-hover:shadow-[0_0_25px_rgba(0,242,254,0.7)] transition-all">
-            <div className="w-full h-full bg-[#070913] rounded-lg flex items-center justify-center">
-              <Cpu className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+          <div className="relative">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 p-[1.5px] shadow-[0_0_15px_rgba(0,242,254,0.4)] group-hover:shadow-[0_0_25px_rgba(0,242,254,0.8)] transition-all">
+              <div className="w-full h-full bg-[#070913] rounded-[10px] overflow-hidden">
+                <img
+                  src="avatar.jpg"
+                  alt="Ali Stack Dev"
+                  className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+            </div>
+            {/* Blue Tick Verified Badge on Avatar Corner */}
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-[#1d9bf0] text-white rounded-full flex items-center justify-center border-2 border-[#06070d] shadow-[0_0_8px_rgba(29,155,240,0.9)]">
+              <svg className="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+              </svg>
             </div>
           </div>
           <div className="flex flex-col">
-            <span className="font-heading font-bold text-lg tracking-wider text-white">
-              HASSAN<span className="text-cyan-400">.DEV</span>
-            </span>
-            <span className="font-mono text-[9px] tracking-widest text-cyan-300/60 -mt-1">
-              SYS.V2.5 // GCUF
+            <div className="flex items-center gap-1.5">
+              <span className="font-heading font-bold text-lg tracking-wider text-white">
+                ALI STACK <span className="text-cyan-400">DEV</span>
+              </span>
+              {/* Blue Tick Verified Badge next to Name */}
+              <svg
+                className="w-4 h-4 text-[#1d9bf0] fill-current drop-shadow-[0_0_6px_rgba(29,155,240,0.8)]"
+                viewBox="0 0 24 24"
+                aria-label="Verified Developer"
+              >
+                <path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.79-4-4-4-.495 0-.965.084-1.4.238C14.55 2.475 13.18 1.6 11.6 1.6c-1.58 0-2.95.875-3.6 2.148-.435-.154-.905-.238-1.4-.238-2.21 0-4 1.79-4 4 0 .495.084.965.238 1.4C1.575 9.55.7 10.92.7 12.5c0 1.58.875 2.95 2.148 3.6-.154.435-.238.905-.238 1.4 0 2.21 1.79 4 4 4 .495 0 .965-.084 1.4-.238 1.05 1.273 2.42 2.138 4 2.138 1.58 0 2.95-.865 3.6-2.138.435.154.905.238 1.4.238 2.21 0 4-1.79 4-4 0-.495-.084-.965-.238-1.4 1.273-1.05 2.138-2.42 2.138-4zm-12.22 4.3l-4.24-4.24 1.41-1.41 2.83 2.83 6.36-6.36 1.41 1.41-7.77 7.77z" />
+              </svg>
+            </div>
+            <span className="font-mono text-[9px] tracking-widest text-cyan-300/80 -mt-0.5">
+              Slashcloud.io // GCUF
             </span>
           </div>
         </a>
