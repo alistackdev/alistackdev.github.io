@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronRight, Download, Terminal, Sparkles, Activity, ShieldCheck, Code2, Rocket, Heart } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/sound';
+import CatTyping from './CatTyping';
 
 export default function Hero() {
   const roles = [
@@ -135,9 +136,14 @@ export default function Hero() {
         </div>
 
         {/* Right Column: Interactive Developer Profile HUD */}
-        <div className="lg:col-span-5 flex justify-center">
+        <div className="lg:col-span-5 flex justify-center mt-12 lg:mt-0">
           <div className="relative w-full max-w-md">
             
+            {/* Cute Cat Typing Companion perched on the card */}
+            <div className="absolute -top-14 sm:-top-16 right-2 sm:right-4 z-30">
+              <CatTyping />
+            </div>
+
             {/* Glowing Corner Accents */}
             <div className="absolute -top-2 -left-2 w-6 h-6 border-t-2 border-l-2 border-cyan-400" />
             <div className="absolute -top-2 -right-2 w-6 h-6 border-t-2 border-r-2 border-cyan-400" />
