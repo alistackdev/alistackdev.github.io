@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+    "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+    "bytes": 6300
+  },
+  "artifact": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+    "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+    "bytes": 843510
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "fail"
+  },
+  "failedStage": "browser-check",
+  "diagnostics": [
+    {
+      "code": "viewer/evidence-path-conflict",
+      "severity": "error",
+      "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json\".",
+      "subject": {
+        "artifact": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "evidencePath": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json"
+      },
+      "evidence": {
+        "reason": {
+          "code": "ownership-artifact-mismatch"
+        }
+      },
+      "supportedFixes": [
+        "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+      ]
+    }
+  ],
+  "diagnosticSummary": {
+    "total": 1,
+    "shown": 1,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-21T11:40:10.256Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 21003,
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  }
+}

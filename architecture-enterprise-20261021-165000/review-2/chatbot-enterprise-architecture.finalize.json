@@ -1,0 +1,1208 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-21T12:50:15.431Z",
+  "specification": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+    "sha256": "8d4876c972264bac7ccdbed3704722320d8c3362e0313b0421ebe3d720f1003d",
+    "bytes": 8055
+  },
+  "artifact": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+    "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+    "bytes": 858529
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "8d4876c972264bac7ccdbed3704722320d8c3362e0313b0421ebe3d720f1003d",
+          "bytes": 8055
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 8369,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "46939a98-ee75-466a-ad38-856d02f8da06",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+        "output": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "specification": {
+          "sha256": "8d4876c972264bac7ccdbed3704722320d8c3362e0313b0421ebe3d720f1003d",
+          "bytes": 8055
+        },
+        "artifact": {
+          "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+          "bytes": 858529
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 9447,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "artifact": {
+          "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+          "bytes": 858529
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 6,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 7,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 6.584070796460177,
+            "maxBends": 4,
+            "routesOverSuggestedBends": 4,
+            "maxStretch": 1.426,
+            "routesOverSuggestedStretch": 1,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 49,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "c-crm-gw",
+                  "from": "crm_leads",
+                  "to": "express_gw",
+                  "label": "POST /leads",
+                  "collectionIndex": 0,
+                  "artifactIndex": 1
+                },
+                "right": {
+                  "id": "c-imap-gw",
+                  "from": "cpanel_imap",
+                  "to": "express_gw",
+                  "label": "Email Webhook",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "point": [
+                  309.95000000000005,
+                  196
+                ],
+                "sharedNode": "express_gw"
+              },
+              {
+                "left": {
+                  "id": "c-admin-gw",
+                  "from": "admin_users",
+                  "to": "express_gw",
+                  "label": "HTTPS Session",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "right": {
+                  "id": "c-tenant-track",
+                  "from": "tenant_resolver",
+                  "to": "conv_tracker",
+                  "label": "Sync Session",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  424,
+                  570
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-tenant-flow",
+                  "from": "tenant_resolver",
+                  "to": "inbound_workflow",
+                  "label": "Triage Lead",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "c-flow-sse",
+                  "from": "inbound_workflow",
+                  "to": "realtime_sse",
+                  "label": "Emit new_lead",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  515.9500000000002,
+                  304
+                ],
+                "sharedNode": "inbound_workflow"
+              },
+              {
+                "left": {
+                  "id": "c-tenant-track",
+                  "from": "tenant_resolver",
+                  "to": "conv_tracker",
+                  "label": "Sync Session",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "right": {
+                  "id": "c-flow-sse",
+                  "from": "inbound_workflow",
+                  "to": "realtime_sse",
+                  "label": "Emit new_lead",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "point": [
+                  467,
+                  410
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-rag-grok",
+                  "from": "native_rag",
+                  "to": "grok_ai",
+                  "label": "Augmented Prompt",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "c-flow-db",
+                  "from": "inbound_workflow",
+                  "to": "mysql_storage",
+                  "label": "Persist Lead",
+                  "collectionIndex": 13,
+                  "artifactIndex": 14
+                },
+                "point": [
+                  765,
+                  244
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-exemp-rag",
+                  "from": "exemplar_mem",
+                  "to": "native_rag",
+                  "label": "Few-Shot Pairs",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "right": {
+                  "id": "c-flow-mail",
+                  "from": "inbound_workflow",
+                  "to": "smtp_mailer",
+                  "label": "Approved Follow-Up",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "point": [
+                  765,
+                  377
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "c-imap-gw",
+                  "from": "cpanel_imap",
+                  "to": "express_gw",
+                  "label": "Email Webhook",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "bends": 4,
+                "stretch": 1.426
+              },
+              {
+                "relationship": {
+                  "id": "c-tenant-flow",
+                  "from": "tenant_resolver",
+                  "to": "inbound_workflow",
+                  "label": "Triage Lead",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "c-flow-sse",
+                  "from": "inbound_workflow",
+                  "to": "realtime_sse",
+                  "label": "Emit new_lead",
+                  "collectionIndex": 14,
+                  "artifactIndex": 15
+                },
+                "bends": 4,
+                "stretch": 1.339,
+                "directCorridorBlockers": [
+                  {
+                    "id": "conv_tracker",
+                    "label": "Session Tracker",
+                    "box": [
+                      470,
+                      380,
+                      150,
+                      60
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "c-flow-mail",
+                  "from": "inbound_workflow",
+                  "to": "smtp_mailer",
+                  "label": "Approved Follow-Up",
+                  "collectionIndex": 15,
+                  "artifactIndex": 16
+                },
+                "bends": 4,
+                "stretch": 1
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 70,
+            "emptyTopRatio": 0.085,
+            "occupiedTop": 70,
+            "viewBoxTop": 0,
+            "canvasHeight": 828,
+            "typicalNodeHeight": 60,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "edge",
+              "id": "c-crm-gw",
+              "from": "crm_leads",
+              "to": "express_gw"
+            },
+            "minimumSourceTextPx": 8,
+            "minimumProjectedTextPx": 6.584070796460177,
+            "semanticTextCount": 60
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "46939a98-ee75-466a-ad38-856d02f8da06"
+      }
+    },
+    "browser-check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 9547,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+        "--json",
+        "--require-provenance",
+        "--out-dir",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "pass",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "46939a98-ee75-466a-ad38-856d02f8da06",
+        "artifact": {
+          "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+          "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+          "bytes": 858529
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+        },
+        "diagnostics": [],
+        "containment": {
+          "status": "pass",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1039,
+              "diagramWidth": 1009,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 68,
+                "diagramChromePx": 78,
+                "svgPx": 739,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.143362831858407,
+              "minimumProjectedNonEdgeTextPx": 7.500530973451328,
+              "minimumProjectedEdgeTextPx": 7.143362831858407,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1073,
+              "diagramWidth": 1043,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 764,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.384070796460177,
+              "minimumProjectedNonEdgeTextPx": 7.753274336283186,
+              "minimumProjectedEdgeTextPx": 7.384070796460177,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1182,
+              "diagramWidth": 1152,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 844,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1527,
+              "diagramWidth": 1477,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "themeStates": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "light",
+              "resolvedTheme": "light",
+              "ok": true
+            },
+            {
+              "width": 1440,
+              "height": 900,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "requestedTheme": "dark",
+              "resolvedTheme": "dark",
+              "ok": true
+            }
+          ]
+        },
+        "readability": {
+          "status": "pass",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1039,
+              "diagramWidth": 1009,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 68,
+                "diagramChromePx": 78,
+                "svgPx": 739,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.143362831858407,
+              "minimumProjectedNonEdgeTextPx": 7.500530973451328,
+              "minimumProjectedEdgeTextPx": 7.143362831858407,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1073,
+              "diagramWidth": 1043,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 764,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.384070796460177,
+              "minimumProjectedNonEdgeTextPx": 7.753274336283186,
+              "minimumProjectedEdgeTextPx": 7.384070796460177,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1182,
+              "diagramWidth": 1152,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 844,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1527,
+              "diagramWidth": 1477,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "viewerChrome": {
+          "status": "pass",
+          "viewports": [
+            {
+              "width": 1440,
+              "height": 900,
+              "theme": "light",
+              "innerWidth": 1440,
+              "innerHeight": 900,
+              "scrollWidth": 1440,
+              "scrollHeight": 900,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1039,
+              "diagramWidth": 1009,
+              "pageComposition": {
+                "bodyPaddingPx": 12,
+                "headerPx": 68,
+                "diagramChromePx": 78,
+                "svgPx": 739,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.143362831858407,
+              "minimumProjectedNonEdgeTextPx": 7.500530973451328,
+              "minimumProjectedEdgeTextPx": 7.143362831858407,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1600,
+              "height": 1000,
+              "theme": "light",
+              "innerWidth": 1600,
+              "innerHeight": 1000,
+              "scrollWidth": 1600,
+              "scrollHeight": 1000,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1073,
+              "diagramWidth": 1043,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 764,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 7.384070796460177,
+              "minimumProjectedNonEdgeTextPx": 7.753274336283186,
+              "minimumProjectedEdgeTextPx": 7.384070796460177,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 1920,
+              "height": 1080,
+              "theme": "light",
+              "innerWidth": 1920,
+              "innerHeight": 1080,
+              "scrollWidth": 1920,
+              "scrollHeight": 1080,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1182,
+              "diagramWidth": 1152,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 76,
+                "diagramChromePx": 84,
+                "svgPx": 844,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 54,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            },
+            {
+              "width": 2048,
+              "height": 1320,
+              "theme": "light",
+              "innerWidth": 2048,
+              "innerHeight": 1320,
+              "scrollWidth": 2048,
+              "scrollHeight": 1320,
+              "overflowX": false,
+              "overflowY": false,
+              "verticalScrollAccepted": false,
+              "overflowDisposition": "contained",
+              "readerLayout": "adaptive",
+              "readerOverflow": null,
+              "readerFit": "intrinsic-height",
+              "ok": true,
+              "readerWidth": 1527,
+              "diagramWidth": 1477,
+              "pageComposition": {
+                "bodyPaddingPx": 64,
+                "headerPx": 68,
+                "diagramChromePx": 94,
+                "svgPx": 1082,
+                "cardsPx": 0,
+                "viewBoxHeight": 828
+              },
+              "viewBoxWidth": 1130,
+              "minimumProjectedNodeTextPx": 8,
+              "minimumProjectedNonEdgeTextPx": 8.4,
+              "minimumProjectedEdgeTextPx": 8,
+              "minimumProjectedNodeText": "POST /leads",
+              "minimumProjectedNodeTextDetail": "edge",
+              "minimumProjectedNodeTextOwner": {
+                "kind": "edge",
+                "id": "c-crm-gw",
+                "from": "crm_leads",
+                "to": "express_gw"
+              },
+              "minimumRequiredNodeTextPx": 6,
+              "readabilityOk": true,
+              "hasLegend": true,
+              "hasNavigationDock": true,
+              "legendDockIntersectionArea": 0,
+              "dockStageIntersectionArea": 0,
+              "dockStageGap": 10,
+              "requiredDockStageGap": 10,
+              "viewerChromeStageOk": true,
+              "viewerChromeReserve": 44,
+              "viewerChromeActive": true,
+              "viewerChromeOk": true,
+              "resolvedTheme": "light"
+            }
+          ]
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "directory": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2",
+          "receipt": "chatbot-enterprise-architecture.browser-check.json",
+          "files": []
+        }
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "diagnostics": [],
+  "evidence": {
+    "receipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "finishedAt": "2026-10-21T12:50:47.277Z",
+  "durationMs": 31849,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-21T11:40:10.256Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

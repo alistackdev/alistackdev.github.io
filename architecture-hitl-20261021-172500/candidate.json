@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "AQ Tech SaaS Platform — Human-in-the-Loop & Client Control Architecture",
+    "output": ".archify/architecture-hitl-20261021-172500/hitl-enterprise-architecture.html",
+    "quality_profile": "showcase",
+    "locale": "en"
+  },
+  "components": [
+    { "id": "client_portal", "type": "frontend", "label": "Operator Portal", "sublabel": "Real-time Dashboard & SSE Toasts", "tag": "Client Command", "pos": [40, 90], "size": [150, 65] },
+    { "id": "hitl_gate", "type": "security", "label": "Human Review Gate", "sublabel": "Approve · Edit · Reject AI Drafts", "tag": "Human-in-the-Loop", "pos": [330, 90], "size": [160, 65] },
+    { "id": "exemplar_learning", "type": "database", "label": "Exemplars Learning", "sublabel": "Saves Human Edits to Teach AI", "tag": "Active AI Training", "pos": [630, 90], "size": [160, 65] },
+    { "id": "tenant_settings", "type": "frontend", "label": "Tenant Governance", "sublabel": "Temp Slider · Hours · Recycle Bin", "tag": "Client Control", "pos": [930, 90], "size": [160, 65] },
+
+    { "id": "omni_ingress", "type": "external", "label": "Omni-Channel Inbound", "sublabel": "8+ Forms · Zoho CRM · IMAP Mail", "tag": "Live Traffic", "pos": [40, 270], "size": [140, 65] },
+    { "id": "express_edge", "type": "security", "label": "Express API Gateway", "sublabel": "Brute-Force Guard · Slug Context", "tag": "Edge Gateway", "pos": [230, 270], "size": [150, 65] },
+    { "id": "lead_triage", "type": "backend", "label": "Smart Inbound Triage", "sublabel": "Email & Phone-Only Classifier", "tag": "Pipeline Router", "pos": [430, 270], "size": [150, 65] },
+    { "id": "hybrid_rag", "type": "backend", "label": "Hybrid RAG Engine", "sublabel": "DB Knowledge Chunks + Memory", "tag": "Context Retrieval", "pos": [630, 270], "size": [160, 65] },
+    { "id": "grok_llm", "type": "cloud", "label": "Grok LLM (xAI)", "sublabel": "Generates High-Accuracy Drafts", "tag": "AI Inference", "pos": [840, 270], "size": [150, 65] },
+
+    { "id": "mysql_core", "type": "database", "label": "MySQL Enterprise Store", "sublabel": "Soft-Delete · Tenant-Indexed", "tag": "Primary DB", "pos": [430, 450], "size": [150, 65] },
+    { "id": "smtp_outbound", "type": "cloud", "label": "Approved Email Relay", "sublabel": "Dispatched Only After Sign-Off", "tag": "Email Dispatch", "pos": [630, 450], "size": [160, 65] },
+    { "id": "telephony_cron", "type": "cloud", "label": "RingCentral & Agenda", "sublabel": "Ext 101 SMS · America/Edmonton", "tag": "Telephony & Cron", "pos": [840, 450], "size": [150, 65] }
+  ],
+  "boundaries": [
+    { "kind": "security-group", "label": "TIER 1: CLIENT COMMAND CENTER & HUMAN-IN-THE-LOOP CONTROL PLANE", "wraps": ["client_portal", "hitl_gate", "exemplar_learning", "tenant_settings"] },
+    { "kind": "region", "label": "TIER 2: COGNITIVE AI & SMART ORCHESTRATION PIPELINE", "wraps": ["omni_ingress", "express_edge", "lead_triage", "hybrid_rag", "grok_llm"] },
+    { "kind": "region", "label": "TIER 3: DATA STORE & MULTI-CHANNEL DISPATCH", "wraps": ["mysql_core", "smtp_outbound", "telephony_cron"] }
+  ],
+  "connections": [
+    { "id": "c-ingress-edge", "from": "omni_ingress", "to": "express_edge", "label": "POST Webhooks" },
+    { "id": "c-edge-triage", "from": "express_edge", "to": "lead_triage", "label": "Auth Payload", "variant": "emphasis" },
+    { "id": "c-triage-portal", "from": "lead_triage", "to": "client_portal", "label": "Live SSE Alerts", "variant": "dashed" },
+    { "id": "c-triage-rag", "from": "lead_triage", "to": "hybrid_rag", "label": "Query Knowledge", "variant": "emphasis" },
+    { "id": "c-rag-grok", "from": "hybrid_rag", "to": "grok_llm", "label": "Augmented Prompt", "variant": "emphasis" },
+
+    { "id": "c-grok-gate", "from": "grok_llm", "to": "hitl_gate", "label": "Submit AI Draft", "variant": "security" },
+    { "id": "c-portal-gate", "from": "client_portal", "to": "hitl_gate", "label": "Operator Review", "variant": "emphasis" },
+    { "id": "c-gate-exemplar", "from": "hitl_gate", "to": "exemplar_learning", "label": "Save Exemplars", "variant": "emphasis" },
+    { "id": "c-exemplar-rag", "from": "exemplar_learning", "to": "hybrid_rag", "label": "Inject Few-Shot", "fromSide": "bottom", "toSide": "top" },
+    { "id": "c-settings-gate", "from": "tenant_settings", "to": "hitl_gate", "label": "Tuning & Policy" },
+
+    { "id": "c-triage-db", "from": "lead_triage", "to": "mysql_core", "label": "Record Inbound Lead", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" },
+    { "id": "c-gate-smtp", "from": "hitl_gate", "to": "smtp_outbound", "label": "Dispatch Approved Email", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" },
+    { "id": "c-db-telephony", "from": "mysql_core", "to": "telephony_cron", "label": "Sync Ext 101 SMS" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Tier 1: What The Client & Operator Controls", "items": ["Live Lead Queue: Immediate desktop toast notifications via Server-Sent Events (SSE)", "Human-in-the-Loop Review: AI drafts can be approved, edited, or rejected prior to transmission", "Active Learning Loop: Operator edits automatically convert into few-shot exemplars to train the AI", "Tenant Governance: Complete control over AI temperature, brand persona, business hours, and recycle bin"] },
+    { "dot": "emerald", "title": "Tier 2: Cognitive AI & Intelligent Triage", "items": ["Express Edge Armor: Protects against brute-force attacks and enforces per-tenant slug isolation", "Smart Triage Classifier: Distinguishes between complete leads and phone-only callbacks", "Native RAG: Semantic retrieval from database chunks without costly external vector databases", "xAI Grok LLM: Context-grounded response generation strictly bound to tenant knowledge"] },
+    { "dot": "violet", "title": "Tier 3: Ingress, Persistence & Multi-Channel Telephony", "items": ["Omni-Channel Inbound: Ingests from 8+ web forms, Zoho CRM custom buttons, SalesIQ, and IMAP", "MySQL Enterprise Store: Multi-tenant soft-delete architecture with high-speed composite indexing", "Secure Dispatch: Automated SMTP follow-ups dispatched exclusively after human sign-off", "Outbound Telephony: RingCentral Ext 101 SMS synchronization and America/Edmonton agenda cron"] }
+  ]
+}

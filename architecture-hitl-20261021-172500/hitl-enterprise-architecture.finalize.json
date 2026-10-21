@@ -1,0 +1,552 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "showcase",
+  "startedAt": "2026-10-21T12:23:55.987Z",
+  "specification": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+    "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+    "bytes": 6300
+  },
+  "artifact": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+    "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+    "bytes": 843510
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+          "bytes": 6300
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 8896,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "deliver",
+        "architecture",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "--quality",
+        "showcase",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "6d3afc6d-6273-4822-8199-ae4af5673244",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+        "output": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "specification": {
+          "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+          "bytes": 6300
+        },
+        "artifact": {
+          "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+          "bytes": 843510
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "showcase",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 0
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 4031,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "check",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "artifact": {
+          "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+          "bytes": 843510
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "showcase",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 0
+          },
+          "metrics": {
+            "properCrossings": 0,
+            "resolvedCrossovers": 4,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 0,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 5,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 7,
+            "maxBends": 4,
+            "routesOverSuggestedBends": 5,
+            "maxStretch": 1.347,
+            "routesOverSuggestedStretch": 0,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 28.5,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "c-edge-triage",
+                  "from": "express_edge",
+                  "to": "lead_triage",
+                  "label": "Auth Payload",
+                  "collectionIndex": 1,
+                  "artifactIndex": 2
+                },
+                "right": {
+                  "id": "c-gate-smtp",
+                  "from": "hitl_gate",
+                  "to": "smtp_outbound",
+                  "label": "Dispatch Approved Email",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "point": [
+                  410,
+                  359.0000000000001
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-triage-portal",
+                  "from": "lead_triage",
+                  "to": "client_portal",
+                  "label": "Live SSE Alerts",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "c-gate-smtp",
+                  "from": "hitl_gate",
+                  "to": "smtp_outbound",
+                  "label": "Dispatch Approved Email",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "point": [
+                  410,
+                  294.77272727272725
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-grok-gate",
+                  "from": "grok_llm",
+                  "to": "hitl_gate",
+                  "label": "Submit AI Draft",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "right": {
+                  "id": "c-exemplar-rag",
+                  "from": "exemplar_learning",
+                  "to": "hybrid_rag",
+                  "label": "Inject Few-Shot",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  709.9999999999999,
+                  182.99999999999997
+                ]
+              },
+              {
+                "left": {
+                  "id": "c-triage-db",
+                  "from": "lead_triage",
+                  "to": "mysql_core",
+                  "label": "Record Inbound Lead",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "right": {
+                  "id": "c-gate-smtp",
+                  "from": "hitl_gate",
+                  "to": "smtp_outbound",
+                  "label": "Dispatch Approved Email",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "point": [
+                  505,
+                  380.5
+                ]
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "c-triage-portal",
+                  "from": "lead_triage",
+                  "to": "client_portal",
+                  "label": "Live SSE Alerts",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "c-rag-grok",
+                  "from": "hybrid_rag",
+                  "to": "grok_llm",
+                  "label": "Augmented Prompt",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "bends": 3,
+                "stretch": 1.347
+              },
+              {
+                "relationship": {
+                  "id": "c-grok-gate",
+                  "from": "grok_llm",
+                  "to": "hitl_gate",
+                  "label": "Submit AI Draft",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 4,
+                "stretch": 1
+              },
+              {
+                "relationship": {
+                  "id": "c-settings-gate",
+                  "from": "tenant_settings",
+                  "to": "hitl_gate",
+                  "label": "Tuning &amp; Policy",
+                  "collectionIndex": 9,
+                  "artifactIndex": 10
+                },
+                "bends": 3,
+                "stretch": 1.087,
+                "directCorridorBlockers": [
+                  {
+                    "id": "exemplar_learning",
+                    "label": "Exemplars Learning",
+                    "box": [
+                      630,
+                      90,
+                      160,
+                      65
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "c-db-telephony",
+                  "from": "mysql_core",
+                  "to": "telephony_cron",
+                  "label": "Sync Ext 101 SMS",
+                  "collectionIndex": 12,
+                  "artifactIndex": 13
+                },
+                "bends": 4,
+                "stretch": 1.273,
+                "directCorridorBlockers": [
+                  {
+                    "id": "smtp_outbound",
+                    "label": "Approved Email Relay",
+                    "box": [
+                      630,
+                      450,
+                      160,
+                      65
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 60,
+            "emptyTopRatio": 0.1,
+            "occupiedTop": 60,
+            "viewBoxTop": 0,
+            "canvasHeight": 603,
+            "typicalNodeHeight": 65,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "recognized-declared-wide",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 1160,
+            "actualBudgetPx": 1160,
+            "actualReaderWidth": 1190,
+            "desiredReaderWidth": 1190,
+            "viewportCap": 1376,
+            "limit": "source-size",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": false,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "node",
+              "id": "omni_ingress"
+            },
+            "minimumSourceTextPx": 7,
+            "minimumProjectedTextPx": 7,
+            "semanticTextCount": 40
+          },
+          "issues": []
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "6d3afc6d-6273-4822-8199-ae4af5673244"
+      }
+    },
+    "browser-check": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 678,
+      "command": [
+        "C:\\Program Files\\nodejs\\node.exe",
+        "C:\\Users\\Alienware Tech\\.agents\\skills\\archify\\bin\\archify.mjs",
+        "browser-check",
+        "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "fail",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "6d3afc6d-6273-4822-8199-ae4af5673244",
+        "artifact": {
+          "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+          "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+          "bytes": 843510
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "not-checked",
+          "executable": null
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/evidence-path-conflict",
+            "severity": "error",
+            "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json\".",
+            "subject": {
+              "artifact": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+              "evidencePath": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json"
+            },
+            "evidence": {
+              "reason": {
+                "code": "ownership-artifact-mismatch"
+              }
+            },
+            "supportedFixes": [
+              "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "fail",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "fail",
+          "viewports": []
+        },
+        "readability": {
+          "status": "fail",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "fail",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "hitl-enterprise-architecture.browser-check.json",
+          "files": []
+        },
+        "error": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json\"."
+      }
+    }
+  },
+  "browserCheck": {
+    "requested": true,
+    "ran": false
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/evidence-path-conflict",
+      "severity": "error",
+      "message": "browser-check will not replace the existing unowned evidence path \"C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json\".",
+      "subject": {
+        "artifact": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+        "evidencePath": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json"
+      },
+      "evidence": {
+        "reason": {
+          "code": "ownership-artifact-mismatch"
+        }
+      },
+      "supportedFixes": [
+        "move the conflicting file aside, or choose a separate --out-dir, then rerun browser-check"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "browser-check",
+  "finishedAt": "2026-10-21T12:24:16.991Z",
+  "durationMs": 21003,
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-21T11:40:10.256Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  }
+}

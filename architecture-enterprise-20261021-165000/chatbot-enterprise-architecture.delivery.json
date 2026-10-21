@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "46939a98-ee75-466a-ad38-856d02f8da06",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+  "output": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+  "specification": {
+    "sha256": "8d4876c972264bac7ccdbed3704722320d8c3362e0313b0421ebe3d720f1003d",
+    "bytes": 8055
+  },
+  "artifact": {
+    "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+    "bytes": 858529
+  }
+}

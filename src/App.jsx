@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import CanvasBackground from './components/CanvasBackground';
 import CustomCursor from './components/CustomCursor';
 import Navbar from './components/Navbar';
@@ -12,6 +12,19 @@ import TerminalContact from './components/TerminalContact';
 import Footer from './components/Footer';
 
 export default function App() {
+  useEffect(() => {
+    if (window.location.hash) {
+      const targetId = window.location.hash.replace('#', '');
+      const timer = setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 120);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   return (
     <div className="relative min-h-screen bg-[#050508] text-slate-100 font-sans selection:bg-cyan-500 selection:text-black overflow-x-hidden">
       {/* 3D WebGL Interactive Background */}

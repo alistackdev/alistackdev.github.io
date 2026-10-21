@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\candidate.json",
+    "sha256": "8d4876c972264bac7ccdbed3704722320d8c3362e0313b0421ebe3d720f1003d",
+    "bytes": 8055
+  },
+  "artifact": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\chatbot-enterprise-architecture.html",
+    "sha256": "70a488a16aae8ba779265972a05143b954a5924d2a0f5c8a950a09cff705f21f",
+    "bytes": 858529
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-enterprise-20261021-165000\\review-2\\chatbot-enterprise-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-21T11:40:10.256Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 31849,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 6,
+      "routesOverSuggestedBends": 4,
+      "routesOverSuggestedStretch": 1
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "c-crm-gw",
+            "from": "crm_leads",
+            "to": "express_gw",
+            "label": "POST /leads",
+            "collectionIndex": 0,
+            "artifactIndex": 1
+          },
+          "right": {
+            "id": "c-imap-gw",
+            "from": "cpanel_imap",
+            "to": "express_gw",
+            "label": "Email Webhook",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "point": [
+            309.95000000000005,
+            196
+          ],
+          "sharedNode": "express_gw"
+        },
+        {
+          "left": {
+            "id": "c-admin-gw",
+            "from": "admin_users",
+            "to": "express_gw",
+            "label": "HTTPS Session",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "right": {
+            "id": "c-tenant-track",
+            "from": "tenant_resolver",
+            "to": "conv_tracker",
+            "label": "Sync Session",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "point": [
+            424,
+            570
+          ]
+        },
+        {
+          "left": {
+            "id": "c-tenant-flow",
+            "from": "tenant_resolver",
+            "to": "inbound_workflow",
+            "label": "Triage Lead",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "right": {
+            "id": "c-flow-sse",
+            "from": "inbound_workflow",
+            "to": "realtime_sse",
+            "label": "Emit new_lead",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            515.9500000000002,
+            304
+          ],
+          "sharedNode": "inbound_workflow"
+        },
+        {
+          "left": {
+            "id": "c-tenant-track",
+            "from": "tenant_resolver",
+            "to": "conv_tracker",
+            "label": "Sync Session",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "right": {
+            "id": "c-flow-sse",
+            "from": "inbound_workflow",
+            "to": "realtime_sse",
+            "label": "Emit new_lead",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "point": [
+            467,
+            410
+          ]
+        },
+        {
+          "left": {
+            "id": "c-rag-grok",
+            "from": "native_rag",
+            "to": "grok_ai",
+            "label": "Augmented Prompt",
+            "collectionIndex": 10,
+            "artifactIndex": 11
+          },
+          "right": {
+            "id": "c-flow-db",
+            "from": "inbound_workflow",
+            "to": "mysql_storage",
+            "label": "Persist Lead",
+            "collectionIndex": 13,
+            "artifactIndex": 14
+          },
+          "point": [
+            765,
+            244
+          ]
+        },
+        {
+          "left": {
+            "id": "c-exemp-rag",
+            "from": "exemplar_mem",
+            "to": "native_rag",
+            "label": "Few-Shot Pairs",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "right": {
+            "id": "c-flow-mail",
+            "from": "inbound_workflow",
+            "to": "smtp_mailer",
+            "label": "Approved Follow-Up",
+            "collectionIndex": 15,
+            "artifactIndex": 16
+          },
+          "point": [
+            765,
+            377
+          ]
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "c-imap-gw",
+            "from": "cpanel_imap",
+            "to": "express_gw",
+            "label": "Email Webhook",
+            "collectionIndex": 3,
+            "artifactIndex": 4
+          },
+          "bends": 4,
+          "stretch": 1.426
+        },
+        {
+          "relationship": {
+            "id": "c-tenant-flow",
+            "from": "tenant_resolver",
+            "to": "inbound_workflow",
+            "label": "Triage Lead",
+            "collectionIndex": 7,
+            "artifactIndex": 8
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "c-flow-sse",
+            "from": "inbound_workflow",
+            "to": "realtime_sse",
+            "label": "Emit new_lead",
+            "collectionIndex": 14,
+            "artifactIndex": 15
+          },
+          "bends": 4,
+          "stretch": 1.339,
+          "directCorridorBlockers": [
+            {
+              "id": "conv_tracker",
+              "label": "Session Tracker",
+              "box": [
+                470,
+                380,
+                150,
+                60
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "c-flow-mail",
+            "from": "inbound_workflow",
+            "to": "smtp_mailer",
+            "label": "Approved Follow-Up",
+            "collectionIndex": 15,
+            "artifactIndex": 16
+          },
+          "bends": 4,
+          "stretch": 1
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "crm_leads → express_gw and cpanel_imap → express_gw cross next to express_gw: move node crm_leads or cpanel_imap so the two reach express_gw from different sides (for example one level with it, one directly above or below it).",
+      "admin_users → express_gw crosses tenant_resolver → conv_tracker: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "tenant_resolver → inbound_workflow and inbound_workflow → realtime_sse cross next to inbound_workflow: move node tenant_resolver or realtime_sse so the two reach inbound_workflow from different sides (for example one level with it, one directly above or below it).",
+      "tenant_resolver → conv_tracker crosses inbound_workflow → realtime_sse: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "native_rag → grok_ai crosses inbound_workflow → mysql_storage: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "exemplar_mem → native_rag crosses inbound_workflow → smtp_mailer: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "cpanel_imap → express_gw needs 4 bends: move node cpanel_imap or express_gw so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "tenant_resolver → inbound_workflow needs 4 bends: move node tenant_resolver or inbound_workflow so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}

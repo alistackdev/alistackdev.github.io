@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "c6e0548a-87c3-4094-a8aa-8e15bb7ab2bd",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+  "output": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+  "specification": {
+    "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+    "bytes": 6300
+  },
+  "artifact": {
+    "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+    "bytes": 843510
+  }
+}

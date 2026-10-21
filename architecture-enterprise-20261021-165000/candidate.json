@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "AQ Tech Multi-Tenant Chatbot Platform — Enterprise Architecture",
+    "output": ".archify/architecture-enterprise-20261021-165000/chatbot-enterprise-architecture.html",
+    "quality_profile": "showcase",
+    "locale": "en"
+  },
+  "components": [
+    { "id": "crm_leads", "type": "external", "label": "Zoho CRM Leads", "sublabel": "Client Script Button", "tag": "CORS Enabled", "pos": [40, 100], "size": [140, 60] },
+    { "id": "web_forms", "type": "external", "label": "Website Forms (8+)", "sublabel": "WordPress · Elementor", "tag": "Multi-Source", "pos": [40, 220], "size": [140, 60] },
+    { "id": "salesiq_chat", "type": "external", "label": "Live Visitor Chat", "sublabel": "Zoho SalesIQ Widget", "tag": "Live Chat", "pos": [40, 340], "size": [140, 60] },
+    { "id": "cpanel_imap", "type": "external", "label": "Email Listener", "sublabel": "cPanel IMAP · Inbound Mail", "tag": "Email Parser", "pos": [40, 460], "size": [140, 60] },
+    { "id": "admin_users", "type": "frontend", "label": "Operator Portals", "sublabel": "SuperAdmin & Dashboards", "tag": "RBAC SSO", "pos": [40, 580], "size": [140, 60] },
+
+    { "id": "express_gw", "type": "backend", "label": "Express API Gateway", "sublabel": "Reverse Proxy & Edge Router", "tag": "Edge Gateway", "pos": [250, 220], "size": [150, 60] },
+    { "id": "security_engine", "type": "security", "label": "Security Armor", "sublabel": "Lockout & Anti-XSS Guard", "tag": "Zero-Trust", "pos": [250, 380], "size": [150, 60] },
+    { "id": "tenant_resolver", "type": "security", "label": "Tenant Resolver", "sublabel": "Slug Context & Isolation", "tag": "Multi-Tenant", "pos": [250, 540], "size": [150, 60] },
+
+    { "id": "inbound_workflow", "type": "backend", "label": "Lead Triage Engine", "sublabel": "Phone & Email Classifier", "tag": "Smart Pipeline", "pos": [470, 220], "size": [150, 60] },
+    { "id": "conv_tracker", "type": "backend", "label": "Session Tracker", "sublabel": "Isolated {tenantId}:{convId}", "tag": "State Engine", "pos": [470, 380], "size": [150, 60] },
+    { "id": "realtime_sse", "type": "messagebus", "label": "Real-Time SSE Hub", "sublabel": "Instant Desktop Alerts", "tag": "EventStream", "pos": [470, 540], "size": [150, 60] },
+
+    { "id": "grok_ai", "type": "cloud", "label": "Grok AI Assistant", "sublabel": "Dynamic Temp & Drafts", "tag": "AI Inference", "pos": [690, 120], "size": [150, 60] },
+    { "id": "native_rag", "type": "backend", "label": "Native RAG Engine", "sublabel": "DB Knowledge Chunks", "tag": "Retrieval", "pos": [690, 280], "size": [150, 60] },
+    { "id": "exemplar_mem", "type": "database", "label": "Exemplar Memory", "sublabel": "Human-Taught Few-Shot AI", "tag": "Few-Shot AI", "pos": [690, 440], "size": [150, 60] },
+
+    { "id": "mysql_storage", "type": "database", "label": "MySQL Database", "sublabel": "Soft-Delete & Indexing", "tag": "cPanel RDBMS", "pos": [910, 200], "size": [150, 60] },
+    { "id": "agenda_scheduler", "type": "backend", "label": "Agenda Scheduler", "sublabel": "America/Edmonton 9x Daily", "tag": "Cron Engine", "pos": [910, 360], "size": [150, 60] },
+    { "id": "ringcentral_svc", "type": "cloud", "label": "RingCentral Cloud", "sublabel": "Ext 101 JWT · 48h SMS Feed", "tag": "Telephony", "pos": [910, 520], "size": [150, 60] },
+    { "id": "smtp_mailer", "type": "cloud", "label": "Email Dispatcher", "sublabel": "Follow-Ups & Digest Relay", "tag": "Email Relay", "pos": [910, 680], "size": [150, 60] }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "Client Ingress & Touchpoints", "wraps": ["crm_leads", "web_forms", "salesiq_chat", "cpanel_imap", "admin_users"] },
+    { "kind": "security-group", "label": "Edge Gateway & Armor", "wraps": ["express_gw", "security_engine", "tenant_resolver"] },
+    { "kind": "region", "label": "Core Orchestration Engine", "wraps": ["inbound_workflow", "conv_tracker", "realtime_sse"] },
+    { "kind": "region", "label": "Cognitive AI & RAG Subsystem", "wraps": ["grok_ai", "native_rag", "exemplar_mem"] },
+    { "kind": "region", "label": "Data Tier & Outbound Services", "wraps": ["mysql_storage", "agenda_scheduler", "ringcentral_svc", "smtp_mailer"] }
+  ],
+  "connections": [
+    { "id": "c-crm-gw", "from": "crm_leads", "to": "express_gw", "label": "POST /leads", "variant": "emphasis" },
+    { "id": "c-forms-gw", "from": "web_forms", "to": "express_gw", "label": "Webhook POST", "variant": "emphasis" },
+    { "id": "c-salesiq-gw", "from": "salesiq_chat", "to": "express_gw", "label": "Chat Webhook" },
+    { "id": "c-imap-gw", "from": "cpanel_imap", "to": "express_gw", "label": "Email Webhook", "variant": "dashed" },
+    { "id": "c-admin-gw", "from": "admin_users", "to": "express_gw", "label": "HTTPS Session", "variant": "security" },
+
+    { "id": "c-gw-sec", "from": "express_gw", "to": "security_engine", "label": "Filter & Armor", "variant": "security", "labelDy": 24 },
+    { "id": "c-sec-tenant", "from": "security_engine", "to": "tenant_resolver", "label": "Resolve Tenant Context", "variant": "security" },
+
+    { "id": "c-tenant-flow", "from": "tenant_resolver", "to": "inbound_workflow", "label": "Triage Lead", "variant": "emphasis" },
+    { "id": "c-tenant-track", "from": "tenant_resolver", "to": "conv_tracker", "label": "Sync Session" },
+
+    { "id": "c-flow-rag", "from": "inbound_workflow", "to": "native_rag", "label": "Query Knowledge" },
+    { "id": "c-rag-grok", "from": "native_rag", "to": "grok_ai", "label": "Augmented Prompt" },
+    { "id": "c-grok-flow", "from": "grok_ai", "to": "inbound_workflow", "label": "AI Draft Reply" },
+    { "id": "c-exemp-rag", "from": "exemplar_mem", "to": "native_rag", "label": "Few-Shot Pairs" },
+
+    { "id": "c-flow-db", "from": "inbound_workflow", "to": "mysql_storage", "label": "Persist Lead", "variant": "emphasis" },
+    { "id": "c-flow-sse", "from": "inbound_workflow", "to": "realtime_sse", "label": "Emit new_lead", "variant": "dashed" },
+    { "id": "c-flow-mail", "from": "inbound_workflow", "to": "smtp_mailer", "label": "Approved Follow-Up", "variant": "emphasis" },
+
+    { "id": "c-db-sched", "from": "mysql_storage", "to": "agenda_scheduler", "label": "Query Open Work" },
+    { "id": "c-sched-rc", "from": "agenda_scheduler", "to": "ringcentral_svc", "label": "Sync 48h SMS" },
+    { "id": "c-sched-mail", "from": "agenda_scheduler", "to": "smtp_mailer", "label": "Dispatch Daily Digest", "variant": "emphasis" }
+  ],
+  "cards": [
+    { "dot": "cyan", "title": "Omni-Channel Lead Ingress", "items": ["Zoho CRM Client Script with CORS & field auto-mapping", "8+ specialized website form webhooks (Inspection, Volume, Builder, Contact)", "Zoho SalesIQ real-time chat listener", "Isolated cPanel IMAP mailbox polling with AES-256 encrypted passwords"] },
+    { "dot": "rose", "title": "Multi-Tenant Security Architecture", "items": ["Constant-time HMAC session cookies with enforced expiration timestamps", "Super Admin brute-force lockout: 5 failed attempts locks IP for 30 minutes", "Protected /api/chat/reply requiring active tenant or superadmin credentials", "Locked down trigger URLs: ?to= recipient spoofing strictly rejected without auth"] },
+    { "dot": "emerald", "title": "Cognitive AI & Native RAG Subsystem", "items": ["Grok (xAI) dynamic draft generator with temperature toggle for regeneration", "In-database Native RAG knowledge chunking & semantic scoring without external vectors", "Human-in-the-loop few-shot Exemplars memory injected dynamically into prompts", "Phone-only lead triage: generates actionable follow-ups even without visitor email"] },
+    { "dot": "violet", "title": "Persistence, Real-Time & Outbound Telephony", "items": ["MySQL soft-delete / Recycle Bin with instant restore and permanent purge", "Composite DB index idx_tenant_del_created for high-throughput dashboard queries", "Server-Sent Events (SSE) pipeline pushing live desktop toasts & badge increments", "America/Edmonton Grok daily agenda feeds merged with RingCentral Ext 101 SMS texts"] }
+  ]
+}

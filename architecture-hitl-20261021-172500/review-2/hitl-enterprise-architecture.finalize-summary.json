@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "ok": true,
+  "command": "finalize",
+  "status": "pass",
+  "type": "architecture",
+  "quality": "showcase",
+  "specification": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\candidate.json",
+    "sha256": "fccc71337f87f9505c1ec5b68d582c597bcbdecd0e785781d37cf0ecf69461a8",
+    "bytes": 6300
+  },
+  "artifact": {
+    "path": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\hitl-enterprise-architecture.html",
+    "sha256": "aa11e96bc1082a4b1dd326b9947d4007d2c6dcf3c8716e1ded5fd9b24ea6b2cf",
+    "bytes": 843510
+  },
+  "gates": {
+    "validate": "pass",
+    "deliver": "pass",
+    "check": "pass",
+    "browser-check": "pass"
+  },
+  "diagnostics": [],
+  "diagnosticSummary": {
+    "total": 0,
+    "shown": 0,
+    "truncated": false
+  },
+  "evidence": {
+    "receipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\review-2\\hitl-enterprise-architecture.finalize.json",
+    "summaryReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\review-2\\hitl-enterprise-architecture.finalize-summary.json",
+    "browserCheckReceipt": "C:\\Users\\Alienware Tech\\Desktop\\chatbot-platform\\.archify\\architecture-hitl-20261021-172500\\review-2\\hitl-enterprise-architecture.browser-check.json"
+  },
+  "update": {
+    "status": "current",
+    "installedVersion": "3.2.0",
+    "availableVersion": "3.2.0",
+    "releaseNotes": null,
+    "checkedAt": "2026-10-21T11:40:10.256Z",
+    "source": "cache",
+    "noticeRequired": false,
+    "noticeText": null
+  },
+  "visualReview": "not-requested",
+  "durationMs": 10845,
+  "browserCheck": {
+    "requested": true,
+    "ran": true
+  },
+  "visualReviewRecommendation": {
+    "action": "inspect-route-readability",
+    "signals": {
+      "resolvedCrossovers": 4,
+      "routesOverSuggestedBends": 5
+    },
+    "reason": "Automated gates passed, but crossings or detours still need perceptual review before claiming visual quality.",
+    "affectedRoutes": {
+      "crossings": [
+        {
+          "left": {
+            "id": "c-edge-triage",
+            "from": "express_edge",
+            "to": "lead_triage",
+            "label": "Auth Payload",
+            "collectionIndex": 1,
+            "artifactIndex": 2
+          },
+          "right": {
+            "id": "c-gate-smtp",
+            "from": "hitl_gate",
+            "to": "smtp_outbound",
+            "label": "Dispatch Approved Email",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "point": [
+            410,
+            359.0000000000001
+          ]
+        },
+        {
+          "left": {
+            "id": "c-triage-portal",
+            "from": "lead_triage",
+            "to": "client_portal",
+            "label": "Live SSE Alerts",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "right": {
+            "id": "c-gate-smtp",
+            "from": "hitl_gate",
+            "to": "smtp_outbound",
+            "label": "Dispatch Approved Email",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "point": [
+            410,
+            294.77272727272725
+          ]
+        },
+        {
+          "left": {
+            "id": "c-grok-gate",
+            "from": "grok_llm",
+            "to": "hitl_gate",
+            "label": "Submit AI Draft",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "right": {
+            "id": "c-exemplar-rag",
+            "from": "exemplar_learning",
+            "to": "hybrid_rag",
+            "label": "Inject Few-Shot",
+            "collectionIndex": 8,
+            "artifactIndex": 9
+          },
+          "point": [
+            709.9999999999999,
+            182.99999999999997
+          ]
+        },
+        {
+          "left": {
+            "id": "c-triage-db",
+            "from": "lead_triage",
+            "to": "mysql_core",
+            "label": "Record Inbound Lead",
+            "collectionIndex": 10,
+            "artifactIndex": 11
+          },
+          "right": {
+            "id": "c-gate-smtp",
+            "from": "hitl_gate",
+            "to": "smtp_outbound",
+            "label": "Dispatch Approved Email",
+            "collectionIndex": 11,
+            "artifactIndex": 12
+          },
+          "point": [
+            505,
+            380.5
+          ]
+        }
+      ],
+      "detours": [
+        {
+          "relationship": {
+            "id": "c-triage-portal",
+            "from": "lead_triage",
+            "to": "client_portal",
+            "label": "Live SSE Alerts",
+            "collectionIndex": 2,
+            "artifactIndex": 3
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "c-rag-grok",
+            "from": "hybrid_rag",
+            "to": "grok_llm",
+            "label": "Augmented Prompt",
+            "collectionIndex": 4,
+            "artifactIndex": 5
+          },
+          "bends": 3,
+          "stretch": 1.347
+        },
+        {
+          "relationship": {
+            "id": "c-grok-gate",
+            "from": "grok_llm",
+            "to": "hitl_gate",
+            "label": "Submit AI Draft",
+            "collectionIndex": 5,
+            "artifactIndex": 6
+          },
+          "bends": 4,
+          "stretch": 1
+        },
+        {
+          "relationship": {
+            "id": "c-settings-gate",
+            "from": "tenant_settings",
+            "to": "hitl_gate",
+            "label": "Tuning &amp; Policy",
+            "collectionIndex": 9,
+            "artifactIndex": 10
+          },
+          "bends": 3,
+          "stretch": 1.087,
+          "directCorridorBlockers": [
+            {
+              "id": "exemplar_learning",
+              "label": "Exemplars Learning",
+              "box": [
+                630,
+                90,
+                160,
+                65
+              ]
+            }
+          ]
+        },
+        {
+          "relationship": {
+            "id": "c-db-telephony",
+            "from": "mysql_core",
+            "to": "telephony_cron",
+            "label": "Sync Ext 101 SMS",
+            "collectionIndex": 12,
+            "artifactIndex": 13
+          },
+          "bends": 4,
+          "stretch": 1.273,
+          "directCorridorBlockers": [
+            {
+              "id": "smtp_outbound",
+              "label": "Approved Email Relay",
+              "box": [
+                630,
+                450,
+                160,
+                65
+              ]
+            }
+          ]
+        }
+      ],
+      "truncated": false
+    },
+    "hints": [
+      "express_edge → lead_triage crosses hitl_gate → smtp_outbound: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "lead_triage → client_portal crosses hitl_gate → smtp_outbound: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "grok_llm → hitl_gate crosses exemplar_learning → hybrid_rag: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "lead_triage → mysql_core crosses hitl_gate → smtp_outbound: move the node of whichever is a branch, return, or second entrance to the other side of the main path, so that relationship runs through an empty corridor.",
+      "lead_triage → client_portal needs 4 bends: move node lead_triage or client_portal so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "hybrid_rag → grok_llm needs 3 bends: move node hybrid_rag or grok_llm so they share a row or column with matching centers, or sit diagonally with a clear corner.",
+      "grok_llm → hitl_gate needs 4 bends: move node grok_llm or hitl_gate so they share a row or column with matching centers, or sit diagonally with a clear corner."
+    ],
+    "repair": "Trace these relationships at the desktop viewport. For Architecture, use references/architecture-layout-repair.md: reflow a blocked main path or tangled connected scene, and repair an isolated defect locally only when the surrounding composition is accepted. Preserve all semantic content and user-fixed geometry. Rerun finalize once after the edit."
+  }
+}
