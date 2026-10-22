@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Reviews from './components/Reviews';
 import TerminalContact from './components/TerminalContact';
 import Footer from './components/Footer';
+import AliPersonalAgent from './components/AliPersonalAgent';
 
 export default function App() {
   useEffect(() => {
@@ -52,6 +53,9 @@ export default function App() {
 
       {/* High-tech Footer */}
       <Footer />
+
+      {/* Floating Personal AI RAG Assistant */}
+      <AliPersonalAgent />
     </div>
   );
 }

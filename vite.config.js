@@ -6,6 +6,13 @@ import { resolve } from 'path';
 export default defineConfig({
   plugins: [react()],
   base: '/',
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+      'motion/react': resolve(__dirname, './src/lib/motion-react.tsx'),
+      'figma:react': resolve(__dirname, './src/lib/figma-react.ts'),
+    },
+  },
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

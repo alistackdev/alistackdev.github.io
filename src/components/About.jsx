@@ -55,24 +55,9 @@ export default function About() {
                 />
                 {/* Subtle cyber holographic glow on hover */}
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-                {/* Overlay Tags */}
-                <div className="absolute top-3 left-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-cyan-400/40 text-[10px] font-mono text-cyan-300">
-                  ID: 0324408
-                </div>
-                <div className="absolute bottom-3 right-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-emerald-400/40 text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-                  <Shield className="w-3 h-3" />
-                  PASSIONATE_LEARNER
-                </div>
-                <div className="absolute bottom-3 left-3 z-20 px-2 py-0.5 rounded bg-black/70 border border-purple-400/40 text-[10px] font-mono text-purple-300">
-                  GCUF // BSCS
-                </div>
               </div>
 
-              <div className="mt-4 w-full flex items-center justify-between text-xs font-mono text-slate-400 px-2">
-                <span>STATUS: LEVEL_4 DEV</span>
-                <span className="text-cyan-400">STATUS: ACTIVE</span>
-              </div>
+              <div className="mt-4 w-full flex items-center justify-between text-xs font-mono text-slate-400 px-2"><span>Ali Hassan</span><span className="text-cyan-400">Software Engineer</span></div>
             </div>
           </div>
 

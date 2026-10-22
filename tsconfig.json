@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "allowJs": true,
+    "paths": {
+      "@/*": ["./src/*"],
+      "motion/react": ["./src/lib/motion-react.tsx"],
+      "figma:react": ["./src/lib/figma-react.ts"]
+    }
+  },
+  "include": ["src"]
+}

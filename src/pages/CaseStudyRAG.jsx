@@ -16,6 +16,7 @@ import {
   Repeat
 } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/sound';
+import AliPersonalAgent from '../components/AliPersonalAgent';
 
 export default function CaseStudyRAG() {
   const [activeTab, setActiveTab] = useState('conversation');
@@ -660,6 +661,9 @@ export default function CaseStudyRAG() {
           <span className="text-cyan-400/80">CONFIDENTIAL UNLISTED ENGINEERING BRIEF</span>
         </div>
       </footer>
+
+      {/* Floating Personal AI RAG Assistant */}
+      <AliPersonalAgent />
 
     </div>
   );
