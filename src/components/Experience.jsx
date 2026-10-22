@@ -23,7 +23,7 @@ export default function Experience() {
     {
       period: '2025 – PRESENT',
       role: 'Backend & AI Automation Developer',
-      company: "Canada's Log & Wood Home Store (loghomestore.ca)",
+      company: "Canadian Timber & Log Enterprise (Under NDA)",
       location: 'Remote // Canadian Client',
       glow: 'border-purple-500/40 hover:border-purple-400',
       badgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/30',

@@ -9,24 +9,76 @@ const WELCOME_TEXT = "Hello. I'm Ali Hassan's AI Assistant. How can I assist you
 
 /**
  * Format text without bullet dots, highlighting bold segments cleanly
+ * and rendering clickable hyperlinks for case studies and URLs.
  */
 function CleanMessageParagraph({ text }) {
   if (!text) return null;
 
-  const parts = text.split(/(\*\*[^*]+\*\*)/g);
+  // Regex captures:
+  // 1: [label](url) -> match[1] = label, match[2] = url
+  // 2: **bold** -> match[3] = bold text
+  // 3: raw link /case-study.html or https://... -> match[4]
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|((?:https?:\/\/|\/case-study\.html)[^\s)]*)/g;
+
+  const elements = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      elements.push(text.slice(lastIndex, match.index));
+    }
+
+    if (match[1] && match[2]) {
+      const label = match[1];
+      const url = match[2];
+      elements.push(
+        <a
+          key={`md-link-${match.index}`}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 font-medium transition-colors"
+        >
+          {label}
+        </a>
+      );
+    } else if (match[3]) {
+      elements.push(
+        <strong key={`bold-${match.index}`} className="font-semibold text-white">
+          {match[3]}
+        </strong>
+      );
+    } else if (match[4]) {
+      const fullMatch = match[4];
+      const cleanUrl = fullMatch.replace(/[.,;:!?]+$/, '');
+      const trailingPunct = fullMatch.slice(cleanUrl.length);
+      elements.push(
+        <a
+          key={`raw-link-${match.index}`}
+          href={cleanUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-cyan-400 underline underline-offset-2 hover:text-cyan-300 font-medium transition-colors"
+        >
+          {cleanUrl}
+        </a>
+      );
+      if (trailingPunct) {
+        elements.push(trailingPunct);
+      }
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    elements.push(text.slice(lastIndex));
+  }
 
   return (
     <p className="leading-relaxed whitespace-pre-wrap">
-      {parts.map((part, pIdx) => {
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return (
-            <strong key={pIdx} className="font-semibold text-white">
-              {part.slice(2, -2)}
-            </strong>
-          );
-        }
-        return <span key={pIdx}>{part}</span>;
-      })}
+      {elements}
     </p>
   );
 }
@@ -87,7 +139,7 @@ export default function AliPersonalAgent() {
     }));
   };
 
-  // Smooth character reveal (blurry-to-unblur, no cursor line/box)
+  // Smooth character reveal (steady, fluid cadence without harsh jumps)
   const streamTextIntoMessage = (msgId, fullText) => {
     let charIndex = 0;
     setStreamingMsgId(msgId);
@@ -166,46 +218,166 @@ export default function AliPersonalAgent() {
   return (
     <div className="fixed bottom-6 right-6 z-50 font-sans">
       <style>{`
-        @keyframes text-unblur-fade {
-          0% { filter: blur(4px); opacity: 0.4; }
-          100% { filter: blur(0px); opacity: 1; }
+        /* Continuous gentle floating & glowing animation */
+        @keyframes badge-float-glow {
+          0%, 100% {
+            transform: translateY(0);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.65), 0 0 16px rgba(34,211,238,0.25), inset 0 1px 1px rgba(255,255,255,0.35);
+          }
+          50% {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.75), 0 0 24px rgba(168,85,247,0.45), 0 0 12px rgba(34,211,238,0.4), inset 0 1px 1px rgba(255,255,255,0.5);
+          }
         }
-        .animate-unblur-reveal {
-          animation: text-unblur-fade 0.3s ease-out forwards;
+        .animate-badge-glow-float {
+          animation: badge-float-glow 3.5s ease-in-out infinite;
+        }
+
+        /* Periodic friendly hand waving */
+        @keyframes wave-hand {
+          0%, 60%, 100% { transform: rotate(0deg); }
+          10%, 30% { transform: rotate(14deg); }
+          20%, 40% { transform: rotate(-14deg); }
+        }
+        .animate-waving-hand {
+          display: inline-block;
+          transform-origin: 70% 70%;
+          animation: wave-hand 2.6s ease-in-out infinite;
+        }
+
+        /* Continuous light reflection sweep across the badge */
+        @keyframes badge-shimmer-sweep {
+          0% { transform: translateX(-120%); }
+          25%, 100% { transform: translateX(220%); }
+        }
+        .animate-badge-shimmer {
+          animation: badge-shimmer-sweep 4s ease-in-out infinite;
+        }
+
+        /* Initial smooth entrance reveal */
+        @keyframes badge-entrance {
+          0% {
+            opacity: 0;
+            transform: translateY(12px) scale(0.92);
+            filter: blur(6px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0px);
+          }
+        }
+        .animate-badge-entrance {
+          animation: badge-entrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Constantly reveals from left-to-right (1.2s), stays 3s, then loops */
+        @keyframes text-reveal-loop {
+          0% {
+            clip-path: inset(0 100% 0 0);
+            opacity: 0;
+            transform: translateX(-6px);
+            filter: blur(4px);
+          }
+          24% {
+            clip-path: inset(0 0% 0 0);
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0px);
+          }
+          82% {
+            clip-path: inset(0 0% 0 0);
+            opacity: 1;
+            transform: translateX(0);
+            filter: blur(0px);
+          }
+          93% {
+            clip-path: inset(0 0% 0 0);
+            opacity: 0;
+            transform: translateX(2px);
+            filter: blur(2px);
+          }
+          96%, 100% {
+            clip-path: inset(0 100% 0 0);
+            opacity: 0;
+            transform: translateX(-6px);
+            filter: blur(4px);
+          }
+        }
+        .animate-text-reveal-loop {
+          display: inline-block;
+          animation: text-reveal-loop 5s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+        }
+        /* Pause on hover so user can easily read or click */
+        .group\\/badge:hover .animate-text-reveal-loop {
+          animation-play-state: paused;
+          clip-path: inset(0 0 0 0) !important;
+          opacity: 1 !important;
+          filter: blur(0px) !important;
         }
       `}</style>
 
-      {/* Animated Blinking AI Orb Launcher Button */}
+      {/* Animated Blinking AI Orb Launcher + Stylish Floating Badge */}
       {!isOpen && (
-        <button
-          type="button"
-          onClick={() => {
-            playClickSound();
-            setIsOpen(true);
-          }}
-          onMouseEnter={() => playHoverSound()}
-          aria-label="Open Ali's AI Assistant"
-          title="Chat with Ali's AI Assistant"
-          className="group relative flex items-center justify-center rounded-full p-0.5 transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer bg-transparent border-0 outline-none"
-        >
-          {/* Ambient multi-color glow behind the orb */}
-          <span className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-500 opacity-60 blur-md group-hover:opacity-95 transition-opacity duration-300" />
+        <div className="relative flex flex-col items-end">
+          {/* Small Stylish Badge with Constant Left-to-Right Reveal Loop */}
+          <div
+            onClick={() => {
+              playClickSound();
+              setIsOpen(true);
+            }}
+            onMouseEnter={() => playHoverSound()}
+            title="Chat with Ali's AI"
+            className="mb-2.5 cursor-pointer select-none group/badge transition-transform duration-300 hover:scale-108 active:scale-95 animate-badge-entrance"
+          >
+            <div className="relative overflow-hidden px-3.5 py-1.5 rounded-full bg-gradient-to-r from-white/[0.14] via-[#0d1429]/90 to-white/[0.08] backdrop-blur-2xl border border-white/25 flex items-center gap-1.5 animate-badge-glow-float">
+              {/* Continuous Shimmer Light Ray */}
+              <div className="pointer-events-none absolute inset-0 -skew-x-12 bg-gradient-to-r from-transparent via-cyan-400/25 to-transparent w-1/2 animate-badge-shimmer" />
 
-          {/* Blinking AI Avatar Orb */}
-          <Avatar
-            blinking
-            color="cyan"
-            size="lg"
-            shape="circle"
-            className="ring-2 ring-cyan-300/40 group-hover:ring-cyan-200/80 transition-all shadow-[0_0_25px_rgba(34,211,238,0.4)]"
-          />
+              {/* Waving Hand */}
+              <span className="text-xs animate-waving-hand shrink-0">👋</span>
 
-          {/* Online indicator dot */}
-          <span className="pointer-events-none absolute top-0.5 right-0.5 z-20 flex h-3.5 w-3.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#050508]" />
-          </span>
-        </button>
+              {/* Constantly Revealed Text from Left to Right (loops every 3s) */}
+              <span className="animate-text-reveal-loop font-sans font-medium text-[11px] sm:text-xs text-white tracking-wide whitespace-nowrap drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]">
+                Say hi! I don&apos;t bite
+              </span>
+
+              {/* Speech pointer notch */}
+              <div className="absolute -bottom-1 right-6 w-2 h-2 rotate-45 bg-[#0d1429] border-r border-b border-white/25" />
+            </div>
+          </div>
+
+          {/* Launcher Button */}
+          <button
+            type="button"
+            onClick={() => {
+              playClickSound();
+              setIsOpen(true);
+            }}
+            onMouseEnter={() => playHoverSound()}
+            aria-label="Open Ali's AI Assistant"
+            title="Chat with Ali's AI Assistant"
+            className="group relative flex items-center justify-center rounded-full p-0.5 transition-transform duration-300 hover:scale-110 active:scale-95 cursor-pointer bg-transparent border-0 outline-none"
+          >
+            {/* Ambient multi-color glow behind the orb */}
+            <span className="pointer-events-none absolute -inset-2 rounded-full bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-500 opacity-60 blur-md group-hover:opacity-95 transition-opacity duration-300" />
+
+            {/* Blinking AI Avatar Orb */}
+            <Avatar
+              blinking
+              color="cyan"
+              size="lg"
+              shape="circle"
+              className="ring-2 ring-cyan-300/40 group-hover:ring-cyan-200/80 transition-all shadow-[0_0_25px_rgba(34,211,238,0.4)]"
+            />
+
+            {/* Online indicator dot */}
+            <span className="pointer-events-none absolute top-0.5 right-0.5 z-20 flex h-3.5 w-3.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-400 border-2 border-[#050508]" />
+            </span>
+          </button>
+        </div>
       )}
 
       {/* Open Chat Window */}
@@ -277,11 +449,7 @@ export default function AliPersonalAgent() {
                 ) : (
                   /* Assistant Clean White Text (No box) + Action Buttons */
                   <div className="max-w-[94%] space-y-2 py-0.5">
-                    <div
-                      className={`text-slate-100 text-xs sm:text-[13px] leading-relaxed font-normal tracking-wide ${
-                        streamingMsgId === msg.id ? 'animate-unblur-reveal' : ''
-                      }`}
-                    >
+                    <div className="text-slate-100 text-xs sm:text-[13px] leading-relaxed font-normal tracking-wide">
                       <CleanMessageParagraph text={msg.text} />
                     </div>
 

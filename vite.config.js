@@ -4,7 +4,24 @@ import { resolve } from 'path';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'case-study-rewrite',
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          if (req.url) {
+            const urlPath = req.url.split('?')[0].replace(/[.]+$/, '');
+            if (urlPath === '/case-study' || urlPath === '/case-study/' || urlPath === '/case-study.html') {
+              const query = req.url.includes('?') ? '?' + req.url.split('?')[1] : '';
+              req.url = '/case-study.html' + query;
+            }
+          }
+          next();
+        });
+      }
+    }
+  ],
   base: '/',
   resolve: {
     alias: {
