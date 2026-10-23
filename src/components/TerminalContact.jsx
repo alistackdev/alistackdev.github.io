@@ -23,7 +23,7 @@ export default function TerminalContact() {
   
   const [commandInput, setCommandInput] = useState('');
   const [currentTime, setCurrentTime] = useState('');
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
+  const [formState, setFormState] = useState({ name: '', email: '', message: '', _gotcha: '' });
   const [submitting, setSubmitting] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState(null);
 
@@ -66,7 +66,7 @@ export default function TerminalContact() {
     } else if (cmd === 'projects') {
       newLogs.push({
         type: 'info',
-        text: 'PROJECTS: \n1. Canada Log Home Store RAG Pipeline (loghomestore.ca)\n2. Romic Media Platform (romicmedia.com)\n3. Cinema Booking Management System (C++ OOP)\n4. Smart Parking Allocation System (C++ OOP)'
+        text: 'PROJECTS: \n1. Enterprise Canadian Timber RAG Pipeline (Under NDA)\n2. Romic Media Platform (romicmedia.com)\n3. Cinema Booking Management System (C++ OOP)\n4. Smart Parking Allocation System (C++ OOP)'
       });
     } else if (cmd === 'internship') {
       newLogs.push({
@@ -101,6 +101,7 @@ export default function TerminalContact() {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
+    if (formState._gotcha) return; // Silent discard for bot spam
     playClickSound();
     setSubmitting(true);
     setSubmissionStatus(null);
@@ -249,6 +250,16 @@ export default function TerminalContact() {
 
             {/* Contact Form Submission */}
             <form onSubmit={handleFormSubmit} className="p-6 sm:p-8 space-y-5 bg-[#070914]/80">
+              <input
+                type="text"
+                name="_gotcha"
+                tabIndex="-1"
+                autoComplete="off"
+                value={formState._gotcha}
+                onChange={(e) => setFormState({ ...formState, _gotcha: e.target.value })}
+                className="hidden"
+                aria-hidden="true"
+              />
               <div className="font-mono text-xs text-slate-400 mb-2">
                 // TRANSMIT DIRECT PAYLOAD TO ALI HASSAN:
               </div>

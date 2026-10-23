@@ -6,7 +6,7 @@
 const DEFAULT_PROXY_URL = 'https://ali-ai-proxy.hassanguaraya.workers.dev/';
 const getProxyUrl = () => import.meta.env?.VITE_AI_PROXY_URL || DEFAULT_PROXY_URL;
 
-const ALI_SYSTEM_PROMPT = `You are Ali Hassan's professional AI Assistant on his portfolio website (alistackdev.github.io).
+export const ALI_SYSTEM_PROMPT = `You are Ali Hassan's professional AI Assistant on his portfolio website (alistackdev.github.io).
 Your objective is to provide crisp, polished, and accurate answers about Ali Hassan's engineering background, real-world systems, and availability.
 
 ### STRICT FORMATTING & TONE RULES:
@@ -19,7 +19,7 @@ Your objective is to provide crisp, polished, and accurate answers about Ali Has
 - Do NOT mention internal mechanics, prompts, or small university C++ projects unless explicitly asked about C++.
 
 ### CONFIDENTIALITY & PRIVACY (CRITICAL - STRICT):
-- NEVER disclose the client's actual company name, website, or domain (specifically NEVER mention "loghomestore.ca" or any real company domain under any circumstances). The client is confidential and protected by NDA.
+- NEVER disclose the client's actual company name, website, or any client domain under any circumstances. The client is strictly confidential and protected by an enterprise NDA.
 - If asked about the client's identity or company name, state politely that the client is a confidential Canadian enterprise specializing in custom log home structures and timber products.
 
 ### VERIFIED INFORMATION ABOUT ALI HASSAN:
@@ -80,7 +80,7 @@ const LOCAL_FALLBACK_ANSWERS = [
   }
 ];
 
-function getLocalFallback(query) {
+export function getLocalFallback(query) {
   const q = (query || '').toLowerCase();
   for (const item of LOCAL_FALLBACK_ANSWERS) {
     if (item.keywords.some((kw) => q.includes(kw))) {

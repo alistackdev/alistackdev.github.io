@@ -12,7 +12,7 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 40);
 
-      const sections = ['hero', 'about', 'skills', 'experience', 'reviews', 'contact'];
+      const sections = ['hero', 'about', 'skills', 'experience', 'projects', 'reviews', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -42,7 +42,7 @@ export default function Navbar() {
     { name: 'PROFILE', href: '#about', id: 'about' },
     { name: 'CAPABILITIES', href: '#skills', id: 'skills' },
     { name: 'TIMELINE', href: '#experience', id: 'experience' },
-    // { name: 'PROJECTS', href: '#projects', id: 'projects' }, // Commented out temporarily
+    { name: 'PROJECTS', href: '#projects', id: 'projects' },
     { name: 'REVIEWS', href: '#reviews', id: 'reviews' },
     { name: 'COMMAND', href: '#contact', id: 'contact' },
   ];

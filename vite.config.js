@@ -12,7 +12,13 @@ export default defineConfig({
         server.middlewares.use((req, res, next) => {
           if (req.url) {
             const urlPath = req.url.split('?')[0].replace(/[.]+$/, '');
-            if (urlPath === '/case-study' || urlPath === '/case-study/' || urlPath === '/case-study.html') {
+            if (
+              urlPath === '/case-study' ||
+              urlPath === '/case-study/' ||
+              urlPath === '/case-study.html' ||
+              urlPath === '/case-study-rag' ||
+              urlPath === '/case-study-rag.html'
+            ) {
               const query = req.url.includes('?') ? '?' + req.url.split('?')[1] : '';
               req.url = '/case-study.html' + query;
             }
@@ -38,7 +44,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         caseStudy: resolve(__dirname, 'case-study.html'),
-        caseStudyRag: resolve(__dirname, 'case-study-rag.html'),
       },
       output: {
         manualChunks: {

@@ -46,7 +46,7 @@ export default function App() {
         <About />
         <Skills />
         <Experience />
-        {/* <Projects /> -- Temporarily commented out as requested */}
+        <Projects />
         <Reviews />
         <TerminalContact />
       </main>
