@@ -382,7 +382,7 @@ export default function CaseStudyRAG() {
 
             <div className="flex items-center gap-3">
               <a
-                href="/architecture/chatbot-enterprise-architecture.html?theme=dark"
+                href="architecture/chatbot-enterprise-architecture.html?theme=dark"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => playClickSound()}
@@ -418,7 +418,7 @@ export default function CaseStudyRAG() {
             {/* Clean Live Diagram Container (Hides bottom helping cards so zero blank space) */}
             <div className="w-full h-[580px] sm:h-[740px] lg:h-[820px] bg-[#0d1117]">
               <iframe
-                src="/architecture/chatbot-enterprise-architecture.html?view=live&theme=dark"
+                src="architecture/chatbot-enterprise-architecture.html?view=live&theme=dark"
                 title="AQ Tech Multi-Tenant Chatbot Platform — Enterprise Architecture Diagram"
                 className="w-full h-full border-0 block"
                 scrolling="no"

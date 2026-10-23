@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function CustomCursor() {
-  const dotRef = useRef(null);
-  const ringRef = useRef(null);
+  const [pos, setPos] = useState({ x: -100, y: -100 });
+  const [follower, setFollower] = useState({ x: -100, y: -100 });
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -14,73 +14,75 @@ export default function CustomCursor() {
     let targetY = -100;
     let currX = -100;
     let currY = -100;
-    let frameId;
 
     const onMouseMove = (e) => {
       targetX = e.clientX;
       targetY = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate3d(${targetX}px, ${targetY}px, 0) translate(-50%, -50%)`;
-      }
-      setIsVisible(true);
+      setPos({ x: targetX, y: targetY });
+      if (!isVisible) setIsVisible(true);
     };
-
-    const updateFollower = () => {
-      currX += (targetX - currX) * 0.18;
-      currY += (targetY - currY) * 0.18;
-      if (ringRef.current) {
-        ringRef.current.style.transform = `translate3d(${currX}px, ${currY}px, 0) translate(-50%, -50%)`;
-      }
-      frameId = requestAnimationFrame(updateFollower);
-    };
-    frameId = requestAnimationFrame(updateFollower);
 
     const onMouseLeave = () => setIsVisible(false);
     const onMouseEnter = () => setIsVisible(true);
 
-    const handleHover = (e) => {
-      const target = e.target;
-      setIsHovering(
-        !!(target && (
-          target.closest('a') ||
-          target.closest('button') ||
-          target.closest('[data-interactive="true"]') ||
-          target.closest('input') ||
-          target.closest('textarea')
-        ))
-      );
-    };
-
-    window.addEventListener('mousemove', onMouseMove, { passive: true });
-    window.addEventListener('mouseover', handleHover, { passive: true });
+    window.addEventListener('mousemove', onMouseMove);
     document.addEventListener('mouseleave', onMouseLeave);
     document.addEventListener('mouseenter', onMouseEnter);
 
+    let frameId;
+    const updateFollower = () => {
+      currX += (targetX - currX) * 0.18;
+      currY += (targetY - currY) * 0.18;
+      setFollower({ x: currX, y: currY });
+      frameId = requestAnimationFrame(updateFollower);
+    };
+    frameId = requestAnimationFrame(updateFollower);
+
+    // Hover detection for buttons & links
+    const handleElementHover = (e) => {
+      const target = e.target;
+      if (
+        target.closest('a') ||
+        target.closest('button') ||
+        target.closest('[data-interactive="true"]') ||
+        target.closest('input') ||
+        target.closest('textarea')
+      ) {
+        setIsHovering(true);
+      } else {
+        setIsHovering(false);
+      }
+    };
+
+    window.addEventListener('mouseover', handleElementHover);
+
     return () => {
       window.removeEventListener('mousemove', onMouseMove);
-      window.removeEventListener('mouseover', handleHover);
       document.removeEventListener('mouseleave', onMouseLeave);
       document.removeEventListener('mouseenter', onMouseEnter);
+      window.removeEventListener('mouseover', handleElementHover);
       cancelAnimationFrame(frameId);
     };
-  }, []);
+  }, [isVisible]);
+
+  if (!isVisible) return null;
 
   return (
-    <div className={`transition-opacity duration-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+    <>
       {/* Inner precise dot */}
       <div
-        ref={dotRef}
-        className="fixed top-0 left-0 pointer-events-none z-50 w-2 h-2 rounded-full bg-cyan-400 shadow-[0_0_10px_#00f2fe]"
+        className="fixed pointer-events-none z-50 w-2 h-2 rounded-full bg-cyan-400 -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 shadow-[0_0_10px_#00f2fe]"
+        style={{ left: `${pos.x}px`, top: `${pos.y}px` }}
       />
       {/* Outer follower ring */}
       <div
-        ref={ringRef}
-        className={`fixed top-0 left-0 pointer-events-none z-50 rounded-full border border-cyan-400/60 transition-[width,height,background-color,border-color] duration-200 ${
+        className={`fixed pointer-events-none z-50 rounded-full border border-cyan-400/60 -translate-x-1/2 -translate-y-1/2 transition-all duration-200 ${
           isHovering
-            ? 'w-12 h-12 bg-cyan-500/10 border-cyan-300'
+            ? 'w-12 h-12 bg-cyan-500/10 scale-125 border-cyan-300'
             : 'w-8 h-8 opacity-70'
         }`}
+        style={{ left: `${follower.x}px`, top: `${follower.y}px` }}
       />
-    </div>
+    </>
   );
 }
