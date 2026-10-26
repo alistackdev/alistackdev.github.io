@@ -46,13 +46,13 @@ export default function Skills() {
       level: '93%'
     },
     {
-      title: 'C++ & Object-Oriented Programming (OOP)',
+      title: 'Human-in-the-Loop & Multi-Tenant Database Systems',
       category: 'SYSTEMS & LANGUAGES',
       icon: Database,
       color: 'green',
-      desc: 'Applying core OOP principles (classes, encapsulation, inheritance, polymorphism) to engineer real-world systems including Cinema Booking & Smart Parking algorithms.',
-      tags: ['C++', 'OOP Architecture', 'Data Structures', 'Algorithm Design', 'Python'],
-      level: '90%'
+      desc: 'Designing MySQL persistence layers with sub-5ms composite indexing, starred response active learning loops, and SSE real-time admin dashboards.',
+      tags: ['MySQL', 'SSE Real-Time', 'Starred Memory', 'Admin Portals', 'Schema Defense'],
+      level: '92%'
     },
     {
       title: 'Cloud Automation & Webhook Services',

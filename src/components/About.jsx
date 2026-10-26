@@ -1,15 +1,15 @@
 import React from 'react';
-import { User, Shield, GraduationCap, MapPin, Mail, Sparkles, Cpu, Layers, Server, Phone, Code2 } from 'lucide-react';
+import { User, Shield, Globe, MapPin, Mail, Sparkles, Cpu, Layers, Server, Phone, Code2 } from 'lucide-react';
 import { playHoverSound } from '../utils/sound';
 
 export default function About() {
   const specs = [
     { label: 'OPERATOR', value: 'Ali Hassan', icon: User },
-    { label: 'CURRENT ROLE', value: 'Backend & Automation Intern @ Slashcloud.io', icon: Server },
-    { label: 'CORE FOCUS', value: 'Web Solutions & Backend Automation', icon: Code2 },
-    { label: 'INSTITUTION (BSCS)', value: 'GCU Faisalabad (2025 – Present)', icon: GraduationCap },
-    { label: 'COLLEGE (ICS)', value: 'Nusrat Jahan College, Chenab Nagar (2023 – 2025)', icon: Layers },
-    { label: 'LOCATION', value: 'Faisalabad, Punjab, Pakistan', icon: MapPin },
+    { label: 'CURRENT ROLE', value: 'Backend & Automation Engineer @ Slashcloud.io', icon: Server },
+    { label: 'ARCHITECTURE SPECIALTY', value: 'Custom Node.js, RAG Pipelines & CRM APIs', icon: Cpu },
+    { label: 'CLIENT DELIVERY', value: 'International Remote (Canada, US, EU)', icon: Globe },
+    { label: 'CORE FOCUS', value: 'Production Web Systems & Cloud Automation', icon: Code2 },
+    { label: 'LOCATION', value: 'Faisalabad, Pakistan (Remote Worldwide)', icon: MapPin },
     { label: 'DIRECT PHONE', value: '+92-324-4086454', icon: Phone, isLink: true, href: 'tel:+923244086454' },
     { label: 'SECURE EMAIL', value: 'hassanguaraya@gmail.com', icon: Mail, isLink: true, href: 'mailto:hassanguaraya@gmail.com' },
   ];
@@ -47,7 +47,7 @@ export default function About() {
                 {/* Profile Image - Vibrant natural color with smooth zoom & cyan aura on hover */}
                 <img
                   src="my-photo.jpeg"
-                  alt="Ali Hassan - Web & Backend Developer"
+                  alt="Ali Hassan - Backend & AI Automation Engineer"
                   className="w-full h-full object-cover brightness-100 contrast-105 group-hover:scale-105 group-hover:contrast-110 transition-all duration-500 ease-out"
                   onError={(e) => {
                     e.target.src = 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=600&q=80';
@@ -57,7 +57,10 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/10 via-transparent to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
               </div>
 
-              <div className="mt-4 w-full flex items-center justify-between text-xs font-mono text-slate-400 px-2"><span>Ali Hassan</span><span className="text-cyan-400">Software Engineer</span></div>
+              <div className="mt-4 w-full flex items-center justify-between text-xs font-mono text-slate-400 px-2">
+                <span>Ali Hassan</span>
+                <span className="text-cyan-400">Backend &amp; AI Systems Engineer</span>
+              </div>
             </div>
           </div>
 
@@ -74,10 +77,10 @@ export default function About() {
                 <h3 className="font-bold text-white uppercase tracking-wider">Executive Developer Overview</h3>
               </div>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                I am a passionate Computer Science student at <strong className="text-white font-medium">Government College University Faisalabad (GCUF)</strong> with an insatiable appetite for learning and exploring new technologies. Rather than staying confined to one narrow box, I love building complete digital experiences — from intuitive, dynamic web platforms in <strong className="text-cyan-300 font-medium">React</strong> to high-reliability backend services and API automations in <strong className="text-cyan-300 font-medium">Node.js</strong>.
+                I engineer high-reliability digital architectures — bridging intuitive, dynamic web platforms in <strong className="text-cyan-300 font-medium">React</strong> with high-throughput backend services, custom webhook listeners, and zero-hallucination RAG pipelines in <strong className="text-cyan-300 font-medium">Node.js</strong>.
               </p>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                Currently leveling up my craft as a <strong className="text-white font-medium">Backend &amp; Automation Engineer Intern at Slashcloud.io</strong>, while also architecting production-grade AI automation pipelines for international clients. What defines me most is curiosity, a strong work ethic, and an eagerness to ship clean, performant software that solves genuine problems.
+                Currently engineering cloud infrastructure and automated workflows at <strong className="text-white font-medium">Slashcloud.io</strong>, while independently architecting production AI automation systems for international enterprise clients. What defines my work is deep architectural rigor, atomic queuing, and shipping performant software that scales with real business demands.
               </p>
             </div>
 

@@ -20,13 +20,13 @@ Your objective is to provide crisp, polished, and accurate answers about Ali Has
 
 ### CONFIDENTIALITY & PRIVACY (CRITICAL - STRICT):
 - NEVER disclose the client's actual company name, website, or domain (specifically NEVER mention "loghomestore.ca" or any real company domain under any circumstances). The client is confidential and protected by NDA.
-- If asked about the client's identity or company name, state politely that the client is a confidential Canadian enterprise specializing in custom log home structures and timber products.
+- If asked about the client's identity or company name, state politely that the client is a confidential Canadian e-commerce enterprise protected by NDA.
 
 ### VERIFIED INFORMATION ABOUT ALI HASSAN:
-- **Profile**: Full-Stack Web Developer & Backend Automation Engineer based in Faisalabad, Pakistan.
-- **Education**: BS in Computer Science (BSCS) at Government College University Faisalabad (GCUF, 2025–Present). Completed ICS from Nusrat Jahan College.
-- **Current Role**: Backend & Automation Engineer Intern at Slashcloud.io, engineering cloud-integrated Node.js services, webhook listeners, and automated data pipelines.
-- **Production AI & Client Systems**: Built an enterprise AI-assisted Lead & Conversation Management System for a confidential Canadian enterprise in Node.js, featuring multi-channel chat/email ingestion, Human-in-the-Loop review dashboards, and exemplar learning feedback loops.
+- **Profile**: Backend & AI Systems Engineer based in Faisalabad, Pakistan (available worldwide).
+- **Education**: Computer Science background with intensive engineering focus on distributed backend architectures, REST APIs, and zero-hallucination RAG pipelines.
+- **Current Role**: Backend & Automation Engineer at Slashcloud.io, engineering cloud-integrated Node.js services, webhook listeners, and automated data pipelines.
+- **Production AI & Client Systems**: Built an enterprise AI-assisted Lead Follow-Up & Conversation Management System for a confidential Canadian enterprise in Node.js. It separates Actionable leads (with email/phone) from anonymous No-Contact sessions, sends instant Admin Email Alerts containing visitor details, conversation history, and an AI follow-up draft, and passes 3 context sources to the AI on every turn: verified business information chunks, starred responses, and client Change Justification Notes synced to Google Sheets so the model progressively adapts to the business.
 - **Web Engineering**: Engineered production web platforms including Romic Media (romicmedia.com) using React 18, Vite, and Tailwind CSS.
 - **Business Background**: Bootstrapped and scaled an online commercial e-commerce brand to PKR 10 Lakh+/month, giving him strong intuition for conversion optimization and user retention.
 - **Tech Stack**: Node.js, Express, REST APIs, Webhooks, MySQL, React 18, Vite, Tailwind CSS, JavaScript (ES6+), LLM APIs & RAG Pipelines.
@@ -34,7 +34,7 @@ Your objective is to provide crisp, polished, and accurate answers about Ali Has
 
 ### ENTERPRISE CASE STUDY & ARCHITECTURE DIAGRAM:
 - Ali has authored an unlisted technical case study with an interactive architecture diagram at: '/case-study.html'.
-- The case study details his custom Node.js architecture, multi-channel inbound pipeline, Human-in-the-Loop review dashboard, and dynamic exemplar-based active learning loop.
+- The case study details his custom Node.js architecture, multi-channel inbound pipeline, Human-in-the-Loop review dashboard, and dynamic starred response active learning loop.
 - CASE STUDY LINK RULE (STRICT): ONLY provide the link (/case-study.html) when the user EXPLICITLY asks to see, read, or get the link to the case study or architecture diagram. Format the link cleanly as [case-study.html](/case-study.html) without attaching trailing periods or punctuation.`;
 
 const LOCAL_FALLBACK_ANSWERS = [
@@ -46,12 +46,12 @@ const LOCAL_FALLBACK_ANSWERS = [
   {
     keywords: ['client name', 'company name', 'loghomestore', 'log home store', 'client identity', 'kaunsi company'],
     answer:
-      "Under mutual non-disclosure agreements, the client's corporate name is confidential. The project was engineered for an established Canadian timber and log structures enterprise."
+      "Under mutual non-disclosure agreements, the client's corporate name is confidential. The project was engineered for an established Canadian e-commerce and retail enterprise."
   },
   {
     keywords: ['education', 'study', 'degree', 'university', 'college', 'gcuf', 'bscs', 'school', 'parhai'],
     answer:
-      "Ali is currently pursuing his BS in Computer Science at Government College University Faisalabad (2025–Present), having previously completed his ICS at Nusrat Jahan College."
+      "Ali holds a strong Computer Science foundation with deep practical expertise in distributed backend systems, Node.js architectures, and production RAG pipelines."
   },
   {
     keywords: ['work', 'build', 'built', 'projects', 'project', 'client', 'canada', 'romic', 'kaam', 'system', 'portfolio'],
@@ -61,7 +61,7 @@ const LOCAL_FALLBACK_ANSWERS = [
   {
     keywords: ['slashcloud', 'intern', 'internship', 'job', 'current', 'role', 'company'],
     answer:
-      "At Slashcloud.io, Ali serves as a Backend & Automation Engineer Intern, building scalable Node.js cloud services, webhook processors, and operational data pipelines."
+      "At Slashcloud.io, Ali serves as a Backend & Automation Engineer, building scalable Node.js cloud services, webhook processors, and operational data pipelines."
   },
   {
     keywords: ['skill', 'skills', 'stack', 'tech', 'react', 'node', 'nodejs', 'ai', 'frontend', 'backend'],
@@ -76,7 +76,7 @@ const LOCAL_FALLBACK_ANSWERS = [
   {
     keywords: ['who', 'about', 'personality', 'person', 'kon', 'kaun', 'intro', 'bio', 'himself', 'kesa', 'curious'],
     answer:
-      "Ali Hassan is a Full-Stack Developer and Backend Automation Engineer from Faisalabad who combines clean software architecture with practical e-commerce and business-driven intuition."
+      "Ali Hassan is a Backend & AI Systems Engineer from Faisalabad who combines clean software architecture with practical e-commerce and business-driven intuition."
   }
 ];
 
@@ -87,7 +87,7 @@ function getLocalFallback(query) {
       return item.answer;
     }
   }
-  return "Ali Hassan is a Full-Stack Developer and Backend Automation Engineer interning at Slashcloud.io and studying Computer Science at GCUF. How may I assist you with his work or background?";
+  return "Ali Hassan is a Backend & AI Systems Engineer at Slashcloud.io specializing in custom Node.js architectures, RAG pipelines, and high-performance React web systems. How may I assist you with his work or background?";
 }
 
 /**

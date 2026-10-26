@@ -1,34 +1,35 @@
 import React from 'react';
-import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Server, Globe, Cpu, ShoppingBag } from 'lucide-react';
-import { playHoverSound } from '../utils/sound';
+import { Briefcase, Calendar, MapPin, TrendingUp, CheckCircle, Server, Globe, Cpu, ShoppingBag, Sparkles } from 'lucide-react';
+import { playHoverSound, playClickSound } from '../utils/sound';
 
 export default function Experience() {
   const experiences = [
     {
       period: '2025 – PRESENT // CURRENT',
-      role: 'Backend & Automation Engineer Intern',
+      role: 'Backend & Automation Engineer',
       company: 'Slashcloud.io',
-      location: 'Hybrid / Remote (Past 3 Months)',
+      location: 'Hybrid / Remote',
       glow: 'border-cyan-500/40 hover:border-cyan-400',
       badgeColor: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30',
       dotColor: 'bg-cyan-400 shadow-[0_0_14px_#00f2fe]',
-      metrics: 'Active Engineering Internship',
+      metrics: 'Cloud Automation Systems',
       duties: [
-        'Developing cloud-integrated backend services, webhook processors, and API automation workflows.',
-        'Connecting disparate data sources and automating operational pipelines to streamline team productivity.',
-        'Implementing clean asynchronous architecture, modular services, and structured error handling.',
+        'Developing cloud-integrated backend services, webhook processors, and API automation workflows in Node.js.',
+        'Connecting disparate data sources and automating operational pipelines to streamline team productivity and throughput.',
+        'Implementing clean asynchronous architecture, modular services, and structured error handling for high reliability.',
       ],
       tags: ['Slashcloud.io', 'Node.js', 'Cloud Automation', 'REST APIs', 'Webhooks']
     },
     {
       period: '2025 – PRESENT',
       role: 'Backend & AI Automation Developer',
-      company: "Canadian Timber & Log Enterprise (Under NDA)",
+      company: "Canadian E-Commerce Enterprise (Under NDA)",
       location: 'Remote // Canadian Client',
       glow: 'border-purple-500/40 hover:border-purple-400',
       badgeColor: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
       dotColor: 'bg-purple-500 shadow-[0_0_14px_#b95ce6]',
       metrics: 'Production RAG AI Pipeline',
+      caseStudyUrl: '/case-study.html',
       duties: [
         'Engineered a custom Node.js backend unifying three inbound lead channels — live website chat (Zoho SalesIQ), contact forms, and direct business emails — into a single automated pipeline, replacing Zapier/n8n for sub-second execution.',
         'Built a Retrieval-Augmented Generation (RAG) pipeline over a 260-chunk, 33,500+ word knowledge base so Grok AI responses stay grounded in verified pricing, specs, and policies without hallucinations.',
@@ -40,7 +41,7 @@ export default function Experience() {
       period: '2024 – PRESENT',
       role: 'Web & Full-Stack Developer',
       company: 'Client & Independent Web Solutions',
-      location: 'Remote // Faisalabad',
+      location: 'Remote // Worldwide',
       glow: 'border-blue-500/40 hover:border-blue-400',
       badgeColor: 'text-blue-400 bg-blue-500/10 border-blue-500/30',
       dotColor: 'bg-blue-400 shadow-[0_0_14px_#4facfe]',
@@ -129,6 +130,21 @@ export default function Experience() {
                     {item.company}
                   </div>
                 </div>
+
+                {/* Case Study Callout Button if available */}
+                {item.caseStudyUrl && (
+                  <div className="mb-5">
+                    <a
+                      href={item.caseStudyUrl}
+                      onClick={() => playClickSound()}
+                      onMouseEnter={() => playHoverSound()}
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500/20 via-purple-500/20 to-transparent border border-cyan-400/40 hover:border-cyan-300 text-cyan-300 hover:text-white font-mono text-xs font-semibold tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.3)] transition-all cursor-pointer group/link"
+                    >
+                      <Sparkles className="w-3.5 h-3.5 text-cyan-300 group-hover/link:animate-spin" />
+                      <span>VIEW AI AUTOMATION CASE STUDY &amp; ARCHITECTURE &rarr;</span>
+                    </a>
+                  </div>
+                )}
 
                 {/* Duties */}
                 <ul className="space-y-2 mb-6 text-slate-300 text-sm font-light">

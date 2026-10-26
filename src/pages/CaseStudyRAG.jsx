@@ -1,670 +1,785 @@
-import React, { useState } from 'react';
-import { 
-  ArrowLeft, 
-  ExternalLink, 
-  Sparkles, 
-  Cpu, 
-  Database, 
-  Mail, 
-  Layers, 
-  CheckCircle2, 
-  AlertCircle, 
-  Terminal,
-  FileText,
-  UserCheck,
+import React, { useState, useEffect } from 'react';
+import {
+  ArrowLeft,
+  ExternalLink,
+  Sparkles,
+  CheckCircle2,
+  Edit3,
+  RotateCcw,
+  Mail,
   MessageSquare,
-  Repeat
+  FileText,
+  Star,
+  ArrowRight,
+  ShieldCheck,
+  Zap,
+  Layers,
+  Send,
+  Check,
+  ChevronRight,
+  Database,
+  RefreshCw,
+  Clock,
+  Inbox,
+  UserCheck,
+  Smartphone,
+  CheckCheck,
+  Sliders,
+  TrendingUp,
+  Cpu,
+  Trash2,
+  Filter,
+  Eye,
+  AlertTriangle
 } from 'lucide-react';
 import { playHoverSound, playClickSound } from '../utils/sound';
 import AliPersonalAgent from '../components/AliPersonalAgent';
 
+// Import the 12 Modular GSAP Components
+import HeroReveal from '../components/case-study/HeroReveal';
+import WordRotator from '../components/case-study/WordRotator';
+import LiveInboundPings from '../components/case-study/LiveInboundPings';
+import ReviewShuffle from '../components/case-study/ReviewShuffle';
+import CountUpStats from '../components/case-study/CountUpStats';
+import BentoFeatures from '../components/case-study/BentoFeatures';
+import CursorTour from '../components/case-study/CursorTour';
+import ProcessDraw from '../components/case-study/ProcessDraw';
+import BeforeAfterSlider from '../components/case-study/BeforeAfterSlider';
+import CostRoll from '../components/case-study/CostRoll';
+import UsVsThem from '../components/case-study/UsVsThem';
+import ClickSuccessCTA from '../components/case-study/ClickSuccessCTA';
+
 export default function CaseStudyRAG() {
-  const [activeTab, setActiveTab] = useState('conversation');
+  const [activeTab, setActiveTab] = useState('overview');
+  const isDark = true; // Fixed Obsidian Dark Tech Theme
 
-  const challenges = [
-    {
-      num: '01',
-      title: 'Rapid Conversation Turnaround',
-      desc: 'Customer conversations needed to be reviewed and responded to quickly before potential buyers bounced to competitors.'
+  useEffect(() => {
+    try {
+      localStorage.removeItem('case_study_theme');
+      document.body.style.backgroundColor = '#08090c';
+      document.body.style.color = '#f8fafc';
+    } catch (_) {}
+  }, []);
+
+  // Interactive Hero Dashboard Simulation State
+  const [activeChannel, setActiveChannel] = useState('chat'); // 'chat' | 'form' | 'email'
+  const [heroDraftTone, setHeroDraftTone] = useState('friendly'); // 'friendly' | 'concise' | 'quote'
+  const [heroApprovalState, setHeroApprovalState] = useState('pending'); // 'pending' | 'approved' | 'edited'
+  const [heroEditReason, setHeroEditReason] = useState('Always mention free express freight on orders over $500');
+  const [heroIsStarred, setHeroIsStarred] = useState(true);
+
+  // Six Problems / Six Fixes Interactive State
+  const [fix2Approved, setFix2Approved] = useState(false);
+  const [fix5StarCount, setFix5StarCount] = useState(48);
+  const [fix6FilterTab, setFix6FilterTab] = useState('actionable');
+
+  // Channel Data for Hero Dashboard
+  const channelData = {
+    chat: {
+      name: 'Website Live Chat',
+      badge: 'Live Session · Just Now',
+      visitor: 'Alex Vance',
+      company: 'High-Volume Purchaser',
+      contact: 'alex.vance@company.com · (415) 555-0192',
+      query: 'Hi! We need 8 units of the Pro Series for our regional team. What volume discount do you offer, and can this arrive in Calgary within 4 business days?',
+      ragSource: 'Commercial Volume Pricing Table (Doc #184)',
+      ragFact: 'Tier 2 discount: 15% off on 5–19 units. Expedited freight to Western Canada arrives in 3–4 business days.',
+      drafts: {
+        friendly:
+          'Hi Alex! Great news — for an order of 8 units, you automatically qualify for our 15% commercial volume discount. Standard express delivery to Calgary takes 3–4 business days directly from our main depot. Would you like me to send a formal invoice link?',
+        concise:
+          'Hi Alex — Yes, 8 units qualify for our 15% volume tier. Expedited delivery to Calgary takes 3–4 business days. Shall I prepare an invoice draft for your review?',
+        quote:
+          'Hello Alex, thank you for reaching out. An 8-unit order qualifies for our 15% enterprise volume tier discount. Tracked freight to Calgary is estimated at 3–4 business days with priority dispatch. Full formal quote is attached.'
+      }
     },
-    {
-      num: '02',
-      title: 'Human-in-the-Loop AI Guardrails',
-      desc: 'The client wanted high-velocity AI assistance without giving any autonomous LLM unrestricted control over live customer communication.'
+    form: {
+      name: 'Website Contact Form',
+      badge: 'Web Form · 4m ago',
+      visitor: 'Elena Rostova',
+      company: 'Biodyne Laboratory',
+      contact: 'e.rostova@biodyne.ca',
+      query: 'We have 220V dual-line industrial outlets in our test facility. Does the Enterprise Core model support direct 220V single-phase connection without a transformer?',
+      ragSource: 'Electrical Specifications Manual (Doc #092)',
+      ragFact: 'Hardware auto-switches 100–240V AC (50/60Hz, single phase). Direct 220V connection fully certified.',
+      drafts: {
+        friendly:
+          'Hello Elena! Yes, the Enterprise Core includes an internal auto-switching 100–240V power module, so you can plug directly into your 220V single-phase outlets without any external transformer. All units are UL/CSA certified!',
+        concise:
+          'Hi Elena — The Enterprise Core supports 100–240V AC auto-switching natively. No transformer is needed for 220V single-phase connections. Safety specs available on request.',
+        quote:
+          'Hello Elena, thank you for your technical inquiry. The Enterprise Core is factory-certified for 100–240V AC single-phase lines without requiring a step-down converter.'
+      }
     },
-    {
-      num: '03',
-      title: 'Full Conversation Context Awareness',
-      desc: 'Responses needed to understand multi-turn conversational history and nuances, rather than treating incoming messages as isolated, one-off questions.'
-    },
-    {
-      num: '04',
-      title: 'Centralized Review & Follow-Up Hub',
-      desc: 'Operators needed a single unified pane of glass to review inquiries, audit conversation logs, and trigger follow-up communications.'
-    },
-    {
-      num: '05',
-      title: 'Passive Inbox Alerts vs Dashboard Fatigue',
-      desc: 'Staff should never have to stay glued to a dashboard tab all day just to discover when a fresh high-priority inquiry arrived.'
-    },
-    {
-      num: '06',
-      title: 'Exemplar-Based Active Learning Loop',
-      desc: 'The system needed to continuously improve from approved human edits and real positive feedback, evolving with the client’s domain knowledge.'
-    },
-    {
-      num: '07',
-      title: 'Reliable Enterprise Lead Logging',
-      desc: 'Lead contacts, conversation transcripts, and customer details had to be persisted reliably into a synchronized database without dropped events.'
+    email: {
+      name: 'Direct Business Email',
+      badge: 'Inbound Mail · 12m ago',
+      visitor: 'David Miller',
+      company: 'Bright Studio Partners',
+      contact: 'david@brightstudio.io',
+      query: 'Following up on our quote from yesterday — can we add 2 extra seats to our initial rollout while keeping the promotional package pricing?',
+      ragSource: 'Customer Account & Quote History (Order #9042)',
+      ragFact: 'Existing quote #9042 locked in promotional tier through end of month. Seat additions permitted.',
+      drafts: {
+        friendly:
+          'Hi David, absolutely! I can adjust Quote #9042 to include the 2 additional seats at the same promotional rate. I have updated the file and will send the revised link right over!',
+        concise:
+          'Hi David — Yes, we have added 2 additional seats to your existing quote at the promotional rate. Updated link ready for sign-off.',
+        quote:
+          'Hello David, your request has been confirmed. Two additional seats have been added to Quote #9042 preserving your promotional pricing tier.'
+      }
     }
-  ];
+  };
 
-  const zapierComparisons = [
-    {
-      feature: 'Webhook Latency & Burst Traffic',
-      offTheShelf: '3rd-party queue delays (up to 5-15 mins), dropped payloads during traffic spikes',
-      customEngine: 'Sub-50ms event ingest via dedicated Express API Gateway with atomic queuing'
-    },
-    {
-      feature: 'Multi-Turn Conversational State',
-      offTheShelf: 'Stateless execution; cannot reconstruct previous session context or chat continuity',
-      customEngine: 'Stateful conversation tracker with composite tenant indexing and session memory'
-    },
-    {
-      feature: 'Payload Sanitization & Edge Defense',
-      offTheShelf: 'Generic catch-all webhooks with zero payload armor, open to malformed schemas',
-      customEngine: 'Schema repair, strict parameter sanitization, and IP brute-force lockouts'
-    },
-    {
-      feature: 'Long-Term Cost & Scalability',
-      offTheShelf: 'Aggressive per-task metering; expenses snowball with multi-step cognitive flows',
-      customEngine: 'Self-hosted Node.js microservice architecture with unlimited operational runs'
+  const currentChannel = channelData[activeChannel];
+
+  // Scrollspy to update active tab
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['overview', 'interactive-dashboard', 'features-deepdive', 'before-after', 'stats', 'cost-roi', 'blueprint'];
+      const scrollPosition = window.scrollY + 120;
+
+      for (const sectionId of sections) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveTab(sectionId);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollTo = (id) => {
+    playClickSound();
+    setActiveTab(id);
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 80;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
-  ];
-
-  const dashboardModules = [
-    {
-      id: 'conversation',
-      icon: MessageSquare,
-      title: 'Conversation Management',
-      color: 'cyan',
-      badgeClass: 'text-cyan-400 bg-cyan-500/10 border-cyan-500/30',
-      description: 'Granular thread auditing, intent classification, and schema repair across all incoming customer touchpoints.',
-      features: [
-        'Full conversation transcript inspection with speaker attribution',
-        'Multi-session conversation history and cross-channel message linking',
-        'Actionable lead identification flagging high-intent purchase queries',
-        'Incomplete lead triage extracting actionable notes even from phone-only inquiries',
-        'Automated transcript extraction and malformed JSON schema repair'
-      ]
-    },
-    {
-      id: 'ai_response',
-      icon: Sparkles,
-      title: 'AI Response Management',
-      color: 'emerald',
-      badgeClass: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30',
-      description: 'Cognitive drafting engine powered by Grok (xAI) and in-database knowledge chunks, governed by human sign-off.',
-      features: [
-        'Instant AI-generated follow-up drafts prepared before operator opens the lead',
-        'On-demand draft regeneration with dynamic tone and temperature controls',
-        'Inline human editing allowing operators to refine or customize drafts in seconds',
-        'Positive response feedback button marking top-tier replies as future model anchors',
-        'Domain-specific knowledge base grounding drafts in verified pricing and service specs',
-        'Dynamic exemplar-based few-shot learning that evolves with human operator corrections'
-      ]
-    },
-    {
-      id: 'outreach',
-      icon: Mail,
-      title: 'Customer Outreach',
-      color: 'purple',
-      badgeClass: 'text-purple-400 bg-purple-500/10 border-purple-500/30',
-      description: 'One-click dispatch engine transforming approved drafts into formatted, branded communications.',
-      features: [
-        'One-click email outreach dispatching approved messages in under 2 seconds',
-        'Bulk lead management allowing staged approval for batches of customer queries',
-        'WYSIWYG rich-text email editing with real-time rendering and syntax highlighting',
-        'Automated HTML email generation compliant with all major email clients',
-        'Cryptographically signed outbound relay ensuring 100% inbox delivery'
-      ]
-    },
-    {
-      id: 'lead_mgmt',
-      icon: Database,
-      title: 'Lead Management & Persistence',
-      color: 'pink',
-      badgeClass: 'text-pink-400 bg-pink-500/10 border-pink-500/30',
-      description: 'High-performance MySQL persistence layer with soft-delete recycling and sub-5ms indexed queries.',
-      features: [
-        'Soft-delete recycle bin protecting customer records against accidental deletion',
-        'Bulk lead deletion with comprehensive audit trails and permanent purge control',
-        'High-performance pagination powered by composite tenant indices (sub-5ms queries)',
-        'Bi-directional MySQL database synchronization maintaining ledger consistency',
-        'Granular lead lifecycle status pipeline (New, In-Review, Approved, Dispatched, Archived)'
-      ]
-    }
-  ];
-
-  const results = [
-    'Captures incoming customer inquiries across 5 distinct inbound channels simultaneously',
-    'Maintains full conversation history and multi-turn context across days or weeks',
-    'Pre-drafts high-accuracy, hallucination-free AI responses using domain knowledge',
-    'Dispatches structured email notifications directly to staff with suggested draft included',
-    'Centralizes inquiries, transcripts, and lead details into a single administrative portal',
-    'Guarantees 100% human sign-off before any message ever reaches a customer',
-    'Allows one-click inline editing and tone adjustments on every generated draft',
-    'Captures approved human edits to continuously train the system’s exemplar memory',
-    'Learns from real business feedback rather than relying on generic, ungrounded LLMs',
-    'Logs lead profiles, contact details, and transcripts centrally with audit trails',
-    'Supports one-click approved email dispatch and bulk queue operations',
-    'Completely eliminates dropped webhooks, third-party middleware latency, and duplicate events'
-  ];
+  };
 
   return (
-    <div className="relative min-h-screen bg-[#050508] text-slate-100 font-sans selection:bg-cyan-500 selection:text-black overflow-x-hidden">
-      
-      {/* Subtle Background Ambience */}
-      <div className="fixed inset-0 scanlines-overlay pointer-events-none opacity-25 z-10" />
-      <div className="absolute top-0 left-1/3 w-[650px] h-[650px] bg-cyan-500/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute top-[800px] right-10 w-[500px] h-[500px] bg-purple-500/5 rounded-full blur-[140px] pointer-events-none" />
-
-      {/* Top Engineering Header Bar */}
-      <header className="sticky top-0 z-40 bg-[#06070e]/90 backdrop-blur-md border-b border-cyan-500/20 py-3.5 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <div
+      style={{ fontFamily: '"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}
+      className="min-h-screen bg-[#08090c] text-[#f8fafc] selection:bg-cyan-500/30 selection:text-cyan-200 antialiased"
+    >
+      {/* =====================================================================
+          1. STICKY TOP NAVIGATION BAR (GLASSY OBSIDIAN DARK TECH)
+         ===================================================================== */}
+      <header className="sticky top-0 z-50 py-3 backdrop-blur-xl border-b bg-[#06070d]/85 border-cyan-500/20 shadow-[0_4px_30px_rgba(0,0,0,0.7)] text-white">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 flex items-center justify-between">
           
+          {/* Left: Brand Logo & Avatar matching main site */}
           <div className="flex items-center gap-3">
             <a
               href="/"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0b0e22] hover:bg-[#121738] border border-cyan-500/30 text-cyan-400 font-mono text-xs font-semibold tracking-wider transition-all group"
+              className="flex items-center gap-2.5 group cursor-pointer"
             >
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
-              <span>EXIT TO PORTFOLIO</span>
+              <div className="relative">
+                <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-500 to-purple-600 p-[1.5px] shadow-[0_0_15px_rgba(0,242,254,0.4)] group-hover:shadow-[0_0_25px_rgba(0,242,254,0.8)] transition-all">
+                  <div className="w-full h-full bg-[#070913] rounded-[9px] overflow-hidden">
+                    <img
+                      src="avatar.jpg"
+                      alt="Ali Stack Dev"
+                      className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+                {/* Blue Tick Badge */}
+                <div className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-[#1d9bf0] text-white rounded-full flex items-center justify-center border border-[#06070d]">
+                  <svg className="w-2 h-2 fill-current" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                  </svg>
+                </div>
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-1.5">
+                  <span className="font-heading font-bold text-sm tracking-wider text-white">
+                    ALI STACK <span className="text-cyan-500">DEV</span>
+                  </span>
+                </div>
+                <span className="font-mono text-[9px] tracking-widest -mt-0.5 text-cyan-300/80">
+                  AI &amp; BACKEND SYSTEMS
+                </span>
+              </div>
             </a>
 
-            <div className="hidden sm:flex items-center gap-2 pl-2 border-l border-slate-800 text-xs font-mono">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-slate-400">UNLISTED PRIVATE LINK</span>
-              <span className="text-slate-600">•</span>
-              <span className="text-cyan-400 font-semibold">CONFIDENTIAL BRIEF</span>
-            </div>
-          </div>
-
-          <a
-            href="#architecture-section"
-            onClick={() => playClickSound()}
-            onMouseEnter={() => playHoverSound()}
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-bold text-xs tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.6)] transition-all cursor-pointer"
-          >
-            <Terminal className="w-3.5 h-3.5" />
-            <span>JUMP TO DIAGRAM</span>
-          </a>
-
-        </div>
-      </header>
-
-      {/* Main Content Container */}
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-24 relative z-20 space-y-20">
-
-        {/* Hero Section */}
-        <section className="space-y-6 pt-4 text-left">
-          
-          <div className="flex flex-wrap items-center gap-2 font-mono text-xs">
-            <span className="px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
-              ENTERPRISE CLIENT CASE STUDY
-            </span>
-            <span className="text-slate-600">•</span>
-            <span className="text-slate-400">FREELANCE REMOTE DELIVERY</span>
-            <span className="text-slate-600">•</span>
-            <span className="text-emerald-400 font-semibold">HUMAN-IN-THE-LOOP ARCHITECTURE</span>
-          </div>
-
-          <h1 className="font-heading font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
-            Multi-Channel Inbound Automation &amp; <span className="cyber-gradient-text">Human-in-the-Loop AI</span> Orchestration
-          </h1>
-
-          <p className="text-slate-300 text-base sm:text-xl font-light leading-relaxed max-w-4xl">
-            How I engineered a centralized, client-controlled AI assistant unifying incoming customer conversations across web forms, live chat, CRM scripts, mailboxes, and SMS messaging — preparing intelligent response drafts while keeping 100% human approval over what reaches the customer.
-          </p>
-
-          {/* Key Metric Highlights */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5 pt-4">
-            <div className="p-4 rounded-xl bg-[#090d1f]/80 border border-cyan-500/20 backdrop-blur-md">
-              <div className="font-mono font-extrabold text-2xl sm:text-3xl text-cyan-400">10x</div>
-              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Faster Review SLA</div>
-            </div>
-            <div className="p-4 rounded-xl bg-[#090d1f]/80 border border-emerald-500/20 backdrop-blur-md">
-              <div className="font-mono font-extrabold text-2xl sm:text-3xl text-emerald-400">0%</div>
-              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Rogue AI Messages</div>
-            </div>
-            <div className="p-4 rounded-xl bg-[#090d1f]/80 border border-purple-500/20 backdrop-blur-md">
-              <div className="font-mono font-extrabold text-2xl sm:text-3xl text-purple-400">5</div>
-              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Unified Channels</div>
-            </div>
-            <div className="p-4 rounded-xl bg-[#090d1f]/80 border border-pink-500/20 backdrop-blur-md">
-              <div className="font-mono font-extrabold text-2xl sm:text-3xl text-pink-400">100%</div>
-              <div className="text-[11px] font-mono text-slate-400 uppercase tracking-wider mt-1">Human In Control</div>
-            </div>
-          </div>
-
-          {/* Core Tech Stack */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 font-mono text-xs">
-            {['Node.js', 'Express.js', 'Grok xAI', 'Human-in-the-Loop', 'Exemplar Memory', 'Native RAG', 'Zoho CRM API', 'Zoho SalesIQ', 'cPanel IMAP', 'MySQL Soft-Delete', 'SSE Real-Time', 'Cloud SMS Service'].map((tech) => (
-              <span key={tech} className="px-2.5 py-1 rounded-md bg-[#0a0e24] border border-slate-800 text-slate-300">
-                {tech}
-              </span>
-            ))}
-          </div>
-
-        </section>
-
-        {/* Section 1: The Bigger Idea (Human in Control) */}
-        <section className="relative p-6 sm:p-10 rounded-2xl bg-gradient-to-br from-[#080d22]/90 via-[#070a1a]/90 to-[#040610]/90 border border-cyan-500/30 shadow-[0_0_40px_rgba(0,242,254,0.1)]">
-          
-          <div className="absolute top-0 right-0 transform translate-x-2 -translate-y-2 w-12 h-12 border-t-2 border-r-2 border-cyan-400 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 transform -translate-x-2 translate-y-2 w-12 h-12 border-b-2 border-l-2 border-cyan-400 pointer-events-none" />
-
-          <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-widest">
-              <Sparkles className="w-4 h-4 text-cyan-400" />
-              <span>THE CORE PHILOSOPHY &amp; SYSTEM VISION</span>
-            </div>
-
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              "AI handles the heavy lifting. Humans remain in control."
-            </h2>
-
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-              The system was not built simply to replace human communication with autonomous AI. In specialized, high-ticket commerce, an inaccurate quote, hallucinated warranty promise, or incorrect material specification can cause irreparable client damage.
-            </p>
-
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-              Instead, this architecture was designed to give the client an <strong className="text-cyan-400 font-semibold">AI-powered executive assistant</strong> that does the heavy lifting — it ingests complex inquiries across 5 platforms, reconstructs the full multi-turn conversation context, searches verified business knowledge, and synthesizes a polished suggested response. The client retains the <strong className="text-emerald-400 font-semibold">final say and approval</strong> before a single word is dispatched to the customer.
-            </p>
-          </div>
-
-        </section>
-
-        {/* Section 2: The Client's Challenge (7 Points) */}
-        <section className="space-y-8">
-          
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-purple-400 uppercase tracking-widest">
-              <AlertCircle className="w-4 h-4 text-purple-400" />
-              <span>THE OPERATIONAL HURDLES</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              The Challenge: Why Manual Workflows Were Breaking Down
-            </h2>
-            <p className="text-slate-400 text-base font-light max-w-3xl">
-              The client needed a smarter way to manage incoming customer conversations and follow up with potential leads. Their previous dispersed workflow generated seven major operational bottlenecks:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {challenges.map((c) => (
-              <div 
-                key={c.num}
-                className="p-5 rounded-xl bg-[#070a1a]/80 border border-slate-800 hover:border-cyan-500/40 transition-all space-y-2 group"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="font-mono font-bold text-sm text-cyan-400/70 group-hover:text-cyan-400 transition-colors">
-                    [{c.num}]
-                  </span>
-                  <h3 className="font-heading font-semibold text-lg text-white">
-                    {c.title}
-                  </h3>
-                </div>
-                <p className="text-slate-400 text-sm font-light leading-relaxed pl-8">
-                  {c.desc}
-                </p>
-              </div>
-            ))}
-          </div>
-
-        </section>
-
-        {/* Section 3: Why Custom Solution vs Zapier / n8n */}
-        <section className="p-6 sm:p-8 rounded-2xl bg-[#070b1c]/70 border border-slate-800 space-y-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-widest">
-              <Cpu className="w-4 h-4 text-cyan-400" />
-              <span>ENGINEERING DECISION MATRIX</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-3xl text-white tracking-tight">
-              Why Off-The-Shelf Tools (Zapier &amp; n8n) Were Not A Fit
-            </h2>
-            <p className="text-slate-400 text-sm font-light max-w-3xl">
-              The client initially considered standard automation platforms such as Zapier and n8n. However, critical limitations around webhook latency, stateful multi-turn conversations, payload handling, and operational scale made a dedicated custom solution necessary.
-            </p>
-          </div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs font-mono border-collapse">
-              <thead>
-                <tr className="border-b border-cyan-500/30 text-slate-300">
-                  <th className="py-3 px-4 font-bold uppercase tracking-wider text-cyan-400">Architectural Metric</th>
-                  <th className="py-3 px-4 font-bold uppercase tracking-wider text-rose-400">Zapier / n8n Limitations</th>
-                  <th className="py-3 px-4 font-bold uppercase tracking-wider text-emerald-400">Custom Node.js Engine</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-800/80">
-                {zapierComparisons.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-cyan-500/5 transition-colors">
-                    <td className="py-3.5 px-4 font-semibold text-white whitespace-nowrap">{row.feature}</td>
-                    <td className="py-3.5 px-4 text-slate-400">{row.offTheShelf}</td>
-                    <td className="py-3.5 px-4 text-emerald-300 font-medium">{row.customEngine}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </section>
-
-        {/* Section 4: Live Interactive Architecture Diagram */}
-        <section id="architecture-section" className="space-y-6 scroll-mt-24">
-          
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-widest">
-                <Terminal className="w-4 h-4 text-cyan-400" />
-                <span>COMPLETE INTERACTIVE SYSTEM ARCHITECTURE</span>
-              </div>
-              <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-                Live Interactive Architecture Blueprint
-              </h2>
-              <p className="text-slate-400 text-sm font-light max-w-2xl">
-                Interact directly with the live system architecture below: grab and drag any node to rearrange the diagram, click nodes to inspect feature overviews, and use the built-in toolbar to switch visual styles.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <a
-                href="architecture/chatbot-enterprise-architecture.html?theme=dark"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => playClickSound()}
-                onMouseEnter={() => playHoverSound()}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#0e142e] hover:bg-[#151f45] border border-cyan-400/40 text-cyan-300 font-mono text-xs font-bold tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.3)] transition-all cursor-pointer shrink-0"
-              >
-                <ExternalLink className="w-4 h-4 text-cyan-400" />
-                <span>OPEN FULL DIAGRAM &amp; NOTES</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Live Interactive Diagram Frame (Zero Empty Space) */}
-          <div className="relative -mx-2 sm:-mx-6 lg:-mx-12 rounded-2xl overflow-hidden border-2 border-cyan-500/30 bg-[#0d1117] shadow-[0_0_60px_rgba(0,0,0,0.95)]">
-            
-            {/* Top Frame Status Bar */}
-            <div className="px-4 py-2.5 bg-[#0a0d20] border-b border-cyan-500/20 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400">
-              <div className="flex items-center gap-3">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80 inline-block" />
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block" />
-                </div>
-                <span className="text-cyan-400 font-bold">// ARCHITECTURE_EXPLORER.SYS</span>
-              </div>
-              <div className="hidden sm:flex items-center gap-3 text-[11px] text-slate-400">
-                <span className="text-emerald-400">● Live Interactive Canvas</span>
-                <span>•</span>
-                <span>Drag Any Node to Reposition</span>
-              </div>
-            </div>
-
-            {/* Clean Live Diagram Container (Hides bottom helping cards so zero blank space) */}
-            <div className="w-full h-[580px] sm:h-[740px] lg:h-[820px] bg-[#0d1117]">
-              <iframe
-                src="architecture/chatbot-enterprise-architecture.html?view=live&theme=dark"
-                title="AQ Tech Multi-Tenant Chatbot Platform — Enterprise Architecture Diagram"
-                className="w-full h-full border-0 block"
-                scrolling="no"
-              />
-            </div>
-
-          </div>
-
-        </section>
-
-        {/* Section 5: The Exemplar Learning Loop */}
-        <section className="relative p-6 sm:p-10 rounded-2xl bg-[#070c20]/80 border border-emerald-500/30 space-y-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest">
-              <Repeat className="w-4 h-4 text-emerald-400" />
-              <span>ADAPTIVE REINFORCEMENT LEARNING</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              The Feedback Loop: How The System Learns From Human Edits
-            </h2>
-            <p className="text-slate-300 text-base font-light leading-relaxed">
-              Rather than relying solely on a generic AI model, the response-generation layer incorporates business-specific knowledge and real examples from the client’s daily workflow. This creates a compounding intelligence flywheel:
-            </p>
-          </div>
-
-          {/* Step Sequence Diagram */}
-          <div className="grid grid-cols-1 sm:grid-cols-5 gap-3 pt-2">
-            {[
-              { step: '1', title: 'AI Suggestion', desc: 'LLM generates contextual draft using verified RAG knowledge.' },
-              { step: '2', title: 'Human Review', desc: 'Client reviews draft inside dashboard or incoming alert email.' },
-              { step: '3', title: 'Correction & Sign-off', desc: 'Operator approves as-is or tweaks tone, pricing, or details.' },
-              { step: '4', title: 'Exemplar Memory', desc: 'Approved edit is committed into exemplars store as ground truth.' },
-              { step: '5', title: 'Compounded Accuracy', desc: 'Subsequent inquiries retrieve approved exemplar as few-shot guidance.' }
-            ].map((item, idx) => (
-              <div key={idx} className="p-4 rounded-xl bg-[#09102c]/70 border border-emerald-500/20 relative space-y-2">
-                <div className="w-6 h-6 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center">
-                  {item.step}
-                </div>
-                <div className="font-heading font-bold text-sm text-white">{item.title}</div>
-                <div className="text-slate-400 text-xs font-light leading-relaxed">{item.desc}</div>
-              </div>
-            ))}
-          </div>
-
-          <div className="p-4 rounded-xl bg-[#05091a] border border-slate-800 text-xs font-mono text-slate-300 leading-relaxed">
-            <strong className="text-emerald-400 font-semibold">Continuous Improvement:</strong> When the client identifies a particularly good response, it can be marked as an exemplar with one click. When an AI draft requires correction, the human operator’s edited version is captured. Over time, the model sounds identically to the business founder.
-          </div>
-        </section>
-
-        {/* Section 6: Email Notifications Without Constant Dashboard Monitoring */}
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-widest">
-              <Mail className="w-4 h-4 text-cyan-400" />
-              <span>PASSIVE TELEMETRY &amp; REAL-TIME ALERTS</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              Email Notifications Without Constant Dashboard Monitoring
-            </h2>
-            <p className="text-slate-300 text-base font-light max-w-3xl leading-relaxed">
-              Staff shouldn't have to stay glued to an admin tab all day just to find out whether someone has submitted an inquiry. Whenever a new chat enquiry or lead arrives, the system dispatches an intelligent email directly to the client's inbox:
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="p-5 rounded-xl bg-[#080d24]/80 border border-slate-800 space-y-3">
-              <div className="flex items-center gap-2 text-cyan-400 font-mono text-sm font-semibold">
-                <UserCheck className="w-4 h-4" />
-                <span>Customer Dossier</span>
-              </div>
-              <p className="text-slate-400 text-xs leading-relaxed font-light">
-                Parsed contact details, telephone numbers, geographic location, and verified email address with CRM sync state.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-[#080d24]/80 border border-slate-800 space-y-3">
-              <div className="flex items-center gap-2 text-purple-400 font-mono text-sm font-semibold">
-                <FileText className="w-4 h-4" />
-                <span>Full Conversation Thread</span>
-              </div>
-              <p className="text-slate-400 text-xs leading-relaxed font-light">
-                Complete, unabridged conversation transcript and customer's exact inquiry — allowing full comprehension without opening a portal.
-              </p>
-            </div>
-
-            <div className="p-5 rounded-xl bg-[#080d24]/80 border border-slate-800 space-y-3">
-              <div className="flex items-center gap-2 text-emerald-400 font-mono text-sm font-semibold">
-                <Sparkles className="w-4 h-4" />
-                <span>Pre-Drafted AI Response</span>
-              </div>
-              <p className="text-slate-400 text-xs leading-relaxed font-light">
-                Ready-to-send draft prepared by Grok xAI and domain knowledge chunks, with a direct 1-click link to approve and dispatch.
-              </p>
-            </div>
-          </div>
-
-          <p className="text-slate-400 text-sm font-light leading-relaxed">
-            If the enquiry is straightforward, the client can review it right from their inbox at their convenience. If an inquiry flags high purchase urgency, a direct deep-link brings the operator directly into the review queue to sign off in seconds.
-          </p>
-        </section>
-
-        {/* Section 7: The Centralised Administration Dashboard */}
-        <section className="space-y-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-cyan-400 uppercase tracking-widest">
-              <Layers className="w-4 h-4 text-cyan-400" />
-              <span>COMMAND CENTER CAPABILITIES</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              The Centralised Administration Dashboard
-            </h2>
-            <p className="text-slate-400 text-base font-light max-w-3xl">
-              An enterprise dashboard designed around speed, audit safety, and zero-distraction operator flow. Explore the 4 specialized control modules:
-            </p>
-          </div>
-
-          {/* Module Tabs */}
-          <div className="flex flex-wrap gap-2 border-b border-slate-800 pb-3">
-            {dashboardModules.map((m) => {
-              const Icon = m.icon;
-              const isActive = activeTab === m.id;
-              return (
-                <button
-                  key={m.id}
-                  onClick={() => {
-                    playClickSound();
-                    setActiveTab(m.id);
-                  }}
-                  onMouseEnter={() => playHoverSound()}
-                  className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-mono text-xs font-semibold tracking-wider transition-all cursor-pointer ${
-                    isActive
-                      ? 'bg-cyan-500/15 border border-cyan-400 text-cyan-300 shadow-[0_0_15px_rgba(0,242,254,0.3)]'
-                      : 'bg-[#080d22] border border-slate-800 text-slate-400 hover:text-white hover:border-slate-700'
-                  }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  <span>{m.title}</span>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Active Tab Panel */}
-          {dashboardModules.filter((m) => m.id === activeTab).map((m) => (
-            <div 
-              key={m.id}
-              className="p-6 sm:p-8 rounded-2xl bg-[#070b1c]/90 border border-cyan-500/30 space-y-5 animate-in fade-in duration-300"
+            <span className="text-slate-700 hidden sm:inline">|</span>
+            <a
+              href="/"
+              onClick={() => playClickSound()}
+              onMouseEnter={() => playHoverSound()}
+              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-xs font-mono transition-all cursor-pointer border bg-cyan-950/40 hover:bg-cyan-900/50 border-cyan-500/30 text-cyan-300"
             >
-              <div className="space-y-1">
-                <span className={`inline-block px-2.5 py-0.5 rounded text-[11px] font-mono uppercase font-bold border ${m.badgeClass}`}>
-                  ACTIVE MODULE
-                </span>
-                <h3 className="font-heading font-bold text-xl sm:text-2xl text-white">
-                  {m.title}
-                </h3>
-                <p className="text-slate-400 text-sm font-light">
-                  {m.description}
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                {m.features.map((feat, idx) => (
-                  <div 
-                    key={idx}
-                    className="p-3.5 rounded-xl bg-[#09102c]/60 border border-slate-800 flex items-start gap-2.5 text-xs text-slate-300 leading-relaxed font-mono"
-                  >
-                    <CheckCircle2 className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
-                    <span>{feat}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </section>
-
-        {/* Section 8: The Result (12-Point Transformation) */}
-        <section className="space-y-8">
-          <div className="space-y-2">
-            <div className="inline-flex items-center gap-2 font-mono text-xs text-emerald-400 uppercase tracking-widest">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-              <span>THE QUANTIFIABLE OUTCOME</span>
-            </div>
-            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              The Result: A Centralised, Scalable AI Operation
-            </h2>
-            <p className="text-slate-400 text-base font-light max-w-3xl">
-              The project transformed a fragmented, chaotic customer-enquiry workflow into an enterprise-grade AI-assisted lead management operation. Instead of requiring the client to manually read every conversation, write every response, and constantly monitor disparate platforms, the new architecture:
-            </p>
+              <ArrowLeft className="w-3.5 h-3.5" />
+              <span>PORTFOLIO</span>
+            </a>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
-            {results.map((r, idx) => (
-              <div 
-                key={idx}
-                className="p-4 rounded-xl bg-[#070b1a]/80 border border-slate-800 flex items-start gap-3 hover:border-emerald-500/40 transition-colors"
+          {/* Center: Glassy Section Tabs */}
+          <nav className="hidden lg:flex items-center gap-1 text-xs font-mono font-bold">
+            {[
+              { id: 'overview', label: '01 HERO' },
+              { id: 'interactive-dashboard', label: '02 CONSOLE' },
+              { id: 'before-after', label: '03 BEFORE/AFTER' },
+              { id: 'features-deepdive', label: '04 BENTO' },
+              { id: 'stats', label: '05 RESULTS' },
+              { id: 'cost-roi', label: '06 ROI' },
+              { id: 'blueprint', label: '07 BLUEPRINT' }
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => scrollTo(tab.id)}
+                className={`px-3 py-1.5 rounded-lg transition-all cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'text-cyan-300 bg-cyan-950/70 border border-cyan-500/50 shadow-[0_0_15px_rgba(0,242,254,0.3)] font-black'
+                    : 'text-slate-400 hover:text-cyan-300 hover:bg-cyan-500/10'
+                }`}
               >
-                <div className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 font-mono text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">
-                  ✓
-                </div>
-                <span className="text-slate-300 text-sm font-light leading-relaxed">
-                  {r}
-                </span>
-              </div>
+                {tab.label}
+              </button>
             ))}
-          </div>
-        </section>
+          </nav>
 
-        {/* Closing Architecture Manifesto */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-tr from-[#080d24] via-[#050818] to-[#040612] border-2 border-cyan-500/40 text-center space-y-6 shadow-[0_0_60px_rgba(0,242,254,0.15)]">
-          <div className="max-w-3xl mx-auto space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs font-bold uppercase tracking-widest">
-              ARCHITECTURAL PRINCIPLE
-            </div>
-            <h3 className="font-heading font-extrabold text-2xl sm:text-4xl text-white tracking-tight">
-              AI Handles The Heavy Lifting. Humans Remain In Control.
-            </h3>
-            <p className="text-slate-300 text-base sm:text-lg leading-relaxed font-light">
-              This case study represents how modern businesses can safely adopt AI without gambling their reputation. By pairing custom event ingestion with grounded RAG inference and an ironclad human-in-the-loop review gate, the client scaled their lead operations tenfold while keeping absolute sovereignty over customer communication.
-            </p>
-          </div>
-
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
+          {/* Right: Signature Cyber Gradient Button */}
+          <div className="flex items-center gap-2.5">
             <a
               href="/#contact"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
-              className="px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-black font-mono font-bold text-xs tracking-wider hover:shadow-[0_0_30px_rgba(0,242,254,0.8)] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-blue-500 text-white font-mono font-bold text-xs tracking-wider shadow-[0_0_20px_rgba(0,242,254,0.4)] hover:shadow-[0_0_30px_rgba(0,242,254,0.8)] hover:scale-[1.02] transition-all cursor-pointer border border-cyan-300/40"
             >
-              DISCUSS YOUR CUSTOM ARCHITECTURE
+              <span>DISCUSS ARCHITECTURE</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
-        </section>
+        </div>
+      </header>
+      {/* =====================================================================
+          2. MODULE 01: HERO REVEAL & MODULE 02: WORD ROTATOR
+         ===================================================================== */}
+      <section
+        id="overview"
+        className="border-b pt-6 pb-12 bg-[#08090c] border-cyan-500/20"
+      >
+        <HeroReveal
+          onExploreClick={() => scrollTo('interactive-dashboard')}
+          onContactClick={() => scrollTo('blueprint')}
+        />
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <WordRotator />
+        </div>
+      </section>
 
-      </main>
+      {/* =====================================================================
+          3. MODULE 03: LIVE INBOUND PINGS (STREAM & VELOCITY)
+         ===================================================================== */}
+      <section className="border-b bg-[#08090c] border-cyan-500/20">
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <LiveInboundPings />
+        </div>
+      </section>
+
+      {/* =====================================================================
+          4. THE INTERACTIVE MACOS DASHBOARD COMMAND CENTER
+         ===================================================================== */}
+      <section
+        id="interactive-dashboard"
+        className="py-16 sm:py-24 border-b bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
+          
+          <div className="text-center max-w-[720px] mx-auto mb-10">
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">
+              ALL CHANNELS UNIFIED · 1 DEDICATED COMMAND CONSOLE
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black mt-1 tracking-tight text-white">
+              Every Channel Handled in One Single Dashboard
+            </h2>
+            <p className="text-xs sm:text-sm mt-1.5 text-slate-400">
+              No more switching tabs between live chat, form inboxes, and email threads. All incoming customer inquiries route into this single command screen with instant 3-layer business grounding and 1-click human sign-off.
+            </p>
+          </div>
+
+          {/* macOS Window Title Bar - Crisp Clean Light SaaS Console */}
+          <div className="rounded-3xl border overflow-hidden border-slate-300/80 bg-white shadow-[0_25px_70px_rgba(0,0,0,0.6)]">
+            
+            {/* macOS Window Title Bar */}
+            <div className="px-5 py-3.5 flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 bg-[#f1f5f9]">
+              <div className="flex items-center gap-2">
+                <span className="w-3.5 h-3.5 rounded-full bg-[#ef4444] border border-[#dc2626]/40 inline-block shadow-xs" />
+                <span className="w-3.5 h-3.5 rounded-full bg-[#f59e0b] border border-[#d97706]/40 inline-block shadow-xs" />
+                <span className="w-3.5 h-3.5 rounded-full bg-[#10b981] border border-[#059669]/40 inline-block shadow-xs" />
+                <span className="ml-3 font-mono font-bold text-xs hidden sm:inline text-slate-700">
+                  Inbound AI Command Center · Production v2.4
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold border bg-emerald-50 border-emerald-200 text-emerald-700 shadow-xs">
+                  <span className="w-2 h-2 rounded-full bg-[#10b981] animate-ping" />
+                  <span>Real-Time Gateway: Online</span>
+                </span>
+              </div>
+            </div>
+
+            {/* Dashboard Inner Workspace - Clean Light SaaS Theme */}
+            <div className="p-4 sm:p-6 bg-[#f8fafc] text-slate-900">
+              
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 min-h-[580px]">
+                
+                {/* =========================================================================
+                    LEFT COLUMN: MULTI-CHANNEL INBOUND LEADS LIST (5 of 12 cols)
+                   ========================================================================= */}
+                <div className="lg:col-span-5 flex flex-col gap-3">
+                  
+                  {/* Left Column Header */}
+                  <div className="flex items-center justify-between px-1 pb-1">
+                    <div className="flex items-center gap-2">
+                      <Inbox className="w-4 h-4 text-cyan-700" />
+                      <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-800">
+                        INBOUND QUEUE (3 CHANNELS)
+                      </span>
+                    </div>
+                    <span className="text-[11px] font-mono text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded-full font-bold">
+                      ● 3 Waiting
+                    </span>
+                  </div>
+
+                  <p className="text-xs text-slate-500 px-1 mb-1">
+                    Click any incoming lead to open its synthesized response:
+                  </p>
+
+                  {/* List of 3 Leads from Different Channels */}
+                  {[
+                    {
+                      id: 'chat',
+                      icon: MessageSquare,
+                      channelLabel: 'Website Live Chat',
+                      channelTag: 'LIVE CHAT',
+                      tagColor: 'border-cyan-200 text-cyan-800 bg-cyan-50',
+                      name: 'Alex Vance',
+                      company: 'High-Volume Purchaser',
+                      location: 'Calgary, AB',
+                      preview: 'Need 8 units Pro Series... volume discount?',
+                      time: 'Just Now',
+                      status: '⚡ 1.4s Draft Ready'
+                    },
+                    {
+                      id: 'form',
+                      icon: FileText,
+                      channelLabel: 'Website Contact Form',
+                      channelTag: 'WEB FORM',
+                      tagColor: 'border-purple-200 text-purple-800 bg-purple-50',
+                      name: 'Dr. Elena Rostova',
+                      company: 'Biodyne Laboratory',
+                      location: 'Vancouver, BC',
+                      preview: '220V dual-line outlets... direct connection?',
+                      time: '4m ago',
+                      status: '⚡ 1.2s Draft Ready'
+                    },
+                    {
+                      id: 'email',
+                      icon: Mail,
+                      channelLabel: 'Direct Business Email',
+                      channelTag: 'EMAIL',
+                      tagColor: 'border-blue-200 text-blue-800 bg-blue-50',
+                      name: 'David Miller',
+                      company: 'Bright Studio Partners',
+                      location: 'Toronto, ON',
+                      preview: 'Quote #9042... add 2 extra seats?',
+                      time: '12m ago',
+                      status: '⚡ 1.1s Draft Ready'
+                    }
+                  ].map((lead) => {
+                    const isSelected = activeChannel === lead.id;
+                    const IconComponent = lead.icon;
+                    return (
+                      <div
+                        key={lead.id}
+                        onClick={() => {
+                          playClickSound();
+                          setActiveChannel(lead.id);
+                          setHeroApprovalState('pending');
+                        }}
+                        onMouseEnter={() => playHoverSound()}
+                        className={`p-4 rounded-2xl border transition-all cursor-pointer text-left relative ${
+                          isSelected
+                            ? 'bg-white border-cyan-600 shadow-md ring-2 ring-cyan-500/20'
+                            : 'bg-white/80 border-slate-200 hover:border-slate-300 hover:bg-white text-slate-700'
+                        }`}
+                      >
+                        {/* Top Line: Channel badge & Timestamp */}
+                        <div className="flex items-center justify-between mb-2">
+                          <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md text-[10px] font-mono font-bold uppercase border ${lead.tagColor}`}>
+                            <IconComponent className="w-3 h-3" />
+                            <span>{lead.channelTag}</span>
+                          </span>
+                          <span className="text-[11px] font-mono text-slate-500">
+                            {lead.time}
+                          </span>
+                        </div>
+
+                        {/* Middle Line: Lead Name & Location */}
+                        <div className="flex items-center justify-between mb-1.5">
+                          <div className="font-extrabold text-sm text-slate-900 flex items-center gap-1.5">
+                            <span>{lead.name}</span>
+                            <span className="text-xs font-normal text-slate-500">· {lead.company}</span>
+                          </div>
+                          {isSelected && (
+                            <span className="text-[10px] font-mono font-bold text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded">
+                              OPEN
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Customer Message Preview */}
+                        <p className="text-xs text-slate-600 line-clamp-1 italic mb-2.5">
+                          &quot;{lead.preview}&quot;
+                        </p>
+
+                        {/* Bottom Tag */}
+                        <div className="flex items-center justify-between pt-2 border-t border-slate-100 text-[11px] font-mono">
+                          <span className="text-cyan-700 font-bold">{lead.status}</span>
+                          <span className="text-slate-500 text-[10px]">Click to inspect →</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+
+                  {/* Channel Integration Footer */}
+                  <div className="mt-auto p-3.5 rounded-xl border border-slate-200 bg-white text-[11px] font-mono text-slate-600 flex items-center justify-between shadow-xs">
+                    <span>📡 All Webhooks Online</span>
+                    <span className="text-emerald-700 font-bold">Sub-45ms Relay</span>
+                  </div>
+                </div>
+
+                {/* =========================================================================
+                    RIGHT COLUMN: OPENED LEAD & CONNECTED AI RESPONSE (7 of 12 cols)
+                   ========================================================================= */}
+                <div className="lg:col-span-7 rounded-2xl border border-slate-200/90 bg-white p-5 sm:p-6 shadow-sm flex flex-col justify-between">
+                  
+                  {/* Top Bar: Lead Identity & Channel Header */}
+                  <div>
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
+                      <div className="flex items-center gap-3">
+                        <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-cyan-600 to-blue-700 text-white font-mono font-bold text-sm flex items-center justify-center shadow-xs">
+                          {currentChannel.visitor.charAt(0)}
+                        </div>
+                        <div>
+                          <div className="flex items-center gap-2">
+                            <span className="font-extrabold text-base text-slate-900">
+                              {currentChannel.visitor}
+                            </span>
+                            <span className="text-xs px-2.5 py-0.5 rounded-full font-mono font-bold bg-cyan-50 border border-cyan-200 text-cyan-800">
+                              {currentChannel.badge}
+                            </span>
+                          </div>
+                          <div className="text-xs font-mono text-slate-500 mt-0.5">
+                            {currentChannel.company} · <span className="text-cyan-700 font-semibold">{currentChannel.contact}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-mono font-bold">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                        <span>Ready in 1.4s</span>
+                      </div>
+                    </div>
+
+                    {/* Step 1: Customer Incoming Query */}
+                    <div className="mb-3.5">
+                      <div className="text-[11px] font-mono font-bold uppercase tracking-wider text-slate-500 mb-1.5 flex items-center gap-1.5">
+                        <MessageSquare className="w-3.5 h-3.5 text-cyan-700" />
+                        <span>1. Customer Message (Incoming):</span>
+                      </div>
+                      <div className="p-3.5 rounded-xl border border-slate-200 bg-slate-50 text-xs sm:text-sm leading-relaxed italic text-slate-800 font-sans">
+                        &quot;{currentChannel.query}&quot;
+                      </div>
+                    </div>
+
+                    {/* Step 2: Connected AI Synthesis Engine (Connecting Chunks + Starred Responses) */}
+                    <div className="mb-3.5 p-3.5 rounded-xl border border-cyan-200 bg-cyan-50/60">
+                      <div className="text-[11px] font-mono font-bold uppercase mb-2 flex items-center justify-between text-cyan-900">
+                        <span className="flex items-center gap-1.5">
+                          <Cpu className="w-3.5 h-3.5 text-cyan-700" />
+                          <span>2. AI Grounding Engine (Chunks + Starred Tone):</span>
+                        </span>
+                        <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-cyan-200/60 text-cyan-900 font-bold">
+                          100% FACTUAL MATCH
+                        </span>
+                      </div>
+
+                      {/* Grounding signals stacked cleanly under the message */}
+                      <div className="space-y-2">
+                        <div className="p-2.5 rounded-lg bg-white border border-cyan-200/80 text-xs">
+                          <div className="flex items-center justify-between mb-0.5">
+                            <span className="font-bold text-slate-900 flex items-center gap-1">
+                              <span>📚 Business Chunk:</span>
+                              <span className="text-cyan-800">{currentChannel.ragSource}</span>
+                            </span>
+                            <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded font-bold">98% Match</span>
+                          </div>
+                          <p className="text-[11px] text-slate-600 leading-snug">
+                            {currentChannel.ragFact}
+                          </p>
+                        </div>
+
+                        <div className="p-2.5 rounded-lg bg-white border border-amber-200/80 text-xs flex items-center justify-between">
+                          <div className="flex items-center gap-1.5">
+                            <Star className="w-3.5 h-3.5 text-amber-500 fill-amber-500 shrink-0" />
+                            <span className="text-[11px] text-slate-700">
+                              <strong className="text-amber-900">Great Past Response:</strong> Injected starred human enterprise tone for commercial deals.
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-mono text-amber-700 bg-amber-50 px-1.5 py-0.2 rounded font-bold">Learned</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Step 3: Generated AI Response Draft (Awaiting Sign-Off) */}
+                    <div className="p-4 rounded-xl border-2 border-cyan-500/40 bg-white mb-4 shadow-xs">
+                      <div className="flex items-center justify-between mb-2 pb-2 border-b border-slate-100">
+                        <span className="text-xs font-mono font-bold text-cyan-800 flex items-center gap-1.5">
+                          <Sparkles className="w-3.5 h-3.5 text-cyan-600" />
+                          <span>3. Generated AI Response (Ready for Review):</span>
+                        </span>
+
+                        {/* Tone Selector */}
+                        <div className="flex items-center gap-1 p-0.5 rounded-lg border border-slate-200 bg-slate-100">
+                          {[
+                            { id: 'friendly', label: 'Warm' },
+                            { id: 'concise', label: 'Short' },
+                            { id: 'quote', label: 'Formal' }
+                          ].map((tone) => (
+                            <button
+                              key={tone.id}
+                              type="button"
+                              onClick={() => {
+                                playClickSound();
+                                setHeroDraftTone(tone.id);
+                              }}
+                              className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold cursor-pointer transition-all ${
+                                heroDraftTone === tone.id
+                                  ? 'bg-white text-cyan-900 shadow-xs border border-slate-300 font-black'
+                                  : 'text-slate-600 hover:text-slate-900'
+                              }`}
+                            >
+                              {tone.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <p className="text-xs sm:text-sm leading-relaxed text-slate-900 font-normal">
+                        {currentChannel.drafts[heroDraftTone]}
+                      </p>
+                    </div>
+
+                    {/* Approval Feedback Alerts */}
+                    {heroApprovalState === 'approved' && (
+                      <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-xs text-emerald-800 font-mono font-bold mb-4 flex items-center gap-2 shadow-xs">
+                        <CheckCheck className="w-4 h-4 shrink-0 text-emerald-600" />
+                        <span>Dispatched to {currentChannel.visitor} via email relay! Customer notified.</span>
+                      </div>
+                    )}
+
+                    {heroApprovalState === 'edited' && (
+                      <div className="p-3 rounded-xl bg-amber-50 border border-amber-300 text-xs text-amber-900 font-mono font-bold mb-4 flex items-center gap-2 shadow-xs">
+                        <Edit3 className="w-4 h-4 shrink-0 text-amber-600" />
+                        <span>Custom edit dispatched + Starred Response active learning note recorded!</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Step 4: Human Sign-Off Action Buttons */}
+                  <div className="pt-3 border-t border-slate-100 space-y-2.5">
+                    <div className="flex gap-2">
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setHeroApprovalState('approved');
+                        }}
+                        className="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-600 via-blue-600 to-indigo-600 hover:from-cyan-500 hover:to-blue-500 text-white font-mono font-bold text-xs sm:text-sm tracking-wider shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+                      >
+                        <CheckCircle2 className="w-4 h-4 text-cyan-100" />
+                        <span>APPROVE &amp; SEND (1-CLICK)</span>
+                      </button>
+
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setHeroApprovalState('edited');
+                        }}
+                        className="py-3 px-4 rounded-xl font-mono text-xs sm:text-sm tracking-wider transition-all flex items-center justify-center gap-1.5 cursor-pointer border bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-800"
+                      >
+                        <Edit3 className="w-4 h-4 text-cyan-700" />
+                        <span>EDIT</span>
+                      </button>
+                    </div>
+
+                    <div className="flex items-center justify-between text-[11px] font-mono px-1 text-slate-500">
+                      <span>🛡️ Zero automated dispatch without your approval</span>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          playClickSound();
+                          setHeroIsStarred(!heroIsStarred);
+                        }}
+                        className="text-amber-700 font-bold hover:underline cursor-pointer flex items-center gap-1"
+                      >
+                        <Star className={`w-3.5 h-3.5 ${heroIsStarred ? 'fill-amber-500 text-amber-500' : 'text-slate-400'}`} />
+                        <span>{heroIsStarred ? 'Starred Response (★)' : 'Star Response'}</span>
+                      </button>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* =====================================================================
+          5. MODULE 09: BEFORE / AFTER COMPARISON SLIDER
+         ===================================================================== */}
+      <section
+        id="before-after"
+        className="border-b bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6">
+          <BeforeAfterSlider />
+        </div>
+      </section>
+
+      {/* =====================================================================
+          6. MODULE 07: AUTOMATED CURSOR TOUR & MODULE 08: PROCESS DRAW
+         ===================================================================== */}
+      <section
+        id="features-deepdive"
+        className="border-b py-12 bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-12">
+          <CursorTour />
+          <ProcessDraw />
+          <BentoFeatures />
+        </div>
+      </section>
+
+      {/* =====================================================================
+          7. MODULE 05: COUNT-UP STATS & MODULE 04: REVIEW SHUFFLE
+         ===================================================================== */}
+      <section
+        id="stats"
+        className="border-b py-12 bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-12">
+          <CountUpStats />
+          <ReviewShuffle />
+        </div>
+      </section>
+
+      {/* =====================================================================
+          8. MODULE 10: COST ROLL & MODULE 11: US VS THEM
+         ===================================================================== */}
+      <section
+        id="cost-roi"
+        className="border-b py-12 bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1200px] mx-auto px-4 sm:px-6 space-y-12">
+          <CostRoll />
+          <UsVsThem onCtaClick={() => scrollTo('blueprint')} />
+        </div>
+      </section>
+
+      {/* =====================================================================
+          9. SYSTEM BLUEPRINT (INTERACTIVE GRAPH)
+         ===================================================================== */}
+      <section
+        id="blueprint"
+        className="py-16 sm:py-24 border-b bg-[#08090c] border-cyan-500/20"
+      >
+        <div className="max-w-[1140px] mx-auto px-4 sm:px-6">
+          
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-widest text-cyan-400">
+                SYSTEM ARCHITECTURE
+              </span>
+              <h2 className="text-[28px] sm:text-[38px] font-black tracking-tight mt-1 text-white">
+                Interactive Technical Blueprint
+              </h2>
+              <p className="text-base mt-1 max-w-[60ch] text-slate-400">
+                Visual topological map showing webhooks, Express middleware, RAG knowledge stores, Grok AI synthesis, and the human gate.
+              </p>
+            </div>
+
+            <a
+              href="/architecture/chatbot-enterprise-architecture.html?theme=dark"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => playClickSound()}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all cursor-pointer shrink-0 border bg-[#0c1021]/80 hover:bg-[#121833] border-cyan-500/40 hover:border-cyan-400 text-cyan-300 shadow-[0_0_20px_rgba(0,242,254,0.2)]"
+            >
+              <ExternalLink className="w-4 h-4 text-cyan-400" />
+              <span>Open Full-Screen Blueprint</span>
+            </a>
+          </div>
+
+          <div className="rounded-3xl overflow-hidden border shadow-xl border-cyan-500/30 bg-[#0c101a]">
+            <div className="w-full h-[540px] sm:h-[680px]">
+              <iframe
+                src="/architecture/chatbot-enterprise-architecture.html?view=live&theme=dark"
+                title="System Architecture Diagram"
+                className="w-full h-full border-0 block"
+                scrolling="no"
+              />
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* =====================================================================
+          10. MODULE 12: CLICK → SUCCESS CTA
+         ===================================================================== */}
+      <section className="border-b bg-[#08090c] border-cyan-500/20">
+        <ClickSuccessCTA />
+      </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-900 bg-[#030408] py-8 text-center text-xs font-mono text-slate-500">
-        <div className="max-w-6xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span>&copy; {new Date().getFullYear()} ALI HASSAN (ALISTACKDEV). ALL RIGHTS RESERVED.</span>
-          <span className="text-cyan-400/80">CONFIDENTIAL UNLISTED ENGINEERING BRIEF</span>
-        </div>
+      <footer className="py-10 text-center text-xs border-t bg-[#06070d] text-slate-500 border-slate-900">
+        Architected &amp; Engineered by{' '}
+        <strong className="text-slate-300">Ali Hassan</strong> · Backend &amp; AI Systems Engineer · Confidential Case Study
       </footer>
 
-      {/* Floating Personal AI RAG Assistant */}
+      {/* Floating Personal AI Assistant */}
       <AliPersonalAgent />
-
     </div>
   );
 }

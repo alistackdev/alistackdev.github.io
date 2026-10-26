@@ -18,7 +18,7 @@ export default function TerminalContact() {
   const [logs, setLogs] = useState([
     { type: 'info', text: 'Initializing secure transmission port [PROTOCOL_V2.5]...' },
     { type: 'success', text: 'STATUS: ACCESS_GRANTED // Slashcloud Node Online.' },
-    { type: 'hint', text: 'Type a message below or use CLI commands: help, skills, projects, internship, clear' }
+    { type: 'hint', text: 'Type a message below or use CLI commands: help, skills, projects, role, clear' }
   ]);
   
   const [commandInput, setCommandInput] = useState('');
@@ -56,22 +56,22 @@ export default function TerminalContact() {
     if (cmd === 'help') {
       newLogs.push({
         type: 'info',
-        text: 'AVAILABLE SYSTEM COMMANDS: \n- skills      : View engineering abilities \n- projects    : View active production systems \n- internship  : Inspect Slashcloud.io role \n- contact     : Dump phone & comms ports \n- sudo hire   : Immediate developer booking \n- clear       : Flush terminal screen'
+        text: 'AVAILABLE SYSTEM COMMANDS: \n- skills      : View engineering abilities \n- projects    : View active production systems \n- role        : Inspect Slashcloud.io engineering role \n- contact     : Dump phone & comms ports \n- sudo hire   : Immediate developer booking \n- clear       : Flush terminal screen'
       });
     } else if (cmd === 'skills') {
       newLogs.push({
         type: 'success',
-        text: 'CORE_STACK: Node.js, Express, RAG Pipelines, Grok AI, React 18, Vite, Tailwind, C++ (OOP), Python, REST APIs, Webhooks, Meta Ads'
+        text: 'CORE_STACK: Node.js, Express, RAG Pipelines, Grok AI, React 18, Vite, Tailwind CSS, MySQL, REST APIs, Webhooks, SSE Real-Time'
       });
     } else if (cmd === 'projects') {
       newLogs.push({
         type: 'info',
-        text: 'PROJECTS: \n1. Canada Log Home Store RAG Pipeline (loghomestore.ca)\n2. Romic Media Platform (romicmedia.com)\n3. Cinema Booking Management System (C++ OOP)\n4. Smart Parking Allocation System (C++ OOP)'
+        text: 'PROJECTS: \n1. Enterprise Canadian Timber RAG Pipeline (Under NDA)\n2. Romic Media Web Platform (romicmedia.com)\n3. Human-in-the-Loop AI Inbound Automation & Admin Engine'
       });
-    } else if (cmd === 'internship') {
+    } else if (cmd === 'role' || cmd === 'internship') {
       newLogs.push({
         type: 'success',
-        text: 'ROLE: Backend & Automation Engineer Intern @ Slashcloud.io (Past 3 Months). Building production backend automation, webhook infrastructure, and cloud data workflows.'
+        text: 'ROLE: Backend & Automation Engineer @ Slashcloud.io. Building scalable Node.js microservices, webhook infrastructure, and cloud data workflows.'
       });
     } else if (cmd === 'contact') {
       newLogs.push({
@@ -236,7 +236,7 @@ export default function TerminalContact() {
                 type="text"
                 value={commandInput}
                 onChange={(e) => setCommandInput(e.target.value)}
-                placeholder="type 'help', 'skills', 'internship'..."
+                placeholder="type 'help', 'skills', 'projects', 'role'..."
                 className="bg-transparent border-none outline-none font-mono text-xs text-white placeholder:text-slate-600 w-full"
               />
               <button 

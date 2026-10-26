@@ -95,7 +95,7 @@ export default function Navbar() {
               </svg>
             </div>
             <span className="font-mono text-[9px] tracking-widest text-cyan-300/80 -mt-0.5">
-              Slashcloud.io // GCUF
+              AI &amp; BACKEND SYSTEMS
             </span>
           </div>
         </a>

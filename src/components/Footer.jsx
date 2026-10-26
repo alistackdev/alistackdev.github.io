@@ -18,7 +18,7 @@ export default function Footer() {
             ALI HASSAN <span className="text-cyan-400">// WEB &amp; BACKEND DEV</span>
           </div>
           <p className="font-mono text-xs text-slate-400">
-            Backend &amp; Automation Intern @ Slashcloud.io • BS Computer Science @ GCUF
+            Backend &amp; Automation Engineer @ Slashcloud.io • Production AI &amp; Web Systems
           </p>
           <div className="flex items-center gap-2 pt-1">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />

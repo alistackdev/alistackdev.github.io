@@ -6,9 +6,9 @@ import CatTyping from './CatTyping';
 export default function Hero() {
   const roles = [
     'FULL-STACK WEB DEVELOPER',
-    'BACKEND & AUTOMATION ENGINEER',
-    'NODE.JS & REACT SPECIALIST',
-    'PASSIONATE PROBLEM SOLVER'
+    'BACKEND & AI SYSTEMS ENGINEER',
+    'NODE.JS & RAG SPECIALIST',
+    'PRODUCTION AUTOMATION ENGINEER'
   ];
 
   const [roleIndex, setRoleIndex] = useState(0);
@@ -77,19 +77,29 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Professional Narrative Pitch (Human & Empathetic) */}
+          {/* Professional Narrative Pitch */}
           <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-            I am a passionate software developer and Computer Science student at <strong className="text-white font-medium">GCU Faisalabad</strong> who genuinely loves building things and learning new technologies. 
-            Currently interning at <strong className="text-cyan-400 font-medium">Slashcloud.io</strong>, my craft centers around bridging responsive, modern frontend experiences in <strong className="text-white font-medium">React</strong> with robust, automated backend systems in <strong className="text-white font-medium">Node.js</strong>.
+            I am a <strong className="text-white font-medium">Backend &amp; AI Systems Engineer</strong> specializing in production-grade automation and full-stack web architectures. Currently engineering cloud workflows at <strong className="text-cyan-400 font-medium">Slashcloud.io</strong>, my craft centers around bridging high-performance <strong className="text-white font-medium">React</strong> interfaces with custom, sub-50ms <strong className="text-white font-medium">Node.js</strong> backends and <strong className="text-cyan-400 font-medium">RAG AI pipelines</strong>.
           </p>
 
           {/* Call to Actions */}
-          <div className="flex flex-wrap items-center gap-4 pt-2">
+          <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <a
+              href="/case-study.html"
+              onClick={() => playClickSound()}
+              onMouseEnter={() => playHoverSound()}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 text-white font-mono font-bold text-xs sm:text-sm tracking-wider shadow-[0_0_25px_rgba(0,242,254,0.4)] hover:shadow-[0_0_35px_rgba(0,242,254,0.8)] hover:scale-[1.02] transition-all cursor-pointer border border-cyan-300/40"
+            >
+              <Sparkles className="w-4 h-4 text-cyan-200 animate-pulse" />
+              <span>AI AUTOMATION CASE STUDY</span>
+              <ChevronRight className="w-4 h-4 text-cyan-200" />
+            </a>
+
             <a
               href="#experience"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 via-cyan-400 to-blue-500 text-black font-mono font-bold text-sm tracking-wider hover:shadow-[0_0_25px_rgba(0,242,254,0.6)] hover:scale-[1.02] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#0c1021]/80 hover:bg-[#121833] border border-cyan-500/30 hover:border-cyan-400/70 text-slate-200 font-mono text-xs sm:text-sm tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all cursor-pointer"
             >
               <span>EXPLORE WORK</span>
               <ChevronRight className="w-4 h-4" />
@@ -99,7 +109,7 @@ export default function Hero() {
               href="#contact"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#0c1021]/80 hover:bg-[#121833] border border-cyan-500/30 hover:border-cyan-400/70 text-slate-200 font-mono text-sm tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#0c1021]/80 hover:bg-[#121833] border border-cyan-500/30 hover:border-cyan-400/70 text-slate-200 font-mono text-xs sm:text-sm tracking-wider hover:shadow-[0_0_20px_rgba(0,242,254,0.2)] transition-all cursor-pointer"
             >
               <Terminal className="w-4 h-4 text-cyan-400" />
               <span>GET IN TOUCH</span>
@@ -110,7 +120,7 @@ export default function Hero() {
               download="Ali-Hassan-CV.pdf"
               onClick={() => playClickSound()}
               onMouseEnter={() => playHoverSound()}
-              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#120d20]/80 hover:bg-[#1c1433] border border-purple-500/30 hover:border-purple-400 text-purple-300 font-mono text-sm tracking-wider hover:shadow-[0_0_20px_rgba(185,92,230,0.3)] transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#120d20]/80 hover:bg-[#1c1433] border border-purple-500/30 hover:border-purple-400 text-purple-300 font-mono text-xs sm:text-sm tracking-wider hover:shadow-[0_0_20px_rgba(185,92,230,0.3)] transition-all cursor-pointer"
             >
               <Download className="w-4 h-4" />
               <span>RESUME PDF</span>
@@ -120,16 +130,16 @@ export default function Hero() {
           {/* Hiring Highlights Bar */}
           <div className="grid grid-cols-3 gap-3 pt-4 border-t border-slate-800/80 max-w-lg">
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-cyan-400 text-base sm:text-lg">Full-Stack</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Web &amp; Backend</div>
+              <div className="font-mono font-bold text-cyan-400 text-base sm:text-lg">5+ Channels</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Unified CRM &amp; Chat</div>
             </div>
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-purple-400 text-base sm:text-lg">Slashcloud</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Backend Intern</div>
+              <div className="font-mono font-bold text-purple-400 text-base sm:text-lg">Sub-50ms</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Node.js &amp; RAG Engine</div>
             </div>
             <div className="p-3 rounded-lg bg-[#0a0d1a]/60 border border-slate-800">
-              <div className="font-mono font-bold text-emerald-400 text-base sm:text-lg">Problem Solver</div>
-              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Fast Learner</div>
+              <div className="font-mono font-bold text-emerald-400 text-base sm:text-lg">0% Hallucination</div>
+              <div className="text-[11px] text-slate-400 uppercase tracking-wider">Human-in-the-Loop AI</div>
             </div>
           </div>
 
@@ -215,9 +225,9 @@ export default function Hero() {
               <div className="mt-5 pt-3 border-t border-slate-800/80 flex items-center justify-between text-[11px] font-mono text-slate-400">
                 <span className="flex items-center gap-1.5 text-emerald-400">
                   <ShieldCheck className="w-3.5 h-3.5" />
-                  CONTINUOUS LEARNER
+                  PRODUCTION VERIFIED
                 </span>
-                <span>GCUF // FAISALABAD</span>
+                <span>REMOTE WORLDWIDE</span>
               </div>
 
             </div>

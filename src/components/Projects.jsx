@@ -31,7 +31,7 @@ export default function Projects() {
       color: 'purple',
       badgeClass: 'text-purple-300 bg-purple-500/10 border-purple-500/30',
       glowBorder: 'hover:border-purple-400/50',
-      pitch: 'Engineered a custom Node.js backend unifying Zoho SalesIQ live chat, web forms, and direct email with a 260-chunk RAG pipeline powered by Grok AI for an enterprise Canadian timber client under NDA.',
+      pitch: 'Engineered a custom Node.js backend unifying Zoho SalesIQ live chat, web forms, and direct email with a 260-chunk RAG pipeline powered by Grok AI for an enterprise Canadian e-commerce client under NDA.',
       frontMetrics: [
         { label: 'KNOWLEDGE BASE', val: '260 Chunks (33.5K Words)' },
         { label: 'AI ENGINE', val: 'Grok AI Grounded RAG' }
